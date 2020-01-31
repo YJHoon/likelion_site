@@ -1,0 +1,24 @@
+<%= render 'shared/navbar' %>
+
+<div class="container my-5">
+  <div class="make-study">
+    <%= link_to "글 쓰기", new_study_path, class:"btn btn-primary"%>
+  </div>
+
+  <div class="row">
+    <% @studies.each do |s| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%= link_to(study_path(s)) do %>
+            <%= image_tag(s.image_url, style: "width: 100%")%>
+            <div class="card-body">
+              <%= s.title %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'shared/footer' %>

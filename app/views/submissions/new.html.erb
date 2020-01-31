@@ -1,0 +1,20 @@
+<%= render "shared/navbar" %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <%= form_for(@submission, url: assignment_submissions_path(@assignment), method: :post) do |f| %>
+        <%= f.label :title, "제목" %><br>
+        <%= f.text_field :title %><br>
+
+        <%= f.label :description, "내용" %><br>
+        <%= f.text_field :description %><br>
+
+        <%= f.label :submission_url, "과제_url" %><br>
+        <%= f.text_field :submission_url %><br>
+
+        <%= f.submit "과제 제출", class:"button" %>
+      <% end %>
+    </div>
+  </div>
+</div>

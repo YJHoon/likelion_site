@@ -1,0 +1,15 @@
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <div class="gallery_form">
+    <%= form_for(@gallery, url: galleries_path, method: :post) do |f| %>
+      
+      <%= f.file_field :gallery_images %>
+
+      <%= f.submit "제출하기", class:"button" %>
+    <% end %>
+  </div>
+
+</div>
+
+<%= render "shared/footer" %>

@@ -1,0 +1,44 @@
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <h2>과제</h2>
+  <div class="make-assignment">
+    <%# 운영진 아이디로만 과제 생성 가능 %>
+    <% if current_user.read_attribute_before_type_cast(:user_type) == 0 %>
+      <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
+    <% end %>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <% @assignments.each do |a| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%= image_tag(a.assignment_url, id:'assignment-image', class:"card-img-top", style:"width: 100%") %>
+          <div class="card-body">
+            <h5 class="card-title"><%= a.title %></h5>
+            <%= link_to "보러가기" ,assignment_path(a), class:"button" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<style>
+  .assignment-page {
+      display: table; /* Make the container element behave like a table */
+      width: 100%; /* Set full-width to expand the whole page */
+  }
+
+  .col {
+      display: table-cell; /* Make elements inside the container behave like table cells */
+  }
+  #assignment-image {
+    margin 0 auto;
+    width: 100%;
+  }
+
+</style>

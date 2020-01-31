@@ -1,0 +1,25 @@
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <div class="submission-body">
+    <div class="submission-img">
+      <%= image_tag(@submission.submission_image_url)%>
+    </div>
+    <div class="submission-title">
+      제목: <%= @submission.title %>
+    </div>
+    <div class="submission-description">
+      설명: <%= @submission.description %>
+    </div>
+    <div class="submission-url">
+      작품 경로: <%= target_blank_link(@submission.submission_url) %>
+    </div>
+</div>
+
+<%= render "shared/footer" %>
+
+<style>
+  body {
+    text-align: center;
+  }
+</style>

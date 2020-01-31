@@ -1,0 +1,40 @@
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <h2>과제 만들기</h2>
+  <div class="assignment-form">
+    <%= form_for(@assignment, url: assignments_path, method: :post) do |f| %>
+      <ul>
+        <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+          <div class="assignment-inner">
+            <div class="assignment-title assignment-label">제목:</div>
+            <div class="assignment-input-wrap">
+              <%= f.text_field :title %>
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+          <div class="assignment-inner">
+            <div class="assignment-content assignment-label">설명:</div>
+            <div class="assignment-input-wrap">
+              <%= f.text_field :content %>
+              <span class="input-clear-button"></span>
+            </div>
+          </div>
+        </li>
+        <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+          <div class="assignment-inner">
+            <div class="assignment-submit-time assignment-label">제한 시간:</div>
+            <div class="assignment-input-wrap">
+              <%= f.datetime_field :submit_time %>
+            </div>
+          </div>
+        </li>
+        
+      </ul>
+      <%= f.submit "생성하기", class: "button button-full" %>
+    <% end %>
+
+  </div>
+</div>
