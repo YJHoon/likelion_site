@@ -12,13 +12,14 @@
   <div class="row">
     
     <ul class="imagelist">
-      <% @datelist.each do |key, value| %>
-        <%= key %>
-        <% value.gallery_images.each do |image| %>
-          <li><%= image_tag(image, style: "width: 200px;") %></li>
+      <% @datelist.keys.each do |date| %>
+        <%= date %><br>
+        <% @datelist[date].each do |image| %>
+          <%= image_tag(image.gallery_images.url, width: 30)%>
         <% end %>
-        <br>
+        
       <% end %>
+      
     </ul>
   </div>
 </div>

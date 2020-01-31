@@ -4,7 +4,8 @@ class GalleriesController < ApplicationController
 
   def index
     @galleries = Gallery.all
-    @datelist = @galleries.group_by { |g| g.created_at.to_date } 
+    @datelist = @galleries.group_by { |g| g.created_at.to_date.to_s } 
+    values = @datelist.values
   end
 
   def show
