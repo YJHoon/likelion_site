@@ -30,7 +30,7 @@
             마이페이지
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">마이페이지</a>
+            <%= link_to "마이페이지", mypage_path, class: "dropdown-item"%>
             <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
           </div>
         </li>

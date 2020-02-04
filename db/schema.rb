@@ -109,11 +109,13 @@ ActiveRecord::Schema.define(version: 2020_01_31_040038) do
   end
 
   create_table "wishes", force: :cascade do |t|
-    t.string "wishable_type"
-    t.integer "wishable_id"
+    t.integer "user_id", null: false
+    t.integer "submission_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["wishable_type", "wishable_id"], name: "index_wishes_on_wishable_type_and_wishable_id"
+    t.index ["submission_id"], name: "index_wishes_on_submission_id"
+    t.index ["user_id", "submission_id"], name: "index_wishes_on_user_id_and_submission_id", unique: true
+    t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
   add_foreign_key "assignments", "users"
@@ -122,4 +124,6 @@ ActiveRecord::Schema.define(version: 2020_01_31_040038) do
   add_foreign_key "studies", "users"
   add_foreign_key "submissions", "assignments"
   add_foreign_key "submissions", "users"
+  add_foreign_key "wishes", "submissions"
+  add_foreign_key "wishes", "users"
 end

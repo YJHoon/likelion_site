@@ -18,11 +18,12 @@
       <%= f.hidden_field :commentable_type, value: @study.class.name %>
 
       <%= f.text_area :body %>
-      <%= f.submit "댓글 달기", class: "button button-fill"%>
+      <%= f.submit "댓글 달기", class: "button button-fill my-2"%>
     <% end %>
   </div>
 
   <div class="comment-show">
+    <hr>
     <% @comments.each do |comment| %>
       <div class="content-box">
         <div class="user-comment">

@@ -1,11 +1,11 @@
 class CreateStudies < ActiveRecord::Migration[6.0]
   def change
-    create_table :studies do |t|
+    create_table :wishes do |t|
       t.references :user, null: false, foreign_key: true
-      t.string :title
-      t.string :content
-      t.string :study_images
+      t.references :submission, null: false, foreign_key: true
+
       t.timestamps
     end
+    add_index :wishes, [:user_id, :submission_id], unique: true
   end
 end

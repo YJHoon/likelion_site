@@ -1,27 +1,31 @@
 <%= render 'shared/navbar' %>
 
 <div class="container my-5">
-  <h2>갤러리</h2>
-  
-  <%= link_to "사진 추가", new_gallery_path, class:"button button-primary" %>
-
-  <div class="date">
-    
-  </div>
 
   <div class="row">
-    
-    <ul class="imagelist">
-      <% @datelist.keys.each do |date| %>
-        <%= date %><br>
-        <% @datelist[date].each do |image| %>
-          <%= image_tag(image.gallery_images.url, width: 30)%>
-        <% end %>
-        
-      <% end %>
-      
-    </ul>
+    <div class="col-12 mb-2">
+      <h2>갤러리</h2>
+    </div>
+    <div class="float-right">
+      <%= link_to "사진 추가", new_gallery_path, class:"button button-primary" %>
+    </div>
+    <hr>
   </div>
+  
+  <ul class="image-list">
+    <% @datelist.keys.each do |date| %>
+      <div class="image-date my-3">
+        <h3><%= date %></h3>
+      </div>
+      <div class="row">
+        <% @datelist[date].each do |image| %>
+          <div class="card col-md-3 mb-4">
+            <%= image_tag((image.gallery_images.url(:thumb) if image.gallery_images?), class:"card-img-top")%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </ul>
 </div>
 
 <img id="myImg" src="/images/dgu-logo.jpg" alt="Snow" style="width:100%; max-width:300px">
@@ -37,6 +41,9 @@
 
 
 <style>
+  .row > *{
+    padding: 0;
+  }
   .imagelist {
      padding: 0; 
      margin: 0; 

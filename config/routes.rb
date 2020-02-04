@@ -9,9 +9,14 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  get '/mypage' => 'users#mypage'
 
   resources :assignments do 
-    resources :submissions
+    resources :submissions do 
+      member do
+        get :wish_toggle
+      end
+    end
   end
   resources :studies
   resources :galleries

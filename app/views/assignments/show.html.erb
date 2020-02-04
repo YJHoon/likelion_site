@@ -22,7 +22,7 @@
     <div class="container my-5">
       <div class="row">
         <% @submissions.each do |s| %>
-          <div class="col-mb-4">
+          <div class="col-mb-4 mb-3">
             <div class="card">
               <%= image_tag(s.submission_image_url, id:'assignment-image', class:"card-img-top") %>
               <div class="card-body">

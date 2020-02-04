@@ -5,6 +5,11 @@
     <div class="submission-img">
       <%= image_tag(@submission.submission_image_url)%>
     </div>
+    
+    <div class="wish-toggle" id="wish-toggle">
+      <%= render 'shared/wish', submission: @submission %>
+    </div>
+
     <div class="submission-title">
       제목: <%= @submission.title %>
     </div>

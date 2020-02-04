@@ -4,7 +4,8 @@ class Gallery < ApplicationRecord
   belongs_to :user
 
   has_many :comments, as: :commentable, dependent: :nullify
-  has_many :wishes, as: :wishable, dependent: :destroy
+
+  validates :gallery_images, presence: true
 
   def self.datelist
     # gallery_created = self.pluck(:created_at)
