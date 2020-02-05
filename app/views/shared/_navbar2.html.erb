@@ -1,29 +1,90 @@
-<header id="header">
-  <div class="inner">
+<section id="header" class="header style1 black-background">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="logo" class="logo float-left">
+          <% if controller.controller_name == "home" && controller.action_name == "index" %>
+            <a href="<%= root_path %>" title="DGU-likelion" class="white">
+              DGULion
+            </a>
+          <% else %>
+          <a href="<%= root_path %>" title="Yolo">
+            DGULion
+          </a>
+          <% end %>
+        </div><!-- /.logo -->
+        <div class="get-quote float-right">
+          <% cls = controller.controller_name == "home" && controller.action_name == "index" ? "white" : ""%>
+          <a href="https://www.facebook.com/DGUlion/" target="_blank" title="" class="<%= cls %>">문의하기</a>
+        </div>
+        <div class="nav-wrap">
+          <div class="btn-menu">
+                <span></span>
+            </div><!-- //mobile menu button -->
+          <div id="mainnav" class="mainnav">
+            <ul class="menu">
+              <li class="active">
+                <% if controller.controller_name == "home" && controller.action_name == "index" %>
+                  <a href="<%= root_path %>" title="" class="<%= cls %>">
+                    Home
+                  </a>
+                <% else %>
+                  <a href="<%= root_path %>" title="">
+                    Home
+                  </a>
+                <% end %>
 
-    <!-- Logo -->
-      <a href="index.html" class="logo">
-        <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
-      </a>
-
-    <!-- Nav -->
-      <nav>
-        <ul>
-          <li><a href="#menu">Menu</a></li>
-        </ul>
-      </nav>
-
-  </div>
-</header>
-
-<!-- Menu -->
-<nav id="menu">
-  <h2>Menu</h2>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="generic.html">Ipsum veroeros</a></li>
-    <li><a href="generic.html">Tempus etiam</a></li>
-    <li><a href="generic.html">Consequat dolor</a></li>
-    <li><a href="elements.html">Elements</a></li>
-  </ul>
-</nav>
+                <% if user_signed_in? %>
+                  <% if current_user.admin? || current_user.member? %>
+                    <li class="has-submenu">
+                      <a href="#" title="" class="<%= cls %>">
+                        과제정보
+                      </a>
+                      <div class="submenu">
+                        <ul>
+                          <li>
+                            <a href="<%= homeworks_path %>" title="">과제 목록</a>
+                          </li>
+                          <% if controller.controller_name == "home" && controller.action_name == "index" %>
+                            <li>
+                              <% if @homework.present? %>
+                                <a href="<%= new_homework_user_homework_path(@homework) %>" title="">과제 내기</a>
+                              <% else %>
+                                <a href="#" title="" id="no_homework">과제 내기</a>
+                              <% end %>
+                            </li>
+                          <% end %>
+                          <li>
+                            <a href="<%= my_homeworks_path %>" title="">내 과제</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <%= link_to "강의노트", notes_path, class: "#{cls}" %>
+                    </li>
+                    <li>
+                      <%= link_to "인강듣기", lectures_path, class: "#{cls}" %>
+                    </li>
+                  <% end %>
+                  <li>
+                    <%= link_to "정보수정", edit_user_registration_path, class: "#{cls}" %>
+                  </li>
+                  <li>
+                    <%= link_to "로그아웃", destroy_user_session_path, method: :destroy, class: "#{cls}" %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "로그인", new_user_session_path, class: "#{cls}" %>
+                  </li>
+                  <li>
+                    <%= link_to "회원가입", new_user_registration_path, class: "#{cls}" %>
+                  </li>
+                <% end %>
+            </ul><!-- /.menu -->
+          </div><!-- /.mainnav -->
+        </div><!-- /.nav-wrap -->
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section><!-- /.header -->

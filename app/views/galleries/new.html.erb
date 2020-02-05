@@ -1,10 +1,8 @@
-<%= render "shared/navbar" %>
-
 <div class="container">
   <div class="gallery_form">
     <%= form_for(@gallery, url: galleries_path, method: :post) do |f| %>
       
-      <%= f.file_field :gallery_images, required: true %>
+      <%= f.file_field :image, required: true %>
       
       <%= f.submit "제출하기", class:"button" %>
     <% end %>

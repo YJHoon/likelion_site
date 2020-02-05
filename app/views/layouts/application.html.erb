@@ -14,12 +14,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css">
-    <link rel="stylesheet" href="/story/assets/css/main.css">                    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $(".alert").fadeTo(2000, 500).slideUp(500);
+      });
+    </script>
+
+
+    <meta name="author" content="themsflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Boostrap style -->
+    <link rel="stylesheet" type="text/css" href="/html_files/stylesheets/bootstrap.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="/html_files/stylesheets/fancybox.css">
+
+    <!-- REVOLUTION LAYERS STYLES -->
+    <link rel="stylesheet" type="text/css" href="/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="/revolution/css/settings.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="/html_files/stylesheets/style.css">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="/html_files/stylesheets/responsive.css">
+
+    <!-- Colors -->
+    <link rel="stylesheet" type="text/css" href="/html_files/stylesheets/colors/color4.css" id="colors">
+
 
   </head>
 
@@ -27,7 +57,7 @@
     <% if notice %>
       <div class="alert alert-success">
         <%= notice %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="all: unset; float: right;">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -36,20 +66,53 @@
     <% if alert %>
       <div class="alert alert-danger">
         <%= alert %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="all: unset; float: right;">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     <% end %>
+    <%= render 'shared/navbar' %>
     <%= yield %>
   </body>
 
-  <script src="/story/assets/js/jquery.min.js"></script>
-  <script src="/story/assets/js/jquery.scrollex.min.js"></script>
-  <script src="/story/assets/js/jquery.scrolly.min.js"></script>
-  <script src="/story/assets/js/browser.min.js"></script>
-  <script src="/story/assets/js/breakpoints.min.js"></script>
-  <script src="/story/assets/js/util.js"></script>
-  <script src="/story/assets/js/main.js"></script>
-  
+
+  <!-- Javascript -->
+  <script type="text/javascript" src="/html_files/javascript/jquery.min.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/easing.js"></script>
+
+  <script type="text/javascript" src="/html_files/javascript/tether.min.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/jquery-validate.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/waypoints.min.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/kinetic.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/jquery.flexslider-min.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/owl.carousel.js"></script>
+
+  <script type="text/javascript" src="/html_files/javascript/parallax.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATof4VolMTPTEz78KgGKAOVAzlFzO3QmY"></script>
+  <script type="text/javascript" src="/html_files/javascript/gmap3.min.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/jquery.final-countdown.js"></script>
+  <script type="text/javascript" src="/html_files/javascript/jquery.cookie.js"></script>
+
+
+  <script type="text/javascript" src="/html_files/javascript/main.js"></script>
+
+
+  <script type="text/javascript" src="/html_files/javascript/easing.js"></script>
+  <!-- revolution Slider -->
+  <script type="text/javascript" src="/html_files/revolution/js/jquery.themepunch.tools.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/jquery.themepunch.revolution.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/slider.js"></script>
+
+  <!-- SLIDER revolution 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+  <script type="text/javascript" src="/html_files/revolution/js/extensions/revolution.extension.video.min.js"></script>
 </html>

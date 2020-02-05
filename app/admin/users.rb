@@ -22,7 +22,7 @@ ActiveAdmin.register User do
       link_to(image_tag(obj.thumbnail.url, style: "width: 100px"), obj.thumbnail.url, target: :_blank) if obj.thumbnail?
     end
     column :email
-    column :user_type
+    column :role
     actions
   end
 
@@ -31,7 +31,7 @@ ActiveAdmin.register User do
       row :name
       row :email
       row :thumbnail
-      row :user_type
+      row :role
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -43,7 +43,7 @@ ActiveAdmin.register User do
       f.input :name
       f.input :thumbnail
       f.input :email
-      f.input :user_type
+      f.input :role
     end
     actions
   end

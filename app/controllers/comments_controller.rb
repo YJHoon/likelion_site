@@ -4,17 +4,17 @@ class CommentsController < ApplicationController
     comment.user_id = current_user.id
     comment.save!
     # comment = Comments.create(comment_params)
-    redirect_to studies_path
+    redirect_to lectures_path
   end
 
   def update
     @comment.update_attribute!(comment_params)
-    redirect_to studies_path
+    redirect_to lectures_path
   end
 
   private
-  def load_study
-    @study = Study.find(params[:id])
+  def load_lecture
+    @lecture = Lecture.find(params[:id])
   end
 
   def load_comment

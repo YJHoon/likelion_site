@@ -1,11 +1,11 @@
 class Gallery < ApplicationRecord
-  mount_uploader :gallery_images, ImageUploader
+  mount_uploader :image, ImageUploader
 
   belongs_to :user
 
   has_many :comments, as: :commentable, dependent: :nullify
 
-  validates :gallery_images, presence: true
+  validates :image, presence: true
 
   def self.datelist
     # gallery_created = self.pluck(:created_at)

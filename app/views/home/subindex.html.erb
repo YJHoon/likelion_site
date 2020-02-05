@@ -1,0 +1,55 @@
+<%= render 'shared/navbar2' %>
+
+<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+  <div class="content">
+    <h1>동국대 멋쟁이 사자처럼</h1>
+    <p class="major">8기 아기사자들의 이야기</p>
+    <ul class="actions stacked">
+      <li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="/story/images/banner.jpg" alt="" />
+  </div>
+</section>
+
+<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
+  <div class="content">
+    <h2>과제</h2>
+    <p>과제를 제출하거나 다른 아기사자들의 과제를 확인할 수 있어요.</p>
+    <ul class="actions stacked">
+      <li><%= link_to "과제하러 가기", assignments_path, class:"button" %></li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="/story/images/spotlight01.jpg" alt="" />
+  </div>
+</section>
+
+<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+  <div class="content">
+    <h2>강의</h2>
+    <p>공부하는데 필요한 정보를 올리거나 볼 수 있어요.</p>
+    <ul class="actions stacked">
+      <li><%= link_to "스터디하러 가기", lectures_path, class:"button" %></li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="/story/images/spotlight02.jpg" alt="" />
+  </div>
+</section>
+
+<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+  <div class="content">
+    <h2>갤러리</h2>
+    <p>멋쟁이 사자처럼 8기의 사진을 볼 수 있어요.</p>
+    <ul class="actions stacked">
+      <li><%= link_to "갤러리로 이동", galleries_path, class:"button" %></li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="/story/images/spotlight03.jpg" alt="" />
+  </div>
+</section>
+
+<%= render "shared/footer" %>

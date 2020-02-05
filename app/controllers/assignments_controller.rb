@@ -15,8 +15,13 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    assignment = current_user.assignments.create!(assignment_params)
-    redirect_to assignments_path
+    result = Assignment.check_date(assignment_params)
+    if result
+      assignment = current_user.assignments.create!(assignment_params)
+      redirect_to assignments_path
+    else
+      redirect_to new_assignment_path, alert: "해당 시간은 선택할 수 없습니다."
+    end
   end
 
   def edit
@@ -34,6 +39,6 @@ class AssignmentsController < ApplicationController
   end
 
   def assignment_params
-    params.require(:assignment).permit(:title, :content, :submit_time, :assignment_image)
+    params.require(:assignment).permit(:title, :content, :start_at, :end_at, :file, :image)
   end
 end

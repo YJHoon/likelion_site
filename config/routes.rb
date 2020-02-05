@@ -18,8 +18,10 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :studies
   resources :galleries
   resources :comments
   resources :wishes
+  resources :lectures
 end
+
+

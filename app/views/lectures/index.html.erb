@@ -1,0 +1,38 @@
+<section class="page-title parallax parallax6">
+  <div class="title-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box-title color-black">
+            <h1>동국대 멋쟁이 사자처럼</h1>
+            <h2>강의 게시판</h2>
+          </div><!-- /.box-title -->
+        </div><!-- /.col-md-12 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.title-heading -->
+<div class="overlay-black"></div>
+</section><!-- /.page-title parallax -->
+
+<div class="container my-5">
+  <div class="make-lecture mb-3">
+    <%= link_to "글 쓰기", new_lecture_path, class:"btn btn-primary" %>
+  </div>
+
+  <div class="row">
+    <% @lectures.each do |lecture| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%= link_to(lecture_path(lecture)) do %>
+            <%= image_tag(lecture.image_url, style: "width: 100%")%>
+            <div class="card-body">
+              <%= lecture.title %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'shared/footer' %>

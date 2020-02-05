@@ -1,7 +1,7 @@
 <%= link_to wish_toggle_assignment_submission_path(submission), remote: true, class: "external" do %>
   <% if current_user.is_wish?(submission) %>
-    <p class="btn btn-primary">추천하기</p>
-  <% else %>
     <p class="btn btn-outline-primary">추천 취소</p>
+  <% else %>
+    <p class="btn btn-primary">추천하기</p>
   <% end %>
 <% end %>

@@ -1,14 +1,23 @@
-<%= render "shared/navbar" %>
+<section class="page-title parallax parallax6">
+  <div class="title-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box-title color-black">
+            <h1>동국대 멋쟁이 사자처럼</h1>
+            <h2>과제 게시판</h2>
+          </div><!-- /.box-title -->
+        </div><!-- /.col-md-12 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.title-heading -->
+<div class="overlay-black"></div>
+</section><!-- /.page-title parallax -->
 
-<div class="container">
-  <h2>과제</h2>
-  <div class="make-assignment">
-    <%# 운영진 아이디로만 과제 생성 가능 %>
-    <% if current_user.read_attribute_before_type_cast(:user_type) == 0 %>
-      <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
-    <% end %>
-  </div>
-</div>
+<%# 운영진 아이디로만 과제 생성 가능 %>
+<% if current_user.read_attribute_before_type_cast(:role) == 2 %>
+  <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
+<% end %>
 
 <div class="container my-5">
   <div class="row">

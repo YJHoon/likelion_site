@@ -1,5 +1,5 @@
 class Submission < ApplicationRecord
-  mount_uploader :submission_image, ImageUploader
+  mount_uploader :image, ImageUploader
 
   belongs_to :user
   belongs_to :assignment
@@ -8,7 +8,7 @@ class Submission < ApplicationRecord
   has_many :wishes, dependent: :destroy
   has_many :wishes_user, through: :wishes, source: :user
 
-  def submission_image_url
-    submission_image.url.present? ? submission_image.url : "/images/simba.jpg"
+  def image_url
+    image.url.present? ? image.url : "/images/simba.jpg"
   end
 end

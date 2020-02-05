@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def mypage
-    User.where(user_type: :mentor)
+    User.where(role: :mentor)
   end
   
   def edit
@@ -12,6 +12,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:current_user).permit(:name, :email, :user_type, :thumbnail, :password, :password_confirmation)
+    params.require(:current_user).permit(:name, :email, :role, :thumbnail, :password, :password_confirmation)
   end
 end

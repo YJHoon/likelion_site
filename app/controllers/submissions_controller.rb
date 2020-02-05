@@ -42,6 +42,6 @@ class SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:title, :description, :submission_url, :submission_image)
+    params.require(:submission).permit(:title, :description, :url, :image)
   end
 end

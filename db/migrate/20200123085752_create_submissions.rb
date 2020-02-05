@@ -4,9 +4,12 @@ class CreateSubmissions < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.references :assignment, null: false, foreign_key: true
       t.string :title
-      t.string :description
-      t.string :submission_url
-      t.string :submission_image
+      t.text :description
+      t.string :url
+      t.string :image
+      t.string :file
+      t.integer :view_count, default: 0
+      t.integer :grade, default: 0
 
       t.timestamps
     end

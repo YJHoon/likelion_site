@@ -8,7 +8,7 @@ ActiveAdmin.register Submission do
     id_column
     column :title
     column :description
-    column :submission_url
+    column :url
     actions
   end
 
@@ -16,7 +16,7 @@ ActiveAdmin.register Submission do
     attributes_table do
       row :title
       row :description
-      row :submission_url
+      row :url
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -27,7 +27,7 @@ ActiveAdmin.register Submission do
     f.inputs do
       f.input :title
       f.input :description
-      f.input :submission_url
+      f.input :url
     end
     actions
   end

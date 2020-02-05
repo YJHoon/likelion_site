@@ -8,8 +8,9 @@ ActiveAdmin.register Assignment do
     id_column
     column :title
     column :content
-    column :submit_time
-    column :assignment_image
+    column :start_at
+    column :end_at
+    column :image
     actions
   end
 
@@ -17,8 +18,9 @@ ActiveAdmin.register Assignment do
     attributes_table do
       row :title
       row :content
-      row :submit_time
-      row :assignment_image
+      row :start_at
+      row :end_at
+      row :image
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -29,8 +31,9 @@ ActiveAdmin.register Assignment do
     f.inputs do
       f.input :title
       f.input :content
-      f.input :submit_time
-      f.input :assignment_image
+      f.input :start_at
+      f.input :end_at
+      f.input :image
     end
     actions
   end

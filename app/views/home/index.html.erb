@@ -1,74 +1,152 @@
-<% if user_signed_in? %>
-  
-  <%= render "shared/navbar" %>
-  <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-    <div class="content">
-      <h1>멋쟁이 사자처럼 8기</h1>
-      <p class="major">8기 아기사자들의 이야기</p>
-      <ul class="actions stacked">
-        <li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li>
-      </ul>
-    </div>
-    <div class="image">
-      <img src="/story/images/banner.jpg" alt="" />
-    </div>
-  </section>
+<div class="divider100"></div>
+<div class="divider100"></div>
+<section class="page-title parallax parallax2">
+	<div class="title-heading">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 bg-black">
+					<div class="box-title style1">
+						<h1>
+							DGU Like Lion
+						</h1>
+						<div class="top-image">
+							<%= image_tag('/images/lion-revolution.png')%>
+						</div>
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="index.html" title="">Home</a><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+								<li><a href="element.html" title="">Element</a><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+								<li><a href="#" title="">Info Box</a></li>
+							</ul>
+						</div><!-- /.breadcrumbs -->
+					</div><!-- /.box-title -->
+				</div><!-- /.col-md-12 -->
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+	</div><!-- /.title-heading -->
+<div class="overlay-black"></div>
+</section><!-- /.page-title parallax -->
 
-  <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
-    <div class="content">
-      <h2>과제</h2>
-      <p>과제를 제출하거나 다른 아기사자들의 과제를 확인할 수 있어요.</p>
-      <ul class="actions stacked">
-        <li><%= link_to "과제하러 가기", assignments_path, class:"button" %></li>
-      </ul>
-    </div>
-    <div class="image">
-      <img src="/story/images/spotlight01.jpg" alt="" />
-    </div>
-  </section>
+<div class="divider60"></div>
 
-  <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-    <div class="content">
-      <h2>스터디</h2>
-      <p>공부하는데 필요한 정보를 올리거나 볼 수 있어요.</p>
-      <ul class="actions stacked">
-        <li><%= link_to "스터디하러 가기", studies_path, class:"button" %></li>
-      </ul>
-    </div>
-    <div class="image">
-      <img src="/story/images/spotlight02.jpg" alt="" />
-    </div>
-  </section>
+<section class="background">
+	<div class="container full-width">
+		<div class="row">
+			<div class="column-3 no-padding">
+				<div class="iconbox center style1 v1 no-border background-blue color-white info-1">
+					<div class="box-header">
+						<div class="icon">
+							<span class="ti-desktop font-size-48"></span>
+							<span class="ti-desktop two font-size-48"></span>
+						</div>
+						<div class="box-title">
+							<%= link_to("과제", assignments_path) %>
+						</div>
+					</div><!-- /.box-header -->
+					<div class="box-content">
+						<div class="more-link">
+							<%= link_to("보러가기", assignments_path, style:"color: white;") %>
+						</div>
+					</div><!-- /.box-content -->
+				</div><!-- /.iconbox style1 -->
+			</div><!-- /.column-3 no-padding -->
+			<div class="column-3 no-padding">
+				<div class="iconbox center style1 v1 no-border background info-1">
+					<div class="box-header">
+						<div class="icon">
+							<span class="ti-desktop font-size-48"></span>
+							<span class="ti-desktop two font-size-48"></span>
+						</div>
+						<div class="box-title">
+							<%= link_to("강의", lectures_path) %>
+						</div>
+					</div><!-- /.box-header -->
+					<div class="box-content">
+						<div class="more-link">
+							<%= link_to("보러가기", lectures_path) %>
+						</div>
+					</div><!-- /.box-content -->
+				</div><!-- /.iconbox style1 -->
+			</div><!-- /.column-3 no-padding -->
+			<div class="column-3 no-padding">
+				<div class="iconbox center style1 v1 no-border color-white bg-image overlay-02 info-1">
+					<div class="box-header">
+						<div class="icon">
+							<span class="ti-desktop font-size-48"></span>
+							<span class="ti-desktop two font-size-48"></span>
+						</div>
+						<div class="box-title">
+							<%= link_to("갤러리", galleries_path) %>
+						</div>
+					</div><!-- /.box-header -->
+					<div class="box-content">
+						<div class="more-link">
+							<%= link_to("보러가기", galleries_path, style:"color: white;") %>
+						</div>
+					</div><!-- /.box-content -->
+				</div><!-- /.iconbox style1 -->
+			</div><!-- /.column-3 no-padding -->
+		</div><!-- /.row -->
+	</div><!-- /.container full-width -->
+</section><!-- /.flat-iconbox -->
 
-  <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-    <div class="content">
-      <h2>갤러리</h2>
-      <p>멋쟁이 사자처럼 8기의 사진을 볼 수 있어요.</p>
-      <ul class="actions stacked">
-        <li><%= link_to "갤러리로 이동", galleries_path, class:"button" %></li>
-      </ul>
-    </div>
-    <div class="image">
-      <img src="/story/images/spotlight03.jpg" alt="" />
-    </div>
-  </section>
+<div class="divider50"></div>
 
-  <%= render "shared/footer" %>
+<section class="flat-info-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row-box overflow">
+					<div class="one-half info-box info-image no-padding">
+						<img src="/html_files/images/page/box-2.jpg" alt="">
+					</div><!-- .info-box info-image -->
+					<div class="one-half info-box info-text background">
+						<h4>확실한 교육</h4>
+						<p>비전공자를 대상으로 제대로 알려드립니다</p>
+						<p>현직 개발자가 현재 운영진으로 있고, 실력있는 운영진들이 직접 오프라인 교육, 멘토링을 실시하여 하나부터 열까지 철저히 체계적 커리큘럼으로 교육합니다.
 
-<% else %>
-  <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-    <div class="content">
-      <h1>멋쟁이 사자처럼 8기</h1>
-      <p class="major">로그인을 해야 이용할 수 있습니다.</p>
-      <ul class="actions stacked">
-        <li><%= link_to '로그인하기', new_user_session_path, class:"button big wide smooth-scroll-middle" %></li>
-      </ul>
-    </div>
-    <div class="image">
-      <img src="/story/images/banner.jpg" alt="" />
-    </div>
-  </section>
+누구나 자신의 서비스를 실현하고 싶어합니다. 저희 동국대 멋쟁이사자처럼 운영진은 이를 실현하는 것을 도와드리기 위해, 최선을 다 할 것입니다.</p>
 
-  
-<% end %>
+					</div><!-- .info-box info-text -->
+				</div><!-- /.row-box -->
+				<div class="row-box overflow">
+					<div class="one-half info-box info-text background">
+						<h4>매년 높아지는 경쟁률</h4>
+						<p>동국대 멋사의 지원 경쟁률은 매년 상승하는 중</p>
+						<p>동국대 멋쟁이사자처럼은 3기부터 시작되었습니다. 처음의 적은 인원으로 시작하여 2018년에는 30명이 넘는 인원이 활동할 정도로 성장하였습니다.
 
+선배 동국대 멋사 일원들의 열정과 희생으로 탄탄한 교육과 성장을 이루어졌고, 이를 바탕으로 2018년에는 3.8:1 이라는 높은 서류, 면접 경쟁률을 달성하였습니다.</p>
+
+					</div><!-- .info-box info-text -->
+					<div class="one-half info-box info-image no-padding">
+						<img src="/html_files/images/page/box-3.jpg" alt="">
+					</div><!-- .info-box info-image -->
+				</div><!-- .row-box -->
+				<div class="row-box overflow">
+					<div class="one-half info-box info-image no-padding">
+						<img src="/html_files/images/page/box-2.jpg" alt="">
+					</div><!-- .info-box info-image -->
+					<div class="one-half info-box info-text background">
+						<h4>대학 연합 행사</h4>
+						<p>뉴비톤, 헤커톤, 아이디어톤 등 다양한 행사를 경험 할 수 있습니다.</p>
+						<p>스스로 만들어보는 나만의 프로젝트!</p>
+
+					</div><!-- .info-box info-text -->
+				</div><!-- /.row-box -->
+				<div class="row-box overflow">
+					<div class="one-half info-box info-text background">
+						<h4>다양한 친목 활동</h4>
+						<p>엠티, 소풍, 친해지길 바래 등 다양한 친목 활동을 통해 내부 결속을 강화합니다.</p>
+						<p>엠티 가서도 코딩을 할 수 있습니다.</p>
+
+					</div><!-- .info-box info-text -->
+					<div class="one-half info-box info-image no-padding">
+						<img src="/html_files/images/page/box-3.jpg" alt="">
+					</div><!-- .info-box info-image -->
+				</div><!-- .row-box -->
+			</div><!-- /.col-md-12 -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /.flat-info-box -->
+
+<%= render 'shared/footer2' %>
