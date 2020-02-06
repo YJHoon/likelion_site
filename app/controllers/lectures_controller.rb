@@ -9,7 +9,8 @@ class LecturesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @lecture.comments
-    @comments = @comments.page(params[:page]).per(3)
+                        .page(params[:page])
+                        .per(3)
   end
 
   def new
@@ -17,7 +18,7 @@ class LecturesController < ApplicationController
   end
 
   def create
-    lecture = current_user.lectures.create!(lecture_params)
+    current_user.lectures.create!(lecture_params)
     redirect_to lectures_path
   end
 
@@ -31,6 +32,7 @@ class LecturesController < ApplicationController
   end
 
   private
+  
   def load_lecture
     @lecture = Lecture.find(params[:id])
   end

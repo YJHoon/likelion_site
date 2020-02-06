@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     comment = Comment.new(comment_params)
     comment.user_id = current_user.id
@@ -13,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   private
+  
   def load_lecture
     @lecture = Lecture.find(params[:id])
   end

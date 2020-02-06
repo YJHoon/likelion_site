@@ -3,9 +3,7 @@ class GalleriesController < ApplicationController
   before_action :load_room, only: %i[show]
 
   def index
-    @galleries = Gallery.all
-    @datelist = @galleries.group_by { |g| g.created_at.to_date.to_s } 
-    values = @datelist.values
+    @datelist = Gallery.all.group_by { |g| g.created_at.to_date.to_s } 
   end
 
   def show
@@ -16,11 +14,12 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    gallery = current_user.galleries.create!(gallery_params)
+    current_user.galleries.create!(gallery_params)
     redirect_to galleries_path
   end
 
   private
+  
   def load_gallery
     @gallery = Gallery.find(params[:id])
   end

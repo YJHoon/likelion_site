@@ -4,8 +4,8 @@ class SubmissionsController < ApplicationController
   before_action :load_submission, only: %i[show edit update wish_toggle]
 
   def index
-    if !current_user.mentor?
-      redirect_back(fallback_location: root_path, notice: "과제 제출 리스트는 제출기간이 끝나고 확인하실 수 있습니다.") if @assignment.end_at > Time.zone.now
+    if !current_user.mentor? && (@assignment.end_at > Time.zone.now)
+      redirect_back(fallback_location: root_path, notice: "과제 제출 리스트는 제출기간이 끝나고 확인하실 수 있습니다.")
     end
     @submissions = @assignment.submissions
   end
@@ -41,6 +41,7 @@ class SubmissionsController < ApplicationController
   end
 
   private
+  
   def load_assignment
     @assignment = Assignment.find(params[:assignment_id])
   end

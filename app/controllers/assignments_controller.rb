@@ -15,9 +15,13 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    result = Assignment.check_date(assignment_params)
-    if result
-      assignment = current_user.assignments.create!(assignment_params)
+    creatable = true
+    if params[:start_at] && params[:end_at] && ( params[:start_at] < DateTime.current) && (params[:end_at] < DateTime.current) && (params[:start_at] > params[:end_at])
+      creatable = false
+    end
+
+    if creatable
+      current_user.assignments.create!(assignment_params)
       redirect_to assignments_path
     else
       redirect_to new_assignment_path, alert: "해당 시간은 선택할 수 없습니다."
@@ -34,6 +38,7 @@ class AssignmentsController < ApplicationController
   end
 
   private
+
   def load_assignment
     @assignment = Assignment.find(params[:id])
   end

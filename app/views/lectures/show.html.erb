@@ -31,7 +31,7 @@
               <%= User.find(comment.user_id).name %>
             </div>
             <div class="col" style="color: #aaa;">
-              <%= comment.time_since %>
+              <%= time_ago_in_words(comment.created_at) %> 전
             </div>
           </div>
           <div class="conetent-text">
