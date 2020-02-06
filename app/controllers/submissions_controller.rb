@@ -1,7 +1,14 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_assignment, only: %i[show new create edit update]
+  before_action :load_assignment, except: %i[wish_toggle]
   before_action :load_submission, only: %i[show edit update wish_toggle]
+
+  def index
+    if !current_user.mentor?
+      redirect_back(fallback_location: root_path, notice: "과제 제출 리스트는 제출기간이 끝나고 확인하실 수 있습니다.") if @assignment.end_at > Time.zone.now
+    end
+    @submissions = @assignment.submissions
+  end
 
   def show
   end

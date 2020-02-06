@@ -1,0 +1,170 @@
+<section class="page-title parallax parallax6">
+  <div class="title-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box-title color-black">
+            <h1>
+              <%= @assignment.title %>
+            </h1>
+          </div><!-- /.box-title -->
+        </div><!-- /.col-md-12 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.title-heading -->
+<div class="overlay-black"></div>
+</section><!-- /.page-title parallax -->
+
+<section id="main-shop">
+  <div class="container-fluid wrap-product">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sort-product style3 v1">
+          <ul class="tab-product-list float-left">
+            <li class="active" id="all">모두 보기</li>
+            <li id="great">우수 과제</li>
+            <li id="fun">꿀잼 과제</li>
+          </ul>
+        </div><!-- /.sort-product -->
+
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+    <div class="tab-product-content style1">
+      <div class="row first">
+
+        <% @submissions.each do |submission| %>
+          <div class="col-md-3 col-sm-6 item-loadmore <%= submission.grade %> assignment-card">
+            <div class="imagebox style1">
+              <div class="imagebox-header">
+                <%= image_tag(submission.file.present? ? submission.file.url : "default_profile.jpg") %>
+                <!-- <div class="add-cart">
+                  <a href="#" class="shop-cart" title=""><span class="icon_cart_alt"></span></a>
+                  <a href="#" class="like" title=""><span class="icon_heart_alt"></span></a>
+                </div> -->
+                <div class="view center">
+                  <a href="<%= homework_user_homework_path(@assignment, submission) %>" class="bg-black color-white" title="">보러 가기</a>
+                </div>
+              </div><!-- /.imagebox-header -->
+              <div class="imagebox-content center">
+                <div class="name">
+                  <a href="<%= homework_user_homework_path(@assignment, submission) %>" title=""><%= submission&.title %></a>
+                </div>
+                <div class="price">
+                  <%= submission&.user&.name %>
+                </div>
+              </div><!-- /.imagebox-content -->
+            </div><!-- /.imagebox style1 -->
+          </div><!-- /.col-md-3 col-sm-6 item-loadmore -->
+        <% end %>
+
+      </div><!-- /.row -->
+    </div><!-- /.tab-product-content -->
+  </div><!-- /.container -->
+</section><!-- /#mainshop -->
+<div class="assignment-page">  
+  
+
+  <button class="tablink" onclick="openPage('submission-page', this)" id="defaultOpen">과제 제출</button>
+  <button class="tablink" onclick="openPage('idea-page', this)">아이디어 작품</button>
+  <button class="tablink" onclick="openPage('recommend-page', this)">추천 작품</button>
+
+  <div id="submission-page" class="tabcontent">
+    <%# 제출 기간 넘기면 제출란 사라짐 %>
+    <h3>과제 제출란</h3>
+    <% if @assignment.end_at.blank? %>
+      <%= link_to "과제 제출하기", new_assignment_submission_path(@assignment) %><br>
+    <% elsif @assignment.end_at > Time.current %>
+      <%= link_to "과제 제출하기", new_assignment_submission_path(@assignment) %><br>
+    <% end %>
+
+    <div class="container my-5">
+      <div class="row">
+        <% @submissions.each do |submission| %>
+          <div class="col-mb-4 mb-3">
+            <div class="card">
+              <%= image_tag(submission.image_url, id:'assignment-image', class:"card-img-top") %>
+              <div class="card-body">
+                <h5 class="card-title"><%= current_user.name %></h5>
+                <%= link_to "보러가기" ,assignment_submission_path(@assignment, submission), class:"button" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="idea-page" class="tabcontent">
+    <h3>아이디어 작품</h3>
+    <p>Some news this fine day!</p> 
+  </div>
+
+  <div id="recommend-page" class="tabcontent">
+    <h3>추천 작품</h3>
+    <p>Get in touch, or swing by for a cup of coffee.</p>
+  </div>
+</div>
+
+<style>
+  body{
+    text-align:center;
+  }
+  body:before{
+    content:'';
+    height:100%;
+    vertical-align:middle;
+  }
+  button{
+    border:none;
+    position:relative;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+  }
+  button:hover{
+    background:#fff;
+    color:#f76705
+  }
+  button:before,button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #f76705;
+    transition:400ms ease all;
+  }
+  button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  button:hover:before,button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+</style>
+
+
+<script>
+  function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>

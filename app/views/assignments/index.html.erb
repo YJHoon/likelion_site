@@ -21,13 +21,16 @@
 
 <div class="container my-5">
   <div class="row">
-    <% @assignments.each do |a| %>
+    <% @assignments.each do |assignment| %>
       <div class="col-md-3">
         <div class="card">
-          <%= image_tag(a.assignment_url, id:'assignment-image', class:"card-img-top", style:"width: 100%") %>
+          <%= image_tag(assignment.assignment_url, id:'assignment-image', class:"card-img-top", style:"width: 100%") %>
           <div class="card-body">
-            <h5 class="card-title"><%= a.title %></h5>
-            <%= link_to "제출하러 가기" ,assignment_path(a), class:"button" %>
+            <h5 class="card-title"><%= assignment.title %></h5>
+            <div class="limit-time">
+              기한 : <%= assignment.end_at.strftime('%m월 %d일 %H시 %M분 까지') %>
+            </div>
+            <%= link_to "제출하러 가기" ,assignment_path(assignment), class:"button" %>
           </div>
         </div>
       </div>

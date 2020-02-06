@@ -1,112 +1,48 @@
-<div class="assignment-page">  
-  <div class="assignment-container">
-    <h2><%= @assignment.title %></h2>
-    <p><%= @assignment.content %></p>
-  </div>
-
-  <button class="tablink" onclick="openPage('submission-page', this)" id="defaultOpen">과제 제출</button>
-  <button class="tablink" onclick="openPage('idea-page', this)">아이디어 작품</button>
-  <button class="tablink" onclick="openPage('recommend-page', this)">추천 작품</button>
-
-  <div id="submission-page" class="tabcontent">
-    <%# 제출 기간 넘기면 제출란 사라짐 %>
-    <h3>과제 제출란</h3>
-    <% if @assignment.end_at.blank? %>
-      <%= link_to "과제 제출하기", new_assignment_submission_path(@assignment) %><br>
-    <% elsif @assignment.end_at > Time.current %>
-      <%= link_to "과제 제출하기", new_assignment_submission_path(@assignment) %><br>
-    <% end %>
-
-    <div class="container my-5">
-      <div class="row">
-        <% @submissions.each do |submission| %>
-          <div class="col-mb-4 mb-3">
-            <div class="card">
-              <%= image_tag(submission.image_url, id:'assignment-image', class:"card-img-top") %>
-              <div class="card-body">
-                <h5 class="card-title"><%= current_user.name %></h5>
-                <%= link_to "보러가기" ,assignment_submission_path(@assignment, submission), class:"button" %>
+<section id="main-blog" class="single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap-post">
+          <article class="blog-post single style1">
+            <div class="entry-post-title">
+              <div class="post-title">
+                <h2>
+                  <a href="#" title=""><%= @assignment.title %></a>
+                </h2>
               </div>
+              <div class="post-date">
+                기한 : <%= @assignment.end_at.strftime('%m월 %d일 %H시 %M분 까지') %>
+              </div>
+            </div><!-- /.entry-post-title -->
+            <div class="featured-post">
+              <%= image_tag(@assignment.image.present? ? @assignment.image.url : "/images/simba.jpg") %>
+            </div><!-- /.featured-post -->
+            <div class="content-post">
+              <blockquote>
+                <span>“</span>
+                <p><%= @assignment.content&.html_safe %></p>
+              </blockquote>
+
+              <br><br>
+              <div class="right">
+                <% if @assignment&.file.present? %>
+                  <i class="fa fa-download" aria-hidden="true"></i> 첨부 파일: <%= link_to "#{File.basename(@assignment.file.path)}", downloads_assignment_path(id: @assignment.id) %>
+                <% end %>
+              </div>
+            </div><!-- /.content-post -->
+          </article><!-- /.blog-post -->
+          <div class="main-single">
+            <div class="form-submit right">
+              <a href="<%= assignments_path %>" class="btn btn-lg btn-outline-primary">과제 목록</a>
+              <a href="<%= assignment_submissions_path(@assignment) %>" class="btn btn-lg btn-outline-primary">제출 목록</a>
+              <a href="<%= new_assignment_submission_path(@assignment) %>" class="btn btn-lg btn-primary">과제 제출</a>
             </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-  </div>
-
-  <div id="idea-page" class="tabcontent">
-    <h3>아이디어 작품</h3>
-    <p>Some news this fine day!</p> 
-  </div>
-
-  <div id="recommend-page" class="tabcontent">
-    <h3>추천 작품</h3>
-    <p>Get in touch, or swing by for a cup of coffee.</p>
-  </div>
-</div>
-
-<%= render "shared/footer" %>
-
-<style>
-  body{
-    text-align:center;
-  }
-  body:before{
-    content:'';
-    height:100%;
-    vertical-align:middle;
-  }
-  button{
-    border:none;
-    position:relative;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-  }
-  button:hover{
-    background:#fff;
-    color:#1AAF8A;
-  }
-  button:before,button:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: #1afbdc;
-    transition:400ms ease all;
-  }
-  button:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  button:hover:before,button:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
-
-</style>
+          </div><!-- /.main-single -->
+        </div><!-- /.wrap-post -->
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /#main-blog -->
 
 
-<script>
-  function openPage(pageName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-  }
 
-  // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
-</script>
