@@ -15,10 +15,6 @@ class CommentsController < ApplicationController
   end
 
   private
-  
-  def load_lecture
-    @lecture = Lecture.find(params[:id])
-  end
 
   def load_comment
     @comment = Comment.find(params[:id])

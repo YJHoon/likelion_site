@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+  menu parent: '사용자 관리', label: "어드민"
   permit_params :email, :password, :password_confirmation
 
   index do

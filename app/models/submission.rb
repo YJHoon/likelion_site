@@ -8,6 +8,8 @@ class Submission < ApplicationRecord
   has_many :wishes, dependent: :destroy
   has_many :wishes_user, through: :wishes, source: :user
 
+  enum grade: [:normal, :idea, :great]
+
   def image_url
     image.url.present? ? image.url : "/images/simba.jpg"
   end

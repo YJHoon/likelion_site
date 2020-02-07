@@ -1,7 +1,12 @@
 ActiveAdmin.register User do
-  menu parent: '사용자 관리', label: '사용자'
+  menu parent: '사용자 관리', label: "회원"
   actions :all
-  scope -> { '전체' }, :all
+
+  scope :all
+  scope -> { '회원' }, :default
+  scope -> { '멤버(7기)' }, :mentee
+  scope -> { '운영진' }, :mentor
+
 
   batch_action '인증상태 변경', form: {
     state: User::CERTIFICATION_STATES
@@ -22,7 +27,7 @@ ActiveAdmin.register User do
       link_to(image_tag(obj.thumbnail.url, style: "width: 100px"), obj.thumbnail.url, target: :_blank) if obj.thumbnail?
     end
     column :email
-    column :role
+    tag_column :role, interactive: true
     actions
   end
 
@@ -32,6 +37,18 @@ ActiveAdmin.register User do
       row :email
       row :thumbnail
       row :role
+      row :mentor_type
+      tag_row "운영진 역할" do |user|
+        if user.mentor_type == "not_choose"
+          "선택안함"
+        elsif user.mentor_type == "man"
+          "남자"
+        elsif user.mentor_type == "woman"
+          "여자"
+        else
+          "없음"
+        end
+      end
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -44,6 +61,7 @@ ActiveAdmin.register User do
       f.input :thumbnail
       f.input :email
       f.input :role
+      f.input :mentor_type
     end
     actions
   end

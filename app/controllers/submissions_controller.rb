@@ -11,6 +11,10 @@ class SubmissionsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @submission.comments
+                        .page(params[:page])
+                        .per(3)
   end
 
   def new

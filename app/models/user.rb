@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   enum gender: [:not_choose, :man, :woman]
   enum role: CERTIFICATION_STATES
+  enum mentor_type: [:president, :vice_president, :education, :promotion, :HW, :affairs]
 
   KOR_NAME = {default: "일반회원", mentee: "신입회원", mentor: "운영진"}
 

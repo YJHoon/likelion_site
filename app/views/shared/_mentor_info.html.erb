@@ -1,0 +1,31 @@
+<section class="flat-team style5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="flat-title">
+					<h3>8기 운영진 소개</h3>
+					<p class="sub-title">8기 운영진 소개</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+      <% @users.each do |user| %>
+        <div class="col-md-3 col-sm-6">
+          <div class="team-member style4">
+            <div class="avatar">
+              <img src="<%= user.thumbnail_url %>" alt="">
+            </div>
+            <div class="info">
+              <div class="name">
+                <a href="#" title=""><%= user.name %></a>
+              </div>
+              <div class="option">
+                <%= user.mentor_type %>
+              </div>
+            </div>
+          </div><!-- /.team-member style4 -->
+        </div><!-- /.col-md-3 col-sm-6 -->
+			<% end %>
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /.flat-team -->
