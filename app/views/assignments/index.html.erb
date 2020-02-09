@@ -1,42 +1,48 @@
-<section class="page-title parallax parallax6">
-  <div class="title-heading">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box-title color-black">
-            <h1>동국대 멋쟁이 사자처럼</h1>
-            <h2>과제 게시판</h2>
-          </div><!-- /.box-title -->
-        </div><!-- /.col-md-12 -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
-  </div><!-- /.title-heading -->
-<div class="overlay-black"></div>
-</section><!-- /.page-title parallax -->
+<%= render 'shared/page_title', title: '동국대학교 멋쟁이 사자처럼', subtitle: '과제 게시판' %>
 
 <%# 운영진 아이디로만 과제 생성 가능 %>
 <% if current_user.read_attribute_before_type_cast(:role) == 2 %>
   <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
 <% end %>
 
-<div class="container my-5">
-  <div class="row">
-    <% @assignments.each do |assignment| %>
-      <div class="col-md-3">
-        <div class="card">
-          <%= image_tag(assignment.assignment_url, id:'assignment-image', class:"card-img-top", style:"width: 100%") %>
-          <div class="card-body">
-            <h5 class="card-title"><%= assignment.title %></h5>
-            <div class="limit-time">
-              기한 : <%= assignment.end_at.strftime('%m월 %d일 %H시 %M분 까지') %>
-            </div>
-            <%= link_to "제출하러 가기" ,assignment_path(assignment), class:"button" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+<section id="main-shop">
+  <div class="container wrap-product">
+    <div class="tab-product-content">
+      <div class="row first">
+
+        <% @assignments.each do |assignment| %>
+          <div class="col-md-4 item-loadmore">
+            <div class="imagebox style1">
+              <div class="imagebox-header">
+                <%= image_tag(assignment.image_url, alt: "", width: 250, height: 250) %>
+                <div class="add-cart">
+                  <a href="<%= assignment_path(assignment) %>" class="shop-cart" title=""><span class="ti-eye"></span></a>
+                  <a href="<%= assignment_submissions_path(assignment) %>" class="like" title=""><span class="ti-list"></span></a>
+                </div>
+                <div class="view center">
+                  <% if assignment.start_at <= Time.current && assignment.end_at >= Time.current %>
+                    <%= lint_to("과제 내기", new_assignment_submission_path(assignment), class:"bg-black color-white")%>
+                  <% else %>
+                    <%= link_to("과제 내기", "#", class:"bg-black color-white", id:"no_homework")%>
+                  <% end %>
+                </div>
+              </div><!-- /.imagebox-header -->
+              <div class="imagebox-content center">
+                <div class="name">
+                  <a href="#" title=""><%= assignment.title %></a>
+                </div>
+                <div class="price">
+                  기한 : <%= assignment.end_at.strftime('%m월 %d일 %H시 %M분 까지') %>
+                </div>
+              </div><!-- /.imagebox-content -->
+            </div><!-- /.imagebox style1 -->
+          </div><!-- /.col-md-4 item-loadmore -->
+        <% end %>
+
+      </div><!-- /.row -->
+    </div><!-- /.tab-product-content -->
+  </div><!-- /.container -->
+</section><!-- /#main-shop -->
 
 
 <style>

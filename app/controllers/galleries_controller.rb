@@ -1,12 +1,19 @@
 class GalleriesController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :load_room, only: %i[show]
 
   def index
     @datelist = Gallery.all.group_by { |g| g.created_at.to_date.to_s } 
-  end
+    @@get_tag = Gallery.all.ransack(tag_list_cont: params[:q]).result(distinct: true) if params[:q].present?
 
+  end
+  
   def show
+  end
+  
+  def tag_page
+    @gallery = Gallery.joins(:tags).where(tags: {name: 'hello'})
   end
 
   def new
@@ -25,6 +32,7 @@ class GalleriesController < ApplicationController
   end
 
   def gallery_params
-    params.require(:gallery).permit(:image)
+    params.require(:gallery).permit(:image, :tag_list)
+
   end
 end

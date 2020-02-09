@@ -13,14 +13,14 @@
         <div class="col-md-3 col-sm-6">
           <div class="team-member style4">
             <div class="avatar">
-              <img src="<%= user.thumbnail_url %>" alt="">
+              <img src="<%= user.image_url %>" alt="">
             </div>
             <div class="info">
               <div class="name">
-                <a href="#" title=""><%= user.name %></a>
+                <%= user.name %>
               </div>
               <div class="option">
-                <%= user.mentor_type %>
+                <%= user.enum_ko(:mentor_type) %>
               </div>
             </div>
           </div><!-- /.team-member style4 -->

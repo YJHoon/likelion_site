@@ -1,4 +1,4 @@
-<section id="header" class="header style1 black-background">
+<section id="header" class="header style1 float" style="background:#f76705">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -8,9 +8,9 @@
               DGULion
             </a>
           <% else %>
-          <a href="<%= root_path %>" title="Yolo">
-            DGULion
-          </a>
+            <a href="<%= root_path %>" title="Yolo">
+              DGULion
+            </a>
           <% end %>
         </div><!-- /.logo -->
         <div class="get-quote float-right">
@@ -18,9 +18,9 @@
           <a href="https://www.facebook.com/DGUlion/" target="_blank" title="" class="<%= cls %>">문의하기</a>
         </div>
         <div class="nav-wrap">
-          <div class="btn-menu">
-                <span></span>
-            </div><!-- //mobile menu button -->
+          <div class="btn-menu"> 
+            <span></span>
+          </div><!-- //mobile menu button -->
           <div id="mainnav" class="mainnav">
             <ul class="menu">
               <li class="active">
@@ -34,21 +34,44 @@
                   </a>
                 <% end %>
 
-                <li>
-                  <%= link_to '과제 게시판', assignments_path, class:"nav-link" %>
-                </li>
-                <li>
-                  <%= link_to '강의 게시판', lectures_path, class:"nav-link" %>
-                </li>
-                <li>
-                  <%= link_to '갤러리', galleries_path, class:"nav-link" %>
-                </li>
                 <% if user_signed_in? %>
+                  <% if current_user.mentor? || current_user.mentee? %>
+                    <li class="has-submenu">
+                      <a href="#" title="" class="<%= cls %>">
+                        과제정보
+                      </a>
+                      <div class="submenu">
+                        <ul>
+                          <li>
+                            <a href="<%= assignments_path %>" title="">과제 게시판</a>
+                          </li>
+                          <% if controller.controller_name == "home" && controller.action_name == "index" %>
+                            <li>
+                              <% if @assignment.present? %>
+                                <a href="<%= new_assignment_submission_path(@assignment) %>" title="">과제 내기</a>
+                              <% else %>
+                                <a href="#" title="" id="no_homework">과제 내기</a>
+                              <% end %>
+                            </li>
+                          <% end %>
+                          <li>
+                            <a href="<%= my_homeworks_path %>" title="">내 과제</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <%= link_to "강의노트", lectures_path, class: "#{cls}" %>
+                    </li>
+                    <li>
+                      <%= link_to "갤러리", galleries_path, class: "#{cls}" %>
+                    </li>
+                  <% end %>
                   <li>
                     <%= link_to "정보수정", edit_user_registration_path, class: "#{cls}" %>
                   </li>
                   <li>
-                    <%= link_to "로그아웃", destroy_user_session_path, method: :destroy, class: "#{cls}" %>
+                    <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "#{cls}" %>
                   </li>
                 <% else %>
                   <li>
@@ -58,6 +81,7 @@
                     <%= link_to "회원가입", new_user_registration_path, class: "#{cls}" %>
                   </li>
                 <% end %>
+              </li>
             </ul><!-- /.menu -->
           </div><!-- /.mainnav -->
         </div><!-- /.nav-wrap -->
@@ -66,5 +90,9 @@
   </div><!-- /.container-fluid -->
 </section><!-- /.header -->
 
+<br><br><br><br>
 <style>
+  .nav-wrap .btn-menu{
+    color: black !important;
+  }
 </style>

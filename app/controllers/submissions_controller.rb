@@ -14,7 +14,17 @@ class SubmissionsController < ApplicationController
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
-                        .per(3)
+                        .per(10)
+    
+    @user = current_user
+    if !@user.mentor?
+      redirect_to submissions_path, notice: "다른사람의 과제는 제출기간이 끝나고 확인하실 수 있습니다." if (@user != @submission.user) || @assignment.end_at > Time.zone.now
+    end
+
+    if @submission.user != @user
+      @submission.view_count += 1
+      @submission.save
+    end
   end
 
   def new

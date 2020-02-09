@@ -5,6 +5,6 @@ class Lecture < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :nullify
   
   def image_url
-    image.url.present? ? image.url : ""
+    image.url.present? ? image.url : "/images/dgu-logo.jpg"
   end
 end

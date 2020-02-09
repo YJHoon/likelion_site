@@ -1,0 +1,26 @@
+
+<li class="comment" id="comment-<%= comment.id %>">
+  <article class="comment-wrap">
+    <div class="avatar">
+      <%= image_tag(comment.user.image_url, style:"width: 50px") %>
+    </div><!-- /.avatar -->
+    <div class="comment-content">
+      <div class="comment-meta">
+        <div class="comment-time">
+          <%= time_ago_in_words(comment.created_at) %> 전
+        </div>
+        <div class="comment-author">
+          <h4><%= comment.user.name %></h4>
+        </div>
+      </div>
+      <div class="comment-text">
+        <p><%= comment.body %></p>
+      </div>
+      <% if current_user == comment.user %>
+        <div class="comment-data">
+          <%= link_to '삭제', comment, method: :delete, remote: true, data: {confirm: '정말 삭제하시겠습니까?'}  %>
+        </div>
+      <% end %>
+    </div><!-- /.comment-content -->
+  </article><!-- /.comment-wrap -->
+</li><!-- /.comment -->

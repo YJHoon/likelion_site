@@ -37,14 +37,19 @@ ActiveAdmin.register User do
       row :email
       row :thumbnail
       row :role
-      row :mentor_type
       tag_row "운영진 역할" do |user|
-        if user.mentor_type == "not_choose"
-          "선택안함"
-        elsif user.mentor_type == "man"
-          "남자"
-        elsif user.mentor_type == "woman"
-          "여자"
+        if user.mentor_type == "president"
+          "회장"
+        elsif user.mentor_type == "vice_president"
+          "부회장"
+        elsif user.mentor_type == "education"
+          "교육팀"
+        elsif user.mentor_type == "promotion"
+          "홍보팀"
+        elsif user.mentor_type == "HI_SW"
+          "하소봉 회장"
+        elsif user.mentor_type == "affairs"
+          "총무"
         else
           "없음"
         end

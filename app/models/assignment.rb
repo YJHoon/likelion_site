@@ -5,7 +5,7 @@ class Assignment < ApplicationRecord
 
   has_many :submissions, dependent: :destroy
 
-  def assignment_url
-    image.url.present? ? image.url : "/images/simba.jpg"
+  def image_url
+    image.url.present? ? image.url : "/images/dgu-logo.jpg"
   end
 end

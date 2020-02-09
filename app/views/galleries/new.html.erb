@@ -1,11 +1,39 @@
-<div class="container">
-  <div class="gallery_form">
-    <%= form_for(@gallery, url: galleries_path, method: :post) do |f| %>
-      
-      <%= f.file_field :image, required: true %>
-      
-      <%= f.submit "제출하기", class:"button" %>
-    <% end %>
-  </div>
+<section class="flat-signin">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="divider40"></div>
+        <div class="wrap-sign-in center">
+          <h2>갤러리 사진 추가</h2>
+          <hr>
+          <div class="assignment-form">
+            <%= form_for(@gallery, url: galleries_path, method: :post) do |f| %>
+              <ul>
+                <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+                  <div class="field">
+                    <%= image_tag "/images/dgu-logo.jpg", class: "represent_image", id: "represent_image_display", alt: "" %>
 
-</div>
+                    <%= f.file_field :image, id: 'image-update', style:"display:none", required: true %>
+                    <label for="image-update" class="icon-upload"><i class="fas fa-camera icon"></i></label> <br>
+
+
+                    <%= f.label :tag_list %>
+                    <%= f.text_field :tag_list, class:"form-control"%>
+                    
+                    <%#= link_to "이미지 첨부", '#', remote: true, id: "image_upload_button" %>
+                    <%#= f.file_field :image, style:"display: none;" %>
+                  </div>
+                </li>
+              </ul>
+              <div class="divider20"></div>
+              <div class="btn-submit">
+                <button type="submit" name="commit" class="bg-black">사진 올리기</button>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

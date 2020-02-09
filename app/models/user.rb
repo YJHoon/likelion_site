@@ -10,9 +10,7 @@ class User < ApplicationRecord
 
   enum gender: [:not_choose, :man, :woman]
   enum role: CERTIFICATION_STATES
-  enum mentor_type: [:president, :vice_president, :education, :promotion, :HW, :affairs]
-
-  KOR_NAME = {default: "일반회원", mentee: "신입회원", mentor: "운영진"}
+  enum mentor_type: [:president, :vice_president, :education, :promotion, :HI_SW, :affairs]
 
 
 
@@ -34,8 +32,8 @@ class User < ApplicationRecord
   validates_format_of :student_id, :with => /20[0-9]{8}/, :message => "알맞은 학번 양식을 사용하세요", allow_nil: true
 
 
-  def thumbnail_url
-    thumbnail.url.present? ? thumbnail.url : "/images/simba.jpg"
+  def image_url
+    thumbnail.url.present? ? thumbnail.url : "/images/dgu-logo.jpg"
   end
   
   def is_wish?(submission)

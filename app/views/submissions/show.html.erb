@@ -1,83 +1,104 @@
-<%# <br><br><br><br> %>
-<section class="page-title parallax parallax1">
-  <div class="title-heading">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box-title">
-            <h1>
-              <%= @assignment.title %> 제출한 과제
-            </h1>
-          </div><!-- /.box-title -->
-        </div><!-- /.col-md-12 -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
-  </div><!-- /.title-heading -->
-<div class="overlay-black"></div>
-</section><!-- /.page-title parallax -->
 
-<div class="container">
-  <div class="submission-body">
-    <div class="submission-img">
-      <%= image_tag(@submission.image_url)%>
-    </div>
-    
-    <div class="wish-toggle" id="wish-toggle">
-      <%= render 'shared/wish', submission: @submission %>
-    </div>
 
-    <div class="submission-title">
-      제목: <%= @submission.title %>
-    </div>
-    <div class="submission-description">
-      설명: <%= @submission.description %>
-    </div>
-    <div class="submission-url">
-      작품 경로: <%= target_blank_link(@submission.url) %>
-    </div>
-</div>
 
-<div class="comment-form my-5">
-  <h4>댓글 작성</h4>
-  <%= form_for(@comment, url: comments_path, method: :post) do |f| %>
-    <%= f.hidden_field :commentable_id, value: @submission.id %>  <%# 히든으로 상위 모델의 id 값과 type 값을 넘겨주면 %>
-    <%= f.hidden_field :commentable_type, value: @submission.class.name %>
+<section id="main-blog" class="single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap-post">
+          <article class="blog-post single style1">
+            <div class="entry-post-title">
+              <div class="top-post">
+                <%= @submission&.user&.name %>
+              </div>
+              <div class="post-title">
+                <h2>
+                  <%= @submission&.title %>
+                </h2>
+              </div>
+              <div class="post-date">
+                <%= @submission&.created_at.strftime('%m월 %d일 %H시 %M분 제출') %>
+              </div>
+            </div><!-- /.entry-post-title -->
 
-    <%= f.text_area :body %>
-    <%= f.submit "댓글 달기", class: "btn  btn-sm btn-outline-primary my-2,", style: "color: #fff"%>
-  <% end %>
-</div>
+            <div class="wish-toggle" id="wish-toggle">
+              <%= render 'shared/wish', submission: @submission %>
+            </div>
+            
+            <div class="featured-post">
+              <%= image_tag(@submission.image_url) %>
+            </div><!-- /.featured-post -->
 
-<div class="comment-show">
-  <hr>
-  <% @comments.each do |comment| %>
-    <div class="content-box">
-      <div class="user-comment">
-        <div class="row">
-          <div class="col-30">
-            <%= image_tag(User.find(comment.user_id).thumbnail_url, style:"width: 50px") %>
-            <%= User.find(comment.user_id).name %>
+            <div class="content-post">
+              <% if @submission.url.present? %>
+                <b>URL : </b> <%= target_blank_link(@submission.url) %>
+                <br><br>
+              <% end %>
+              <p class="pre-line"><%= @submission&.description %></p>
+              <div class="main-single">
+                <div class="form-submit right">
+                  <a href="<%= assignment_submissions_path(@assignment) %>" class="btn btn-lg btn-outline-primary">목록</a>
+                </div>
+              </div><!-- /.main-single -->
+            </div><!-- /.content-post -->
+            
+            <div class="direction">
+              <% if @user.mentor? || @user == @submission.user %>
+                <div class="tags">
+                  <a href="<%= edit_assignment_submission_path(@assignment, @submission) %>" title="">수정</a>
+                  <% if @user.mentor? %>
+                    <a href="<%= assignment_submission_path(@assignment, @submission) %>" data-confirm="정말 삭제하시겠습니까?">삭제</a>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="social">
+                <div class="comment">
+                  <i class="fa fa-comments-o" aria-hidden="true"></i> <span class="comments-count"><%= @comments.count %></span>
+                </div>
+              </div><!-- /.social -->
+            </div><!-- /.direction -->
+          </article><!-- /.blog-post -->
+
+          <div class="main-single">
+            <div id="comments" class="comment-area">
+              <h5 class="comment-title"><span class="comments-count"><%= @comments.count %></span> Comments</h5>
+              
+              <ol class="comment-list">
+                <% @comments.each do |comment| %>
+                  <%= render comment %>
+                <% end %>
+              </ol>
+              
+              <div id="respond" class="comment-respond">
+                <h5 id="reply-title" class="comment-reply-title">댓글 달기</h5>
+                <%= form_for(@comment, class: "comment-form", remote: true) do |f| %>
+                  <!-- <form action="#" method="post" class="comment-form"  accept-charset="utf-8"> -->
+                  <div class="comment-form">
+                    <fieldset class="field-message">
+                      <%= f.hidden_field :commentable_id, value: @submission.id %>
+                      <%= f.hidden_field :commentable_type, value: @submission.class %>
+                      <%= f.text_area :body, placeholder: "댓글 달기...", required: true %>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <div class="form-submit">
+                      <button type="submit">작성 하기</button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-          <div class="col" style="color: #aaa;">
-            <%= time_ago_in_words(comment.created_at) %> 전
-          </div>
-        </div>
-        <div class="conetent-text">
-          <p><%= simple_format comment.body %></p>
-        </div>
-      </div>
-    </div>
-    <hr>
-  <% end %>
-</div>
+        </div><!-- /.wrap-post -->
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /#main-blog -->
+
+
+<div class="divider100"></div>
+<hr>
+
 
 <script type="text/javascript">
   
 </script>
-
-
-<style>
-  body {
-    text-align: center;
-  }
-</style>

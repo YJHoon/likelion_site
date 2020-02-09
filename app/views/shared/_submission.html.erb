@@ -1,0 +1,22 @@
+<div class="col-md-3 col-sm-6 item-loadmore <%= submission.grade %> assignment-card">
+  <div class="imagebox style1">
+    <div class="imagebox-header">
+      <%= image_tag(submission.image_url) %>
+      <!-- <div class="add-cart">
+        <a href="#" class="shop-cart" title=""><span class="icon_cart_alt"></span></a>
+        <a href="#" class="like" title=""><span class="icon_heart_alt"></span></a>
+      </div> -->
+      <div class="view center">
+        <a href="<%= assignment_submission_path(assignment, submission) %>" class="bg-black color-white" title="">보러 가기</a>
+      </div>
+    </div><!-- /.imagebox-header -->
+    <div class="imagebox-content center">
+      <div class="name">
+        <a href="<%= assignment_submission_path(assignment, submission) %>" title=""><%= submission&.title %></a>
+      </div>
+      <div class="price">
+        <%= submission&.user&.name %>
+      </div>
+    </div><!-- /.imagebox-content -->
+  </div><!-- /.imagebox style1 -->
+</div><!-- /.col-md-3 col-sm-6 item-loadmore -->

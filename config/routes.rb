@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  
   get '/mypage' => 'users#mypage'
+  get '/my_homeworks' => "home#my_homework"
 
   resources :assignments do 
     resources :submissions do 
@@ -18,7 +20,11 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :galleries
+  resources :galleries do
+    collection do
+      get :tag_page
+    end
+  end
   resources :comments
   resources :wishes
   resources :lectures

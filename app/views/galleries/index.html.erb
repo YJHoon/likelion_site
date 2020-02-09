@@ -1,40 +1,43 @@
-<section class="page-title parallax parallax6">
-  <div class="title-heading">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box-title color-black">
-            <h1>동국대 멋쟁이 사자처럼</h1>
-            <h2>갤러리</h2>
-          </div><!-- /.box-title -->
-        </div><!-- /.col-md-12 -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
-  </div><!-- /.title-heading -->
-<div class="overlay-black"></div>
-</section><!-- /.page-title parallax -->
+<%= render 'shared/page_title', title: '동국대학교 멋쟁이 사자처럼', subtitle: '갤러리' %>
+
 
 <div class="container my-5">
 
   <div class="row">
     <div class="col-12 mb-2">
-      <h2>갤러리</h2>
+      <div class="float-left">
+        <h2>
+          갤러리
+        </h2>
+      </div>
+      <div class="float-right">
+        <%= link_to(new_gallery_path, style:"font-size: 48px;") do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>    
+      </div>
+      <%= form_tag request.parameters, url: tag_page_galleries_path, method: :get do %>
+        <div class="form-inline float-left">
+          <%= text_field_tag :q, class:"form-control mr-1" %>
+          <%= submit_tag "검색", class:"btn btn-primary mr-1"%>
+        </div>
+      <% end %>
     </div>
-    <div class="float-right">
-      <%= link_to "사진 추가", new_gallery_path, class:"button button-primary" %>
-    </div>
+    
     <hr>
   </div>
   
   <ul class="image-list">
     <% @datelist.keys.each do |date| %>
       <div class="image-date my-3">
-        <h3><%= date %></h3>
+        <h4><%= date %></h4>
       </div>
       <div class="row">
         <% @datelist[date].each do |image| %>
           <div class="card col-md-3 mb-4">
-            <%= image_tag((image.image.url(:thumb) if image.image?), class:"card-img-top")%>
+            <%= image_tag((image.image.url(:thumb) if image.image?), class:"card-img-top") %>
+            <% image.tags.each do |tag| %>
+              <p><%= link_to "##{tag.name}", "#" %></p>
+            <% end %>
           </div>
         <% end %>
       </div>
