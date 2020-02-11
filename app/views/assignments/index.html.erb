@@ -14,14 +14,14 @@
           <div class="col-md-4 item-loadmore">
             <div class="imagebox style1">
               <div class="imagebox-header">
-                <%= image_tag(assignment.image_url, alt: "", width: 250, height: 250) %>
+                <%= image_tag(assignment.image_url, style: "width: 200px; width: 200px;")%>
                 <div class="add-cart">
                   <a href="<%= assignment_path(assignment) %>" class="shop-cart" title=""><span class="ti-eye"></span></a>
                   <a href="<%= assignment_submissions_path(assignment) %>" class="like" title=""><span class="ti-list"></span></a>
                 </div>
                 <div class="view center">
                   <% if assignment.start_at <= Time.current && assignment.end_at >= Time.current %>
-                    <%= lint_to("과제 내기", new_assignment_submission_path(assignment), class:"bg-black color-white")%>
+                    <%= link_to("과제 내기", new_assignment_submission_path(assignment), class:"bg-black color-white")%>
                   <% else %>
                     <%= link_to("과제 내기", "#", class:"bg-black color-white", id:"no_homework")%>
                   <% end %>
@@ -53,10 +53,6 @@
 
   .col {
       display: table-cell; /* Make elements inside the container behave like table cells */
-  }
-  #assignment-image {
-    margin 0 auto;
-    width: 100%;
   }
 
 </style>

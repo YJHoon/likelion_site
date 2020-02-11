@@ -31,7 +31,7 @@
                   <div class="assignment-inner">
                     <div class="assignment-submit-time assignment-label">시작 시간:</div>
                     <div class="assignment-input-wrap">
-                      <%= f.datetime_field :start_at %>
+                      <%= f.datetime_field :start_at, min: Date.today %>
                     </div>
                   </div>
                 </li>
@@ -39,7 +39,15 @@
                   <div class="assignment-inner">
                     <div class="assignment-submit-time assignment-label">마감 시간:</div>
                     <div class="assignment-input-wrap">
-                      <%= f.datetime_field :end_at %>
+                      <%= f.datetime_field :end_at, min: Date.today %>
+                    </div>
+                  </div>
+                </li>
+                <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+                  <div class="assignment-inner">
+                    <div class="assignment-submit-time assignment-label">과제 이미지:</div>
+                    <div class="assignment-input-wrap">
+                      <%= f.file_field :image %>
                     </div>
                   </div>
                 </li>

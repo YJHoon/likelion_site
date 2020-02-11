@@ -1,23 +1,32 @@
 <%= render 'shared/page_title', title: '동국대학교 멋쟁이 사자처럼', subtitle: '강의 게시판' %>
 
+<section id="main-shop">
+  <div class="container wrap-product">
+    <div class="make-lecture mb-3">
+      <%= link_to "글 쓰기", new_lecture_path, class:"btn btn-primary" %>
+    </div>
+    <div class="tab-product-content">
+      <div class="row first">
 
-<div class="container my-5">
-  <div class="make-lecture mb-3">
-    <%= link_to "글 쓰기", new_lecture_path, class:"btn btn-primary" %>
-  </div>
+        <% @lectures.each do |lecture| %>
+          <div class="col-md-4 item-loadmore">
+            <div class="imagebox style1">
+              <div class="imagebox-header">
+                <%= image_tag(lecture.image_url, style: "width: 200px; width: 200px;")%>
+                <div class="view center">
+                  <%= link_to("보러 가기", lecture_path(lecture), class:"bg-black color-white")%>
+                </div>
+              </div><!-- /.imagebox-header -->
+              <div class="imagebox-content center">
+                <div class="name">
+                  <a href="#" title=""><%= lecture.title %></a>
+                </div>
+              </div><!-- /.imagebox-content -->
+            </div><!-- /.imagebox style1 -->
+          </div><!-- /.col-md-4 item-loadmore -->
+        <% end %>
 
-  <div class="row">
-    <% @lectures.each do |lecture| %>
-      <div class="col-md-3">
-        <div class="card">
-          <%= link_to(lecture_path(lecture)) do %>
-            <%= image_tag(lecture.image_url, style: "width: 100%")%>
-            <div class="card-body">
-              <%= lecture.title %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+      </div><!-- /.row -->
+    </div><!-- /.tab-product-content -->
+  </div><!-- /.container -->
+</section><!-- /#main-shop -->

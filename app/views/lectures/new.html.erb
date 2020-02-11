@@ -16,7 +16,7 @@
           <div class="assignment-inner">
             <div class="assignment-content assignment-label">내용:</div>
             <div class="assignment-input-wrap">
-              <%= f.text_area :content %>
+              <%= f.text_area :content, 'data-provider': :summernote %>
               <span class="input-clear-button"></span>
             </div>
           </div>
@@ -30,7 +30,7 @@
           </div>
         </li>
       </ul>
-      <%= f.submit "생성하기", class: "button button-full" %>
+      <%= f.submit "생성하기", class: "button button-full", style:"color: #fff;" %>
     <% end %>
   </div>
 </div>

@@ -1,52 +1,59 @@
-<%= render 'shared/page_title', title: "#{@lecture.title}", subtitle: '' %>
 
+<section id="main-blog" class="single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap-post">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <%= image_tag @lecture.image_url, class: "img-fluid"%>
+              </div>
+              <div class="col-md-8">
+                <h4><%= @lecture.title %></h4>
+                <p><%= simple_format @lecture.content %></p>
+              </div>
+            </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <%= image_tag @lecture.image_url, class: "img-fluid"%>
-    </div>
-    <div class="col-md-8">
-      <h4><%= @lecture.title %></h4>
-      <p><%= simple_format @lecture.content %></p>
-    </div>
-  </div>
+          </div>
 
-</div>
+          <div class="divider100"></div>
+          <hr>
 
-<div class="divider100"></div>
-<hr>
-
-<div class="main-single">
-  <div id="comments" class="comment-area">
-    <h5 class="comment-title"><span class="comments-count"><%= @comments.count %></span> Comments</h5>
-    <ol class="comment-list">
-      <% @comments.each do |comment| %>
-        <%= render comment %>
-      <% end %>
-    </ol>
-  </div>
-</div>
-
-
-<div id="respond" class="comment-respond">
-  <h5 id="reply-title" class="comment-reply-title">댓글 달기</h5>
-  <%= form_for(@comment, url: comments_path, method: :post, class: "comment-form", remote: true) do |f| %>
-  <!-- <form action="#" method="post" class="comment-form"  accept-charset="utf-8"> -->
-  <div class="comment-form">
-    <fieldset class="field-message">
-      <%= f.hidden_field :commentable_id, value: @lecture.id %>
-      <%= f.hidden_field :commentable_type, value: @lecture.class %>
-      <%= f.text_area :body, placeholder: "댓글 달기..." %>
-    </fieldset>
-    <div class="clearfix"></div>
-    <div class="form-submit">
-      <button type="submit">작성 하기</button>
-    </div>
-  </div>
-  <% end %>
-</div>
-
+          <div class="main-single">
+            <div id="comments" class="comment-area">
+              <h5 class="comment-title"><span class="comments-count"><%= @comments.count %></span> Comments</h5>
+              
+              <ol class="comment-list">
+                <% @comments.each do |comment| %>
+                  <%= render comment %>
+                <% end %>
+              </ol>
+              
+              <div id="respond" class="comment-respond">
+                <h5 id="reply-title" class="comment-reply-title">댓글 달기</h5>
+                <%= form_for(@comment, class: "comment-form", remote: true) do |f| %>
+                  <!-- <form action="#" method="post" class="comment-form"  accept-charset="utf-8"> -->
+                  <div class="comment-form">
+                    <fieldset class="field-message">
+                      <%= f.hidden_field :commentable_id, value: @lecture.id %>
+                      <%= f.hidden_field :commentable_type, value: @lecture.class %>
+                      <%= f.text_area :body, placeholder: "댓글 달기...", required: true %>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <div class="form-submit">
+                      <button type="submit">작성 하기</button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.wrap-post -->
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /#main-blog -->
 
 <%= paginate @comments %>
 

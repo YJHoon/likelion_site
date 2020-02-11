@@ -6,31 +6,22 @@
       <div class="col-md-12">
         <div class="tab-about style2 v1">
           <ul class="tab-list-about">
-            <li class="active tab-item active">
+            <li class="active tab-item active" id="all">
               <div class="box-header background no-border">
-                <div class="icon">
-                  <span class="ti-pencil"></span>
-                </div>
                 <div class="box-title">
                   <h6>모두 보기</h6>
                 </div>
               </div>
             </li><!-- /.tab-item -->
-            <li class="tab-item">
+            <li class="tab-item" id="great">
               <div class="box-header background no-border">
-                <div class="icon">
-                  <span class="ti-star"></span>
-                </div>
                 <div class="box-title">
                   <h6>우수 과제</h6>
                 </div>
               </div>
             </li><!-- /.tab-item -->
-            <li class="tab-item">
+            <li class="tab-item" id="idea">
               <div class="box-header background no-border">
-                <div class="icon">
-                  <span class="ti-angle-double-up"></span>
-                </div>
                 <div class="box-title">
                   <h6>아이디어 과제</h6>
                 </div>
@@ -38,26 +29,14 @@
             </li><!-- /.tab-item -->
           </ul><!-- /.tab-list-about -->
           <div class="content-tab">
+            
             <div class="content-inner overflow">
               <div class="row first">
                 <% @submissions.each do |submission| %>
                   <%= render 'shared/submission', assignment: @assignment, submission: submission %>
                 <% end %>
               </div><!-- /.row -->
-            </div><!-- /.content-inner -->
-            <div class="content-inner overflow">
-              <div class="row first">
-                <% @submissions.where(grade: :great).each do |submission| %>
-                  <%= render 'shared/submission', assignment: @assignment, submission: submission %>
-                <% end %>
-              </div><!-- /.row -->
-            </div><!-- /.content-inner -->
-            <div class="content-inner overflow">
-              <div class="row first">
-                <% @submissions.where(grade: :idea).each do |submission| %>
-                  <%= render 'shared/submission', assignment: @assignment, submission: submission %>
-                <% end %>
-              </div><!-- /.row -->
+              
             </div><!-- /.content-inner -->
           </div><!-- /.content-tab -->
         </div><!-- /.tab-about style1 -->
@@ -65,3 +44,19 @@
     </div><!-- /.row -->
   </div><!-- /.container -->
 </section><!-- /.flat-tabs -->
+
+<script type="text/javascript">
+$('#all').on('click', function(){
+    $('.submission-card').show();
+  });
+  $('#great').on('click', function(){
+    $('.normal').hide();
+    $('.idea').hide();
+    $('.great').show();
+  });
+  $('#idea').on('click', function(){
+    $('.normal').hide();
+    $('.idea').show();
+    $('.great').hide();
+  });
+</script>

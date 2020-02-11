@@ -15,12 +15,6 @@
           <i class="far fa-plus-square"></i>
         <% end %>    
       </div>
-      <%= form_tag request.parameters, url: tag_page_galleries_path, method: :get do %>
-        <div class="form-inline float-left">
-          <%= text_field_tag :q, class:"form-control mr-1" %>
-          <%= submit_tag "검색", class:"btn btn-primary mr-1"%>
-        </div>
-      <% end %>
     </div>
     
     <hr>
@@ -33,10 +27,10 @@
       </div>
       <div class="row">
         <% @datelist[date].each do |image| %>
-          <div class="card col-md-3 mb-4">
+          <div class="card col-md-3 mb-4 tag_image">
             <%= image_tag((image.image.url(:thumb) if image.image?), class:"card-img-top") %>
             <% image.tags.each do |tag| %>
-              <p><%= link_to "##{tag.name}", "#" %></p>
+              <p class="tag_name"><%= link_to "##{tag.name}", "#" %></p>
             <% end %>
           </div>
         <% end %>
@@ -45,20 +39,10 @@
   </ul>
 </div>
 
-<img id="myImg" src="/images/dgu-logo.jpg" alt="Snow" style="width:100%; max-width:300px">
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-</div>
-
-
 <style>
   
 </style>
 
 <script>
-
+  
 </script>

@@ -1,5 +1,6 @@
 class Submission < ApplicationRecord
   mount_uploader :image, ImageUploader
+  mount_uploader :file, FileUploader
 
   belongs_to :user
   belongs_to :assignment
