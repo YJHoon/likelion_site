@@ -20,7 +20,7 @@ gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'simple_form'
 gem 'sqlite3', '~> 1.4'
-gem 'summernote-rails', '~> 0.8.9'
+gem 'summernote-rails' 
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 # Use Redis adapter to run Action Cable in production

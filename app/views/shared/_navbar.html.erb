@@ -14,8 +14,7 @@
           <% end %>
         </div><!-- /.logo -->
         <div class="get-quote float-right">
-          <% cls = controller.controller_name == "home" && controller.action_name == "index" ? "white" : ""%>
-          <a href="https://www.facebook.com/DGUlion/" target="_blank" title="" class="<%= cls %>">문의하기</a>
+          <a href="https://www.facebook.com/DGUlion/" target="_blank" title="">문의하기</a>
         </div>
         <div class="nav-wrap">
           <div class="btn-menu"> 
@@ -24,61 +23,43 @@
           <div id="mainnav" class="mainnav">
             <ul class="menu">
               <li class="active">
-                <% if controller.controller_name == "home" && controller.action_name == "index" %>
-                  <a href="<%= root_path %>" title="" class="<%= cls %>">
-                    Home
-                  </a>
-                <% else %>
-                  <a href="<%= root_path %>" title="">
-                    Home
-                  </a>
-                <% end %>
-
+                <a href="<%= root_path %>" title="">
+                  Home
+                </a>
                 <% if user_signed_in? %>
-                  <% if current_user.mentor? || current_user.mentee? %>
-                    <li class="has-submenu">
-                      <a href="#" title="" class="<%= cls %>">
-                        과제정보
-                      </a>
-                      <div class="submenu">
-                        <ul>
-                          <li>
-                            <a href="<%= assignments_path %>" title="">과제 게시판</a>
-                          </li>
-                          <% if controller.controller_name == "home" && controller.action_name == "index" %>
-                            <li>
-                              <% if @assignment.present? %>
-                                <a href="<%= new_assignment_submission_path(@assignment) %>" title="">과제 내기</a>
-                              <% else %>
-                                <a href="#" title="" id="no_homework">과제 내기</a>
-                              <% end %>
-                            </li>
-                          <% end %>
-                          <li>
-                            <a href="<%= my_homeworks_path %>" title="">내 과제</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li>
-                      <%= link_to "강의노트", lectures_path, class: "#{cls}" %>
-                    </li>
-                    <li>
-                      <%= link_to "갤러리", galleries_path, class: "#{cls}" %>
-                    </li>
-                  <% end %>
-                  <li>
-                    <%= link_to "정보수정", edit_user_registration_path, class: "#{cls}" %>
+                  <li class="has-submenu">
+                    <a href="#" title="">
+                      과제정보
+                    </a>
+                    <div class="submenu">
+                      <ul>
+                        <li>
+                          <a href="<%= assignments_path %>" title="">과제 게시판</a>
+                        </li>
+                        <li>
+                          <a href="<%= my_homeworks_path %>" title="">내 과제</a>
+                        </li>
+                      </ul>
+                    </div>
                   </li>
                   <li>
-                    <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "#{cls}" %>
+                    <%= link_to "강의노트", lectures_path %>
+                  </li>
+                  <li>
+                    <%= link_to "갤러리", galleries_path %>
+                  </li>
+                  <li>
+                    <%= link_to "정보수정", edit_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to "로그인", new_user_session_path, class: "#{cls}" %>
+                    <%= link_to "로그인", new_user_session_path %>
                   </li>
                   <li>
-                    <%= link_to "회원가입", new_user_registration_path, class: "#{cls}" %>
+                    <%= link_to "회원가입", new_user_registration_path %>
                   </li>
                 <% end %>
               </li>

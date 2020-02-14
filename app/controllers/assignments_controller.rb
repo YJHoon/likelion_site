@@ -16,7 +16,7 @@ class AssignmentsController < ApplicationController
 
   def create
     creatable = true
-    if params[:start_at] && params[:end_at] && ( params[:start_at] < DateTime.current) && (params[:end_at] < DateTime.current) && (params[:start_at] > params[:end_at])
+    if params[:created_at] && params[:end_at] && ( params[:created_at] < DateTime.current) && (params[:end_at] < DateTime.current) && (params[:created_at] > params[:end_at])
       creatable = false
     end
 

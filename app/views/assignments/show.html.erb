@@ -37,7 +37,7 @@
               <% if @assignment.start_at <= Time.current && @assignment.end_at >= Time.current %>
                 <%= link_to("과제 내기", new_assignment_submission_path(@assignment), class:"btn btn-lg btn-primary") %>
               <% else %>
-                <%= link_to("과제 내기", "#", id:"no_homework", class:"btn btn-lg btn-primary") %>
+                <%= link_to("과제 내기", "#", class:"btn btn-lg btn-primary no_homework") %>
               <% end %>
             </div>
           </div><!-- /.main-single -->
@@ -47,9 +47,10 @@
   </div><!-- /.container -->
 </section><!-- /#main-blog -->
 
-
-<style>
-  .main-single {
-    
-  }
-</style>
+<script type="text/javascript">
+  $('.no_homework').on('click', function(e){
+    console.log('good');
+    e.preventDefault();
+    alert('현재 등록된 과제가 없거나 제출기한이 지났습니다.');
+  });
+</script>

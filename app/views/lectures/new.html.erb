@@ -7,7 +7,7 @@
           <div class="assignment-inner">
             <div class="assignment-title assignment-label">제목:</div>
             <div class="assignment-input-wrap">
-              <%= f.text_field :title %>
+              <%= f.text_field :title, required: true %>
               <span class="input-clear-button"></span>
             </div>
           </div>
@@ -16,7 +16,7 @@
           <div class="assignment-inner">
             <div class="assignment-content assignment-label">내용:</div>
             <div class="assignment-input-wrap">
-              <%= f.text_area :content, 'data-provider': :summernote %>
+              <%= f.text_area :content, required: true, 'data-provider': :summernote %>
               <span class="input-clear-button"></span>
             </div>
           </div>

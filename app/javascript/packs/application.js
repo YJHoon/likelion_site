@@ -8,8 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-require("summernote/summernote-bs4.min")
-require("summernote/lang/summernote-ko-KR")
+// require("summernote/summernote-bs4.min")
+// require("summernote/lang/summernote-ko-KR")
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -25,20 +25,8 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-
-
 $(function() {
   pageName = $('div.boxed').data('name');
-
-
-  if (pageName == "home-index" || pageName == "assignments-index" || pageName == "assignments-show") {
-    console.log('asd');
-    $('#no_homework').on('click', function(e){
-      console.log('good');
-      e.preventDefault();
-      alert('현재 등록된 과제가 없거나 제출기한이 지났습니다.');
-    });
-  }
 
   if (pageName == "submissions-new" || pageName == "submissions-edit" || pageName == "galleries-new") {
     console.log('hello');

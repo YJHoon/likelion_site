@@ -14,7 +14,7 @@ class SubmissionsController < ApplicationController
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
-                        .per(10)
+                        .per(7)
     
     @user = current_user
     if !@user.mentor?

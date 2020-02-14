@@ -21,16 +21,18 @@
   </div>
   
   <ul class="image-list">
-    <% @datelist.keys.each do |date| %>
+    <% @datelist.each do |date, galleries| %>
       <div class="image-date my-3">
         <h4><%= date %></h4>
       </div>
       <div class="row">
-        <% @datelist[date].each do |image| %>
+        <% galleries.each do |gallery| %>
           <div class="card col-md-3 mb-4 tag_image">
-            <%= image_tag((image.image.url(:thumb) if image.image?), class:"card-img-top") %>
-            <% image.tags.each do |tag| %>
-              <p class="tag_name"><%= link_to "##{tag.name}", "#" %></p>
+            <%= image_tag((gallery.image.url(:thumb) if gallery.image?), class:"card-img-top") %>
+            <% gallery.tag_list.each do |tag| %>
+              <%= link_to galleries_path(tags: tag) do %>
+                <p class="tag_name <%= tag %>" id= "<%= tag %>">#<%= tag %></p>
+              <% end %>
             <% end %>
           </div>
         <% end %>
@@ -39,10 +41,3 @@
   </ul>
 </div>
 
-<style>
-  
-</style>
-
-<script>
-  
-</script>

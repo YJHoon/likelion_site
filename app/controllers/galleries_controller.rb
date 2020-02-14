@@ -4,8 +4,9 @@ class GalleriesController < ApplicationController
   before_action :load_room, only: %i[show]
 
   def index
-    @datelist = Gallery.all.group_by { |g| g.created_at.to_date.to_s } 
-    @@get_tag = Gallery.all.ransack(tag_list_cont: params[:q]).result(distinct: true) if params[:q].present?
+    @galleries = Gallery.all
+    @galleries = @galleries.includes(:tags).where(tags: {name: params[:tags]}) if params[:tags].present?
+    @datelist = @galleries.group_by { |g| g.created_at.to_date.to_s } 
 
   end
   

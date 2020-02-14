@@ -20,10 +20,10 @@
                   <a href="<%= assignment_submissions_path(assignment) %>" class="like" title=""><span class="ti-list"></span></a>
                 </div>
                 <div class="view center">
-                  <% if assignment.start_at <= Time.current && assignment.end_at >= Time.current %>
+                  <% if assignment.created_at <= Time.current && assignment.end_at >= Time.current %>
                     <%= link_to("과제 내기", new_assignment_submission_path(assignment), class:"bg-black color-white")%>
                   <% else %>
-                    <%= link_to("과제 내기", "#", class:"bg-black color-white", id:"no_homework")%>
+                    <%= link_to("과제 내기", "#", class:"bg-black color-white no_homework")%>
                   <% end %>
                 </div>
               </div><!-- /.imagebox-header -->
@@ -56,3 +56,11 @@
   }
 
 </style>
+
+<script type="text/javascript">
+  $('.no_homework').on('click', function(e){
+    console.log('good');
+    e.preventDefault();
+    alert('현재 등록된 과제가 없거나 제출기한이 지났습니다.');
+  });
+</script>

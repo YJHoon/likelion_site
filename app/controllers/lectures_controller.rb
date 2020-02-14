@@ -10,7 +10,7 @@ class LecturesController < ApplicationController
     @comment = Comment.new
     @comments = @lecture.comments
                         .page(params[:page])
-                        .per(3)
+                        .per(7)
   end
 
   def new
@@ -18,6 +18,7 @@ class LecturesController < ApplicationController
   end
 
   def create
+    byebug
     current_user.lectures.create!(lecture_params)
     redirect_to lectures_path
   end

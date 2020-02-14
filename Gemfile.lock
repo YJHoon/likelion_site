@@ -342,7 +342,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   sqlite3 (~> 1.4)
-  summernote-rails (~> 0.8.9)
+  summernote-rails
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

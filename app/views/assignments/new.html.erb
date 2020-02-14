@@ -13,7 +13,7 @@
                   <div class="assignment-inner">
                     <div class="assignment-title assignment-label">제목:</div>
                     <div class="assignment-input-wrap">
-                      <%= f.text_field :title %>
+                      <%= f.text_field :title, required: true %>
                       <span class="input-clear-button"></span>
                     </div>
                   </div>
@@ -22,16 +22,8 @@
                   <div class="assignment-inner">
                     <div class="assignment-content assignment-label">설명:</div>
                     <div class="assignment-input-wrap">
-                      <%= f.text_field :content %>
+                      <%= f.text_field :content, required: true %>
                       <span class="input-clear-button"></span>
-                    </div>
-                  </div>
-                </li>
-                <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
-                  <div class="assignment-inner">
-                    <div class="assignment-submit-time assignment-label">시작 시간:</div>
-                    <div class="assignment-input-wrap">
-                      <%= f.datetime_field :start_at, min: Date.today %>
                     </div>
                   </div>
                 </li>
@@ -39,7 +31,7 @@
                   <div class="assignment-inner">
                     <div class="assignment-submit-time assignment-label">마감 시간:</div>
                     <div class="assignment-input-wrap">
-                      <%= f.datetime_field :end_at, min: Date.today %>
+                      <%= f.datetime_field :end_at, min: Date.today, required: true %>
                     </div>
                   </div>
                 </li>

@@ -9,6 +9,10 @@ class Submission < ApplicationRecord
   has_many :wishes, dependent: :destroy
   has_many :wishes_user, through: :wishes, source: :user
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :url, presence: true
+
   enum grade: [:normal, :idea, :great]
 
   def image_url

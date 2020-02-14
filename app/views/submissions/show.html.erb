@@ -61,13 +61,14 @@
 
           <div class="main-single">
             <div id="comments" class="comment-area">
-              <h5 class="comment-title"><span class="comments-count"><%= @comments.count %></span> Comments</h5>
+              <h5 class="comment-title"><span class="comments-count"><%= @submission.comments.count %></span> Comments</h5>
               
               <ol class="comment-list">
                 <% @comments.each do |comment| %>
                   <%= render comment %>
                 <% end %>
               </ol>
+              <%= paginate @comments %>
               
               <div id="respond" class="comment-respond">
                 <h5 id="reply-title" class="comment-reply-title">댓글 달기</h5>
@@ -95,10 +96,10 @@
 </section><!-- /#main-blog -->
 
 
-<div class="divider100"></div>
-<hr>
 
 
-<script type="text/javascript">
-  
-</script>
+<style>
+  .pagination{
+    justify-content: center;
+  }
+</style>

@@ -22,13 +22,14 @@
 
           <div class="main-single">
             <div id="comments" class="comment-area">
-              <h5 class="comment-title"><span class="comments-count"><%= @comments.count %></span> Comments</h5>
+              <h5 class="comment-title"><span class="comments-count"><%= @lecture.comments.count %></span> Comments</h5>
               
               <ol class="comment-list">
                 <% @comments.each do |comment| %>
                   <%= render comment %>
                 <% end %>
               </ol>
+              <%= paginate @comments %>
               
               <div id="respond" class="comment-respond">
                 <h5 id="reply-title" class="comment-reply-title">댓글 달기</h5>
@@ -46,6 +47,7 @@
                     </div>
                   </div>
                 <% end %>
+
               </div>
             </div>
           </div>
@@ -55,7 +57,6 @@
   </div><!-- /.container -->
 </section><!-- /#main-blog -->
 
-<%= paginate @comments %>
 
 <style>
   .pagination{
