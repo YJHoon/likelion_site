@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2020_02_13_072221) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
   end
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title"
     t.text "content"
     t.string "image"
@@ -53,8 +56,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commentable_type"
-    t.integer "commentable_id"
-    t.integer "user_id"
+    t.bigint "commentable_id"
+    t.bigint "user_id"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
   end
 
   create_table "galleries", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title"
     t.text "content"
     t.string "image"
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
   end
 
   create_table "lectures", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "title"
     t.text "content"
     t.string "image"
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
   end
 
   create_table "submissions", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "assignment_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "assignment_id", null: false
     t.string "title"
     t.text "description"
     t.string "url"
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
     t.index ["user_id"], name: "index_submissions_on_user_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -120,7 +123,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -159,8 +162,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
   end
 
   create_table "wishes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "submission_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "submission_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["submission_id"], name: "index_wishes_on_submission_id"
