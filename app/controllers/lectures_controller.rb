@@ -18,7 +18,6 @@ class LecturesController < ApplicationController
   end
 
   def create
-    byebug
     current_user.lectures.create!(lecture_params)
     redirect_to lectures_path
   end

@@ -3,42 +3,46 @@ ActiveAdmin.register User do
   actions :all
 
   scope :all
-  scope -> { '회원' }, :default
-  scope -> { '멤버(7기)' }, :mentee
+  scope -> { '멤버(8기)' }, :mentee
   scope -> { '운영진' }, :mentor
 
 
-  batch_action "#{I18n.t("activerecord.attributes.user.user_type")} 변경", form: {
-    '사용자 유형' => User.enum_selectors(:user_type).to_a
+  batch_action "#{I18n.t("activerecord.attributes.user.role")} 변경", form: {
+    '사용자 유형' => User.enum_selectors(:role).to_a
   }, confirm: '정말 해당 작업을 진행하시겠습니까?' do |ids, inputs|
     users = User.find(ids)
     users.each do |user|
-      user.update(user_type: inputs['사용자 유형'])
+      user.update(role: inputs['사용자 유형'])
     end
     flash[:notice] = '해당 리스트들의 변경을 성공적으로 완료했습니다.'
     redirect_back(fallback_location: collection_path)
   end
 
-  # batch_action '인증상태 변경', form: {
-  #   state: User::CERTIFICATION_STATES
-  # } do |ids, inputs|
-  #   users = User.find(ids)
-  #   users.each do |user|
-  #     user.update!(certification_state: inputs[:state])
-  #   end
-  #   flash[:notice] = "해당 사용자(들)의 인증이 성공적으로 처리 되었습니다."
-  #   redirect_back(fallback_location: collection_path)
-  # end
+  batch_action "#{I18n.t("activerecord.attributes.user.mentor_type")} 변경", form: {
+    '사용자 유형' => User.enum_selectors(:mentor_type).to_a
+  }, confirm: '정말 해당 작업을 진행하시겠습니까?' do |ids, inputs|
+    users = User.find(ids)
+    users.each do |user|
+      user.update(mentor_type: inputs['사용자 유형'])
+    end
+    flash[:notice] = '해당 리스트들의 변경을 성공적으로 완료했습니다.'
+    redirect_back(fallback_location: collection_path)
+  end
+
+  filter :name, label: "#{I18n.t("activerecord.attributes.user.name")} 필터"
+  filter :email, label: "#{I18n.t("activerecord.attributes.user.email")} 필터"
+  filter :phone, label: "#{I18n.t("activerecord.attributes.user.phone")} 필터"
+  filter :role, label: "#{I18n.t("activerecord.attributes.user.role")} 필터"
+  filter :menttor_type, label: "#{I18n.t("activerecord.attributes.user.menttor_type")} 필터"
+  filter :gender, label: "#{I18n.t("activerecord.attributes.user.gender")} 필터"
   
   index do
     selectable_column
     id_column
     column :name
-    column :thumbnail do |obj|
-      link_to(image_tag(obj.thumbnail.url, style: "width: 100px"), obj.thumbnail.url, target: :_blank) if obj.thumbnail?
-    end
+    column :thumbnail do |user| image_tag(user.image_url ,style: 'width: 70px;') end
     column :email
-    tag_column :role, interactive: true
+    tag_column :role do |user| user.enum_ko(:role) end 
     actions
   end
 
@@ -46,7 +50,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
-      row :thumbnail
+      row :thumbnail do |user| image_tag(user.image_url ,style: 'width: 150px;') end
       row :role
       tag_row "운영진 역할" do |user|
         if user.mentor_type == "president"

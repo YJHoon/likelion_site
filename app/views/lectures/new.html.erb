@@ -1,36 +1,73 @@
-<div class="container">
-  스터디 자료 작성
-  <div class="card p-5 col-md-6 offset-md-3">
-    <%= form_for(@lecture, url: lectures_path, method: :post) do |f| %>
-      <ul>
-        <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
-          <div class="assignment-inner">
-            <div class="assignment-title assignment-label">제목:</div>
-            <div class="assignment-input-wrap">
-              <%= f.text_field :title, required: true %>
-              <span class="input-clear-button"></span>
-            </div>
+<section class="flat-signin">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="divider40"></div>
+        <div class="wrap-sign-in center">
+          <h2>강의 글쓰기</h2>
+          <hr>
+          <div class="assignment-form">
+            <%= form_for(@lecture, url: lectures_path, method: :post) do |f| %>
+              <ul>
+                <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+                  <div class="assignment-inner">
+                    <div class="assignment-title assignment-label">제목:</div>
+                    <div class="assignment-input-wrap">
+                      <%= f.text_field :title, required: true %>
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+                <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
+                  <div class="assignment-inner">
+                    <div class="assignment-content assignment-label">내용:</div>
+                    <%# <div class="assignment-input-wrap"> %>
+                      <%= f.text_area :content, required: true, id: 'summernote' %>
+                      <%# <span class="input-clear-button"></span> %>
+                    <%# </div> %>
+                  </div>
+                </li>
+              </ul>
+              <div class="divider20"></div>
+              <div class="btn-submit">
+                <button type="submit" name="commit" class="bg-black">과제 생성</button>
+              </div>
+            <% end %>
           </div>
-        </li>
-        <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
-          <div class="assignment-inner">
-            <div class="assignment-content assignment-label">내용:</div>
-            <div class="assignment-input-wrap">
-              <%= f.text_area :content, required: true, 'data-provider': :summernote %>
-              <span class="input-clear-button"></span>
-            </div>
-          </div>
-        </li>
-        <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
-          <div class="assignment-inner">
-            <div class="assignment-submit-time assignment-label">사진 추가:</div>
-            <div class="assignment-input-wrap">
-              <%= f.file_field :image %>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <%= f.submit "생성하기", class: "button button-full", style:"color: #fff;" %>
-    <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<%= content_for :css do %>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<% end %>
+
+<%= content_for :js do %>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#summernote').summernote({
+      placeholder: '내용 작성',
+      tabsize: 2,
+      height: 500,
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
+    });
+  });
+</script>
+<% end %>
+
+<style>
+  .modal-content {
+    margin-top: 100px;
+  }
+</style>

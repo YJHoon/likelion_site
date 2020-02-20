@@ -1,5 +1,5 @@
 ActiveAdmin.register Assignment do
-  menu parent: '과제 관리', label: '과제 내용'
+  menu parent: '과제 관리', label: "#{I18n.t("activerecord.models.assignment")} 관리"
   actions :all
   scope -> { '전체' }, :all
 

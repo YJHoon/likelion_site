@@ -1,3 +1,4 @@
+<%= render 'shared/page_title', subtitle: "#{@lecture.title}" %>
 
 <section id="main-blog" class="single">
   <div class="container">
@@ -6,11 +7,7 @@
         <div class="wrap-post">
           <div class="container">
             <div class="row">
-              <div class="col-md-4">
-                <%= image_tag @lecture.image_url, class: "img-fluid"%>
-              </div>
-              <div class="col-md-8">
-                <h4><%= @lecture.title %></h4>
+              <div class="col">
                 <p><%= simple_format @lecture.content %></p>
               </div>
             </div>

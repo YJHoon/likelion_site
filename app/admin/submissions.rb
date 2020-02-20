@@ -1,5 +1,5 @@
 ActiveAdmin.register Submission do
-  menu parent: '과제 관리', label: '제출'
+  menu parent: '과제 관리', label: "#{I18n.t("activerecord.models.submission")} 관리"
   actions :all
   scope -> { '전체' }, :all
 

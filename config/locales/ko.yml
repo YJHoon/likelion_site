@@ -32,7 +32,24 @@ ko:
 
 
   activerecord:
-    model:
+    attributes:
+      user:
+        thumbnail: 대표사진
+        email: 이메일
+        phone: 전화번호
+        gender: 성별
+        student_id: 학번
+        member_num: 기수
+        info: 간단한 자기소개
+        birth: 생년월일
+        vms_id: vms 아이디
+        id_of_1365: 1365 아이디
+        password: 비밀번호
+        password_confirmation: 비밀번호 확인
+        name: 이름
+        role: 역할
+        mentor_type: 운영진 역할
+    models:
       admin_user: 어드민
       assignment: 과제 내용
       submission: 과제 제출
