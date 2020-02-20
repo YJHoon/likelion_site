@@ -8,16 +8,27 @@ ActiveAdmin.register User do
   scope -> { '운영진' }, :mentor
 
 
-  batch_action '인증상태 변경', form: {
-    state: User::CERTIFICATION_STATES
-  } do |ids, inputs|
+  batch_action "#{I18n.t("activerecord.attributes.user.user_type")} 변경", form: {
+    '사용자 유형' => User.enum_selectors(:user_type).to_a
+  }, confirm: '정말 해당 작업을 진행하시겠습니까?' do |ids, inputs|
     users = User.find(ids)
     users.each do |user|
-      user.update!(certification_state: inputs[:state])
+      user.update(user_type: inputs['사용자 유형'])
     end
-    flash[:notice] = "해당 사용자(들)의 인증이 성공적으로 처리 되었습니다."
+    flash[:notice] = '해당 리스트들의 변경을 성공적으로 완료했습니다.'
     redirect_back(fallback_location: collection_path)
   end
+
+  # batch_action '인증상태 변경', form: {
+  #   state: User::CERTIFICATION_STATES
+  # } do |ids, inputs|
+  #   users = User.find(ids)
+  #   users.each do |user|
+  #     user.update!(certification_state: inputs[:state])
+  #   end
+  #   flash[:notice] = "해당 사용자(들)의 인증이 성공적으로 처리 되었습니다."
+  #   redirect_back(fallback_location: collection_path)
+  # end
   
   index do
     selectable_column

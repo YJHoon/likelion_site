@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
-  get '/mypage' => 'users#mypage'
+  get 'mypage' => 'users#mypage'
+  get 'mypage2', to: 'users#mypage2'
+  get 'profile', to: :mypage, controller: 'users'
+  get 'mypage3', to: :mypage3, controller: :users
   get '/my_homeworks' => "home#my_homework"
 
   resources :assignments do 

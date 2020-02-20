@@ -99,12 +99,13 @@ body {
 }
 
 .affix div.logo a:hover {
-    color: #fff;
+    color: #111;
 }
 
 .bffix div.logo a:hover {
     color: #f76705;
 }
+
 
 .nav div.main_list {
     height: 65px;
@@ -186,9 +187,10 @@ body {
         overflow: hidden;
     }
     .nav div.show_list {
-        height: auto;
+        height: 400px;
         display: none;
     }
+    
     .nav div.main_list ul {
         flex-direction: column;
         width: 100%;
@@ -207,13 +209,20 @@ body {
     .nav div.main_list ul li a {
         text-align: center;
         width: 100%;
-        font-size: 3rem;
+        font-size: 1rem;
         padding: 20px;
     }
 
     .affix div.main_list ul li a {
+        color: #111;
+    }
+    .affix div.main_list ul li a:hover {
         color: #fff;
     }
+    .bffix div.main_list ul li a:hover{
+        color: #fff;
+    }
+
     .nav div.media_button {
         display: block;
     }
