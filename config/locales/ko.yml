@@ -53,7 +53,7 @@ ko:
       admin_user: 어드민
       assignment: 과제 내용
       submission: 과제 제출
-      lecture: 강의 게시판
+      lecture: 강의노트
       gallery: 갤러리
     errors:
       messages:

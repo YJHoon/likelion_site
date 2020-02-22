@@ -3,7 +3,9 @@
 <section id="main-shop">
   <div class="container wrap-product">
     <div class="make-lecture mb-3">
-      <%= link_to "글 쓰기", new_lecture_path, class:"btn btn-primary" %>
+      <% if current_user.read_attribute_before_type_cast(:role) == 2 %>
+        <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
+      <% end %>
     </div>
     <div class="tab-product-content">
       <div class="row first">

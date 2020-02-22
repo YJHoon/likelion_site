@@ -1,12 +1,12 @@
 <%= render 'shared/page_title', title: '동국대학교 멋쟁이 사자처럼', subtitle: '과제 게시판' %>
 
-<%# 운영진 아이디로만 과제 생성 가능 %>
-<% if current_user.read_attribute_before_type_cast(:role) == 2 %>
-  <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
-<% end %>
-
 <section id="main-shop">
   <div class="container wrap-product">
+    <div class="make-assignment mb-3">
+      <% if current_user.read_attribute_before_type_cast(:role) == 2 %>
+        <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
+      <% end %>
+    </div>
     <div class="tab-product-content">
       <div class="row first">
 
