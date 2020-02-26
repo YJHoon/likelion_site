@@ -34,7 +34,7 @@
             <div class="form-submit right">
               <%= link_to("과제 목록", assignments_path, class:"btn btn-lg btn-outline-primary")%>
               <%= link_to("제출 목록", assignment_submissions_path(@assignment), class:"btn btn-lg btn-outline-primary") %>
-              <% if @assignment.start_at <= Time.current && @assignment.end_at >= Time.current %>
+              <% if @assignment.created_at <= Time.current && @assignment.end_at >= Time.current %>
                 <%= link_to("과제 내기", new_assignment_submission_path(@assignment), class:"btn btn-lg btn-primary") %>
               <% else %>
                 <%= link_to("과제 내기", "#", class:"btn btn-lg btn-primary no_homework") %>
