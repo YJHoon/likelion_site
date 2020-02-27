@@ -2,11 +2,6 @@
 
 <section id="main-shop">
   <div class="container wrap-product">
-    <div class="make-assignment mb-3">
-      <% if current_user.read_attribute_before_type_cast(:role) == 1 %>
-        <%= link_to "과제 생성", new_assignment_path, class:"btn btn-primary"%>
-      <% end %>
-    </div>
     <div class="tab-product-content">
       <div class="row first">
 

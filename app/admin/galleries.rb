@@ -6,17 +6,15 @@ ActiveAdmin.register Gallery do
   index do
     selectable_column
     id_column
-    column :title
-    column :content
     column :image do |gallery| image_tag(gallery.image_url ,style: 'width: 70px;') end
     actions
   end
 
   show do
     attributes_table do
-      row :title
-      row :content
-      column :image do |gallery| image_tag(gallery.image_url ,style: 'width: 70px;') end
+      row :image do |gallery| image_tag(gallery.image_url ,style: 'width: 70px;') end
+      row :user
+      row :tag_list
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -25,9 +23,8 @@ ActiveAdmin.register Gallery do
 
   form do |f|
     f.inputs do
-      f.input :title
-      f.input :content
       f.input :image
+      f.input :tag_list
     end
     actions
   end

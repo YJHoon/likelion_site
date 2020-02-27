@@ -1,6 +1,7 @@
 class LecturesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_lecture, only: %i[show edit update destroy]
+  before_action :check_mentor, only: [:new]
 
   def index
     @lectures = Lecture.all
@@ -22,15 +23,6 @@ class LecturesController < ApplicationController
     redirect_to lectures_path
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   private
   
   def load_lecture
@@ -40,5 +32,8 @@ class LecturesController < ApplicationController
   def lecture_params
       params.require(:lecture).permit(:title, :content, :image)
   end
-      
+
+  def check_mentor
+    check_mentor_of @lecture
+  end
 end

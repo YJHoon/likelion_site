@@ -32,9 +32,9 @@ ActiveAdmin.register Lecture do
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'indent': '-1'}, { 'indent': '+1' }],
         ['clean']]}, placeholder: '내용을 입력해주세요...', theme: 'snow'}}}
-      f.input :image
+      f.input :file
     end
-    actions
+    f.actions
   end
   
   

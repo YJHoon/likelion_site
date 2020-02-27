@@ -49,6 +49,22 @@ ko:
         name: 이름
         role: 역할
         mentor_type: 운영진 역할
+      gallery:
+        tags: 태그
+        tag_list: 태그
+        user: 작성자
+      lecture:
+        title: 제목
+        content: 내용
+      assignment:
+        title: 제목
+        content: 내용
+        start_at: 시작시간
+        end_at: 마감시간
+      submission:
+        title: 제목
+        description: 내용
+        url: url
     models:
       admin_user: 어드민
       assignment: 과제 내용

@@ -10,7 +10,6 @@ ActiveAdmin.register Assignment do
     column :content
     column :start_at
     column :end_at
-    column :image
     actions
   end
 
@@ -20,7 +19,6 @@ ActiveAdmin.register Assignment do
       row :content
       row :start_at
       row :end_at
-      row :image
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -33,7 +31,6 @@ ActiveAdmin.register Assignment do
       f.input :content
       f.input :start_at
       f.input :end_at
-      f.input :image
     end
     actions
   end

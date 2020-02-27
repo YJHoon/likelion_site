@@ -21,12 +21,12 @@
               </div>
             </div><!-- /.entry-post-title -->
 
-            <div class="wish-toggle" id="wish-toggle">
-              <%= render 'shared/wish', submission: @submission %>
-            </div>
+            <%# <div class="wish-icon" id="wish-toggle"> %>
+              <%#= render 'shared/wish', submission: @submission %>
+            <%# </div> %>
             
             <div class="featured-post">
-              <%= image_tag(@submission.image_url) %>
+              <%= image_tag(@submission.image_url, class:"submission-image") %>
             </div><!-- /.featured-post -->
 
             <div class="content-post">
@@ -101,5 +101,8 @@
 <style>
   .pagination{
     justify-content: center;
+  }
+  .submission-image{
+    width: 300px;
   }
 </style>

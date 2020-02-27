@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_072221) do
+ActiveRecord::Schema.define(version: 2020_02_27_121746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,29 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "applies", force: :cascade do |t|
+    t.bigint "recruit_id"
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "major"
+    t.string "student_id"
+    t.string "grade"
+    t.text "ask1_a"
+    t.text "ask2_a"
+    t.text "ask3_a"
+    t.text "ask4_"
+    t.text "ask5_a"
+    t.string "ask1_file"
+    t.string "ask2_file"
+    t.string "ask3_file"
+    t.string "ask4_file"
+    t.string "ask5_file"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recruit_id"], name: "index_applies_on_recruit_id"
   end
 
   create_table "assignments", force: :cascade do |t|
@@ -86,6 +109,19 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "file"
     t.index ["user_id"], name: "index_lectures_on_user_id"
+  end
+
+  create_table "recruits", force: :cascade do |t|
+    t.integer "member_num"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string "ask1_q"
+    t.string "ask2_q"
+    t.string "ask3_q"
+    t.string "ask4_q"
+    t.string "ask5_q"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "submissions", force: :cascade do |t|
@@ -171,6 +207,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_072221) do
     t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
+  add_foreign_key "applies", "recruits"
   add_foreign_key "assignments", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "galleries", "users"

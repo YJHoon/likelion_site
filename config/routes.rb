@@ -16,21 +16,21 @@ Rails.application.routes.draw do
   get 'mypage3', to: :mypage3, controller: :users
   get '/my_homeworks' => "home#my_homework"
 
-  resources :assignments do 
-    resources :submissions do 
+  resources :assignments, only: %i[index show new create] do 
+    resources :submissions, only: %i[index new create show edit] do 
       member do
         get :wish_toggle
       end
     end
   end
-  resources :galleries do
+  resources :galleries, only: %i[index new] do
     collection do
       get :tag_page
     end
   end
   resources :comments
   resources :wishes
-  resources :lectures
+  resources :lectures, only: %i[index show create]
 end
 
 
