@@ -2,6 +2,11 @@ class AppliesController < ApplicationController
   before_action :load_recruit
   before_action :load_apply, only: %i[edit update]
 
+  def index
+    @applies = Apply.all
+    @applies = @applies.ransack(name_or_email_cont: params[:q]).result(distinct: true) if params[:q].present?
+  end
+
   def new
     @apply = Apply.new
   end
@@ -15,11 +20,6 @@ class AppliesController < ApplicationController
   end
 
   def update
-  end
-
-  def myapply
-    @applies = Apply.all
-    @applies = @applies.ransack(name_or_email_cont: params[:q]).result(distinct: true) if params[:q].present?
   end
 
   private

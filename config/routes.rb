@@ -27,9 +27,6 @@ Rails.application.routes.draw do
   end
   resources :recruits, only: %i[show] do 
     resources :applies do
-      collection do
-        get 'myapply' => 'applies#myapply'
-      end
     end
   end
   resources :comments
