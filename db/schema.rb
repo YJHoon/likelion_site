@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_121746) do
     t.text "ask1_a"
     t.text "ask2_a"
     t.text "ask3_a"
-    t.text "ask4_"
+    t.text "ask4_a"
     t.text "ask5_a"
     t.string "ask1_file"
     t.string "ask2_file"

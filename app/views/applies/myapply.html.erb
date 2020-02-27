@@ -1,0 +1,31 @@
+<%= render 'shared/page_title', title: '지원서 찾기' %>
+
+<div class="container">
+  <div class="main-single">
+    <div class="form-submit center">
+      <%= form_with url: request.parameters, method: :get, class: "row search-form" do %>
+        <div class="searchbar-inner row">
+          <%= text_field_tag :q, params[:q], class:"form-control mr-1" %>
+          <%= submit_tag "검색", class:"btn btn-primary mr-1"%>
+        </div>
+      <% end %>
+    </div>
+  </div><!-- /.main-single -->
+</div>
+
+<% @applies.each do |apply| %>
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-name">이름: <%= apply.name %></h4>
+        <div class="card-studentid">학번: <%= apply.student_id %></div>
+      </div>
+      <div class="card-footer">
+        <%= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

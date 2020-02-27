@@ -10,6 +10,9 @@
               <div class="col">
                 <p><%= simple_format @lecture.content %></p>
               </div>
+              <% if @lecture.file? %>
+                <%= link_to "Download file", @lecture.file_url, download: "Lecture_#{@lecture.id}_file" %>
+              <% end %>
             </div>
 
           </div>

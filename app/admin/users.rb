@@ -80,8 +80,8 @@ ActiveAdmin.register User do
       f.input :name
       f.input :thumbnail
       f.input :email
-      f.input :role
-      f.input :mentor_type
+      f.input :role, as: :select, collection: User.enum_selectors(:role)
+      f.input :mentor_type, as: :select, collection: User.enum_selectors(:mentor_type)
     end
     actions
   end

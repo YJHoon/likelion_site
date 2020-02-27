@@ -1,0 +1,7 @@
+<%= form_with url: request.parameters, method: :get, class: "row search-form" do %>
+  <div class="searchbar-inner row">
+    <%= text_field_tag :q, params[:q], class:"form-control mr-1" %>
+    <%= submit_tag "검색", class:"btn btn-primary mr-1"%>
+  </div>
+<% end %>
+

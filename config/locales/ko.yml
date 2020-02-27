@@ -65,12 +65,36 @@ ko:
         title: 제목
         description: 내용
         url: url
+      recruit:
+        member_num: 기수
+        start_at: 시작시간
+        end_at: 마감시간
+        ask1_q: 질문 1
+        ask2_q: 질문 2
+        ask3_q: 질문 3
+        ask4_q: 질문 4
+        ask5_q: 질문 5
+      apply:
+        name: 이름
+        email: 이메일
+        phone: 전화번호
+        major: 전공
+        student_id: 학번
+        grade: 학년
+        ask1_a: 답변 1
+        ask2_a: 답변 2
+        ask3_a: 답변 3
+        ask4_: 답변 4
+        ask5_a: 답변 5
+        ask5_file: 파일 5
     models:
       admin_user: 어드민
-      assignment: 과제 내용
+      assignment: 과제
       submission: 과제 제출
       lecture: 강의노트
       gallery: 갤러리
+      recruit: 모집
+      apply: 지원서
     errors:
       messages:
         record_invalid: 데이터 검증에 실패하였습니다. %{errors}
@@ -289,3 +313,6 @@ ko:
       gender:
         man: 남
         woman: 여자
+    recruit:
+      member_num:
+        eight: 8기

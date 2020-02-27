@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   }
   
   get 'mypage' => 'users#mypage'
-  get 'mypage2', to: 'users#mypage2'
-  get 'profile', to: :mypage, controller: 'users'
-  get 'mypage3', to: :mypage3, controller: :users
   get '/my_homeworks' => "home#my_homework"
 
   resources :assignments, only: %i[index show new create] do 
@@ -26,6 +23,13 @@ Rails.application.routes.draw do
   resources :galleries, only: %i[index new] do
     collection do
       get :tag_page
+    end
+  end
+  resources :recruits, only: %i[show] do 
+    resources :applies do
+      collection do
+        get 'myapply' => 'applies#myapply'
+      end
     end
   end
   resources :comments
