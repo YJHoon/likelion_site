@@ -6,7 +6,7 @@ class User < ApplicationRecord
   
   mount_uploader :thumbnail, ImageUploader
 
-  CERTIFICATION_STATES = %i[default mentee mentor].freeze
+  CERTIFICATION_STATES = %i[mentee mentor].freeze
 
   enum gender: [:not_choose, :man, :woman]
   enum role: CERTIFICATION_STATES

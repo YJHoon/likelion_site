@@ -5,6 +5,7 @@ ruby '2.6.5'
 
 gem 'activeadmin'
 gem 'activeadmin_addons'
+gem 'activeadmin_quill_editor'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave'

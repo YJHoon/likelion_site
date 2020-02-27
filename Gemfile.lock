@@ -56,6 +56,8 @@ GEM
       sass
       select2-rails (~> 4.0)
       xdan-datetimepicker-rails (~> 2.5.1)
+    activeadmin_quill_editor (0.2.0)
+      activeadmin (>= 1.0)
     activejob (6.0.2.1)
       activesupport (= 6.0.2.1)
       globalid (>= 0.3.6)
@@ -324,6 +326,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activeadmin_addons
+  activeadmin_quill_editor
   acts-as-taggable-on (~> 6.0)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.3.1)

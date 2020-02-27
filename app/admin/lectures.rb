@@ -7,7 +7,6 @@ ActiveAdmin.register Lecture do
     selectable_column
     id_column
     column :title
-    column :content
     column :image
     actions
   end
@@ -26,7 +25,13 @@ ActiveAdmin.register Lecture do
   form do |f|
     f.inputs do
       f.input :title
-      f.input :content
+      f.input :content, as: :quill_editor, input_html: {data: {options: {modules: {toolbar: [[ 'header': [1, 2, 3, false] ],
+        ['color': []], ['background': []],
+        ['bold', 'italic', 'underline', 'strike'],
+        ['image', 'blockquote', 'code-block'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'indent': '-1'}, { 'indent': '+1' }],
+        ['clean']]}, placeholder: '내용을 입력해주세요...', theme: 'snow'}}}
       f.input :image
     end
     actions

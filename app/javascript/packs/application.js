@@ -29,9 +29,8 @@ $(function() {
   pageName = $('div.boxed').data('name');
 
   if (pageName == "submissions-new" || pageName == "submissions-edit" || pageName == "galleries-new") {
-    console.log('hello');
     $('#image_upload_button').on('click', function(){
-      console.log('??');
+      
       $('#submission_file').trigger('click');
     });
 

@@ -53,7 +53,7 @@
     if ($(document).scrollTop() > 50) {
       $('.nav').addClass('affix');
       $('.nav').removeClass('bffix');
-      console.log("OK");
+      
     } else {
       $('.nav').addClass('bffix');
       $('.nav').removeClass('affix');
@@ -456,7 +456,6 @@ body {
 <script type="text/javascript">
 $('.navTrigger').click(function () {
     $(this).toggleClass('active');
-    console.log("Clicked menu");
     $("#mainListDiv").toggleClass("show_list");
     $("#mainListDiv").fadeIn();
 
