@@ -3,8 +3,7 @@ class AppliesController < ApplicationController
   before_action :load_apply, only: %i[edit update]
 
   def index
-    @applies = Apply.all
-    @applies = @applies.ransack(name_or_email_cont: params[:q]).result(distinct: true) if params[:q].present?
+    @applies = Apply.all.ransack(name_eq: params[:name], email_eq: params[:email]).result(distinct: true) if params[:name].present? && params[:email].present?
   end
 
   def new
@@ -13,13 +12,15 @@ class AppliesController < ApplicationController
 
   def create
     Apply.create(apply_params)
-    redirect_to recruit_path(Recruit.last)
+    redirect_to recruit_path(@recruit), notice: "지원서 작성을 완료했습니다."
   end
 
   def edit
   end
 
   def update
+    @apply.update(apply_params)
+    redirect_to recruit_applies_path(@recruit), notice: "지원서 수정을 완료했습니다."
   end
 
   private

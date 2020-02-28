@@ -1,19 +1,44 @@
-<%= render 'shared/page_title', title: '지원서 찾기' %>
 
-<div class="container">
-  <div class="main-single">
-    <div class="form-submit center">
-      <%= form_with url: request.parameters, method: :get, class: "row search-form" do %>
-        <div class="searchbar-inner row">
-          <%= text_field_tag :q, params[:q], class:"form-control mr-1" %>
-          <%= submit_tag "검색", class:"btn btn-primary mr-1"%>
+<section class="flat-signin">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-4 offset-md-1">
+        <h2>지원서 찾기</h2>
+        <hr>
+        <%= form_tag request.parameters, method: :get do %>
+          <div class="form-group">
+            <%# <h5>이름:</h5><br> %>
+            <%= label_tag :name, "이름:" %><br>
+            <%= text_field_tag :name, params[:name], required: true, class:"form-control mr-1" %><br>
+          </div>
+          <div class="form-group">
+            <%# <h5>이메일:</h5><br> %>
+            <%= label_tag :email, "이메일:"%><br>
+            <%= text_field_tag :email, params[:email], required: true, class:"form-control mr-1" %><br>
+          </div>
+          <%= submit_tag "검색", class: "btn btn-primary", style: "color: white"%>
+        <% end %>
+        <hr>
+      </div>
+      <% @applies&.each do |apply| %>
+        <div class="col-md-4 offset-md-1">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-name">이름: <%= apply.name %></h4>
+              <div class="card-studentid">이메일: <%= apply.email %></div>
+            </div>
+            <div class="card-footer">
+              <%= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm" %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-  </div><!-- /.main-single -->
-</div>
+  </div>
+</section>
 
-<% @applies.each do |apply| %>
+
+<% @applies&.each do |apply| %>
   <div class="col-md-3 mb-4">
     <div class="card">
       <div class="card-body">
@@ -28,4 +53,10 @@
 <% end %>
 
 
-
+<style>
+.btn-primary:hover{
+  color: #f76707 !important;
+  border-color: #f76707 !important;
+  background-color: #fff;
+}
+</style>

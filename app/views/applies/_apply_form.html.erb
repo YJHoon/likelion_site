@@ -6,60 +6,64 @@
         <div class="divider40"></div>
         <div class="wrap-sign-in">
           <div class="form-sign-in">
-            <%= form_for(apply, url: url) do |f| %>
+            <%= form_for(apply, url: url, method: method) do |f| %>
               <div class="form-group">
                 <%= f.label :name, '이름*' %>
-                <%= f.text_field :name %>
+                <%= f.text_field :name, required: true %>
               </div><br>
               <div class="form-group">
                 <%= f.label :email, '이메일*' %>
-                <%= f.text_field :email %>
+                <%= f.text_field :email, required: true %>
+              </div><br>
+              <div class="form-group">
+                <%= f.label :student_id, '학번*' %>
+                <%= f.text_field :student_id, required: true %>
               </div><br>
               <div class="form-group">
                 <%= f.label :phone, '전화번호*' %>
-                <%= f.text_field :phone %>
+                <%= f.text_field :phone, required: true %>
               </div><br>
               <div class="form-group">
                 <%= f.label :major, '전공*' %>
-                <%= f.text_field :major %>
+                <%= f.text_field :major, required: true %>
               </div><br>
               <div class="form-group">
                 <%= f.label :grade, '학년*' %>
-                <%= f.text_field :grade %>
+                <%= f.text_field :grade, required: true %>
               </div><br><br>
 
               <% if @recruit.ask1_q && @recruit.ask1_q != "" %>
                 <div class="form-group">
                   <label>질문1. <%= @recruit.ask1_q %></label>
-                  <%= f.text_area :ask1_a %>
+                  <%= f.text_area :ask1_a, required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask2_q && @recruit.ask2_q != "" %>
                 <div class="form-group">
                   <label>질문2. <%= @recruit.ask2_q %> (700자 이내)</label>
-                  <%= f.text_area :ask2_a %>
+                  <%= f.text_area :ask2_a, required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask3_q && @recruit.ask3_q != "" %>
                 <div class="form-group">
                   <label>질문3. <%= @recruit.ask3_q %></label>
-                  <%= f.text_area :ask3_a %>
+                  <%= f.text_area :ask3_a, required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask4_q && @recruit.ask4_q != "" %>
                 <div class="form-group">
                   <label>질문4. <%= @recruit.ask4_q %></label>
-                  <%= f.text_area :ask4_a %>
+                  <%= f.text_area :ask4_a, required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask5_q && @recruit.ask5_q != "" %>
                 <div class="form-group">
                   <label>질문5. <%= @recruit.ask5_q %></label>
-                  <%= f.text_area :ask5_a %>
+                  <%= f.text_area :ask5_a, required: true %>
                   <%= f.file_field :ask5_file %>
                 </div><br>
               <% end %>
