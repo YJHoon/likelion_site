@@ -11,8 +11,9 @@ class AppliesController < ApplicationController
   end
 
   def create
-    Apply.create(apply_params)
-    redirect_to recruit_path(@recruit), notice: "지원서 작성을 완료했습니다."
+    apply = @recruit.applies.create(apply_params)
+    byebug
+    redirect_to recruits_path
   end
 
   def edit

@@ -11,19 +11,21 @@
               <ul>
                 <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
                   <div class="field">
-                    <%= image_tag "/images/dgu-logo.jpg", class: "represent_image", id: "represent_image_display", alt: "" %>
+                    <label for="image-update" class="icon-upload">
+                      <%= image_tag("/images/photo.png", for:"image-update", class: "icon-upload represent_image", id: "represent_image_display", alt: "" ) %>
+                    </label>
 
-                    <%= f.file_field :image, id: 'image-update', style:"display:none", required: true %>
-                    <label for="image-update" class="icon-upload"><i class="fas fa-camera icon"></i></label> <br>
+                    <%= f.file_field :image, id: 'image-update', style:"display:none", required: true %><br>
 
 
                     <%= f.label :tag_list %>
-                    <%= f.text_field :tag_list, class:"form-control"%>
+                    <%= f.text_field :tag_list, class:"form-control", placeholder: "콤마( , )로 tag 구분해주세요."%>
              
                   </div>
                 </li>
               </ul>
               <div class="divider20"></div>
+              
               <div class="btn-submit">
                 <button type="submit" name="commit" class="bg-black">사진 올리기</button>
               </div>

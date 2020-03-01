@@ -3,6 +3,8 @@ ActiveAdmin.register Lecture do
   actions :all
   scope -> { '전체' }, :all
 
+  permit_params :file
+
   index do
     selectable_column
     id_column
@@ -16,6 +18,7 @@ ActiveAdmin.register Lecture do
       row :title
       row :content
       row :image
+      row :file
       row :updated_at
       row :created_at
       row :encrypted_password
@@ -32,7 +35,7 @@ ActiveAdmin.register Lecture do
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'indent': '-1'}, { 'indent': '+1' }],
         ['clean']]}, placeholder: '내용을 입력해주세요...', theme: 'snow'}}}
-      f.input :file
+      f.input :file, as: :file
     end
     f.actions
   end

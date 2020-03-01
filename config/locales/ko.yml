@@ -85,7 +85,7 @@ ko:
         ask1_a: 답변 1
         ask2_a: 답변 2
         ask3_a: 답변 3
-        ask4_: 답변 4
+        ask4_a: 답변 4
         ask5_a: 답변 5
         ask5_file: 파일 5
     models:
@@ -102,6 +102,11 @@ ko:
         restrict_dependent_destroy:
           has_one: "%{record}가 존재하기 때문에 삭제할 수 없습니다"
           has_many: "%{record}가 존재하기 때문에 삭제할 수 없습니다"
+      models:
+        apply:
+          attributes:
+            student: "양식에 맞게 작성해주세요."
+              
   date:
     abbr_day_names:
     - 일

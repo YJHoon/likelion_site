@@ -30,7 +30,7 @@ class LecturesController < ApplicationController
   end
 
   def lecture_params
-      params.require(:lecture).permit(:title, :content, :image)
+      params.require(:lecture).permit(:title, :content, :image, :file)
   end
 
   def check_mentor

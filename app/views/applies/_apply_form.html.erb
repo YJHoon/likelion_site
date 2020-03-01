@@ -7,26 +7,32 @@
         <div class="wrap-sign-in">
           <div class="form-sign-in">
             <%= form_for(apply, url: url, method: method) do |f| %>
+              <%#= render "devise/shared/error_messages", resource: apply %>
               <div class="form-group">
                 <%= f.label :name, '이름*' %>
                 <%= f.text_field :name, required: true %>
               </div><br>
+
               <div class="form-group">
                 <%= f.label :email, '이메일*' %>
-                <%= f.text_field :email, required: true %>
+                <%= f.email_field :email, required: true %>
               </div><br>
+              
               <div class="form-group">
                 <%= f.label :student_id, '학번*' %>
-                <%= f.text_field :student_id, required: true %>
+                <%= f.text_field :student_id, required: true, maxlength: 10 %>
               </div><br>
+
               <div class="form-group">
                 <%= f.label :phone, '전화번호*' %>
                 <%= f.text_field :phone, required: true %>
               </div><br>
+
               <div class="form-group">
                 <%= f.label :major, '전공*' %>
                 <%= f.text_field :major, required: true %>
               </div><br>
+
               <div class="form-group">
                 <%= f.label :grade, '학년*' %>
                 <%= f.text_field :grade, required: true %>
