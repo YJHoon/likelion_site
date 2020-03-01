@@ -7,8 +7,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV["USER_NAME"] %>
-  password: <%= ENV["USER_PASSWD"] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:

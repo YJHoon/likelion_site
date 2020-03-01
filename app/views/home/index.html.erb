@@ -1,5 +1,5 @@
 <br><br><br><br>
-<%= render "shared/home_banner", path: "#{recruit_path(Recruit.last)}" %>
+<%= render "shared/home_banner", path: "#{recruit_path(@recruit)}", recruit: @recruit %>
 
 
 <div class="container full-width">

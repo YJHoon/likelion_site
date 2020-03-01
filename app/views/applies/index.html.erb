@@ -7,16 +7,22 @@
         <hr>
         <%= form_tag request.parameters, method: :get do %>
           <div class="form-group">
-            <%# <h5>이름:</h5><br> %>
             <%= label_tag :name, "이름:" %><br>
             <%= text_field_tag :name, params[:name], required: true, class:"form-control mr-1" %><br>
           </div>
           <div class="form-group">
-            <%# <h5>이메일:</h5><br> %>
             <%= label_tag :email, "이메일:"%><br>
             <%= text_field_tag :email, params[:email], required: true, class:"form-control mr-1" %><br>
           </div>
-          <%= submit_tag "검색", class: "btn btn-primary", style: "color: white"%>
+          <div class="form-group">
+            <%= label_tag :student_id, "학번:"%><br>
+            <%= text_field_tag :student_id, params[:student_id], required: true, class:"form-control mr-1" %><br>
+          </div>
+          <div class="form-group">
+            <%= label_tag :phone, "전화번호:"%><br>
+            <%= text_field_tag :phone, params[:phone], required: true, class:"form-control mr-1" %><br>
+          </div>
+          <%= submit_tag "검색", class: "btn btn-primary", id: "submit-btn", style: "color: white"%>
         <% end %>
         <hr>
       </div>
@@ -24,11 +30,15 @@
         <div class="col-md-4 offset-md-1">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-name">이름: <%= apply.name %></h4>
-              <div class="card-studentid">이메일: <%= apply.email %></div>
+              <h4 class="card-name"><%= apply.name %></h4>
+              <div class="card-studentid"><%= apply.email %></div>
             </div>
-            <div class="card-footer">
-              <%= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm" %>
+            <div class="card-footer password-btn">
+              <div class="check-btn">
+                <%= link_to "수정", "#", class:"btn btn-secondary btn-sm before-btn" %>
+              <div class="check-form">
+                <%= link_to "확인", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm after-btn" %>
+              </div>
             </div>
           </div>
         </div>
@@ -38,21 +48,6 @@
 </section>
 
 
-<% @applies&.each do |apply| %>
-  <div class="col-md-3 mb-4">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-name">이름: <%= apply.name %></h4>
-        <div class="card-studentid">학번: <%= apply.student_id %></div>
-      </div>
-      <div class="card-footer">
-        <%= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm" %>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-
 <style>
 .btn-primary:hover{
   color: #f76707 !important;
@@ -60,3 +55,15 @@
   background-color: #fff;
 }
 </style>
+
+<script>
+  $('#submit-btn').on("click", function() {
+    $('.check-btn').show();
+    $('.check-form').hide();
+  }
+
+  $('.before-btn').on("click", function() {
+    $('.check-btn').hide();
+    $('.check-form').show();
+  }
+</script>

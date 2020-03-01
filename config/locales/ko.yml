@@ -65,6 +65,7 @@ ko:
         title: 제목
         description: 내용
         url: url
+        grade: 과제 등급
       recruit:
         member_num: 기수
         start_at: 시작시간
@@ -316,3 +317,8 @@ ko:
     recruit:
       member_num:
         eight: 8기
+    submission:
+      grade:
+        normal: 노말
+        idea: 아이디어
+        great: 우수

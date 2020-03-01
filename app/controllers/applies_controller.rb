@@ -3,7 +3,7 @@ class AppliesController < ApplicationController
   before_action :load_apply, only: %i[edit update]
 
   def index
-    @applies = Apply.all.ransack(name_eq: params[:name], email_eq: params[:email]).result(distinct: true) if params[:name].present? && params[:email].present?
+    @applies = Apply.all.ransack(name_eq: params[:name], email_eq: params[:email], student_id_eq: params[:student_id], phone_eq: params[:phone]).result(distinct: true) if params[:name].present? && params[:email].present?
   end
 
   def new
