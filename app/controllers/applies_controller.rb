@@ -12,7 +12,6 @@ class AppliesController < ApplicationController
 
   def create
     apply = @recruit.applies.create(apply_params)
-    byebug
     redirect_to recruits_path
   end
 

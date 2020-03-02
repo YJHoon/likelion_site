@@ -14,6 +14,10 @@ ActiveAdmin.register Submission do
     redirect_back(fallback_location: collection_path)
   end
 
+  filter :title_cont, label: "#{I18n.t("activerecord.attributes.submission.title")} 필터"
+  filter :description_cont, label: "#{I18n.t("activerecord.attributes.submission.description")} 필터"
+  filter :grade, as: :select, collection: Submission.enum_selectors(:grade), label: "#{I18n.t("activerecord.attributes.submission.grade")} 필터"
+
 
   index do
     selectable_column

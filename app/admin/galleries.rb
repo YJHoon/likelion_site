@@ -1,7 +1,10 @@
 ActiveAdmin.register Gallery do
   menu label: "#{I18n.t("activerecord.models.gallery")} 관리"
+
   actions :all
   scope -> { '전체' }, :all
+
+  filter :attribute_blank
 
   index do
     selectable_column
@@ -26,7 +29,7 @@ ActiveAdmin.register Gallery do
       f.input :image
       f.input :tag_list
     end
-    actions
+    f.actions
   end
   
   

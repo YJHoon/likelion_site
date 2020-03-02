@@ -34,11 +34,7 @@
               <div class="card-studentid"><%= apply.email %></div>
             </div>
             <div class="card-footer password-btn">
-              <div class="check-btn">
-                <%= link_to "수정", "#", class:"btn btn-secondary btn-sm before-btn" %>
-              <div class="check-form">
-                <%= link_to "확인", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm after-btn" %>
-              </div>
+              <%= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm after-btn" %>
             </div>
           </div>
         </div>
@@ -55,15 +51,3 @@
   background-color: #fff;
 }
 </style>
-
-<script>
-  $('#submit-btn').on("click", function() {
-    $('.check-btn').show();
-    $('.check-form').hide();
-  }
-
-  $('.before-btn').on("click", function() {
-    $('.check-btn').hide();
-    $('.check-form').show();
-  }
-</script>

@@ -1,7 +1,18 @@
 ActiveAdmin.register Apply do
   menu parent: "모집 관리", label: "#{I18n.t("activerecord.models.apply")} 관리"
+
   actions :all
+  
   scope -> { '전체' }, :all
+
+  filter :name_cont, label: "#{I18n.t("activerecord.attributes.apply.name")} 필터"
+  filter :email_cont, label: "#{I18n.t("activerecord.attributes.apply.email")} 필터"
+  filter :phone_cont, label: "#{I18n.t("activerecord.attributes.apply.phone")} 필터"
+  filter :major_cont, label: "#{I18n.t("activerecord.attributes.apply.major")} 필터"
+  filter :student_id_cont, label: "#{I18n.t("activerecord.attributes.apply.student_id")} 필터"
+  filter :grade_cont, label: "#{I18n.t("activerecord.attributes.apply.grade")} 필터"
+
+
 
   index do
     selectable_column
@@ -51,6 +62,7 @@ ActiveAdmin.register Apply do
       f.input :ask5_file
     end
     f.actions
+    
   end
   
   

@@ -3,8 +3,10 @@ ActiveAdmin.register Lecture do
   actions :all
   scope -> { '전체' }, :all
 
-  permit_params :file
-
+  filter :title_cont, label: "#{I18n.t("activerecord.attributes.lecture.title")} 필터"
+  filter :content_cont, label: "#{I18n.t("activerecord.attributes.lecture.content")} 필터"
+  filter :user, label: "#{I18n.t("activerecord.attributes.lecture.user")} 필터"
+  
   index do
     selectable_column
     id_column

@@ -4,6 +4,8 @@ ActiveAdmin.register Recruit do
   scope -> { '전체' }, :all
   scope -> { '멤버(8기)' }, :eight
 
+  filter :member_num, as: :select, collection: Recruit.enum_selectors(:member_num), label: "#{I18n.t("activerecord.attributes.recruit.member_num")} 필터"
+
   index do
     selectable_column
     id_column

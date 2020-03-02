@@ -29,12 +29,12 @@ ActiveAdmin.register User do
     redirect_back(fallback_location: collection_path)
   end
 
-  filter :name, label: "#{I18n.t("activerecord.attributes.user.name")} 필터"
-  filter :email, label: "#{I18n.t("activerecord.attributes.user.email")} 필터"
-  filter :phone, label: "#{I18n.t("activerecord.attributes.user.phone")} 필터"
-  filter :role, label: "#{I18n.t("activerecord.attributes.user.role")} 필터"
-  filter :menttor_type, label: "#{I18n.t("activerecord.attributes.user.menttor_type")} 필터"
-  filter :gender, label: "#{I18n.t("activerecord.attributes.user.gender")} 필터"
+  filter :name_cont, label: "#{I18n.t("activerecord.attributes.user.name")} 필터"
+  filter :email_cont, label: "#{I18n.t("activerecord.attributes.user.email")} 필터"
+  filter :phone_cont, label: "#{I18n.t("activerecord.attributes.user.phone")} 필터"
+  filter :role, as: :select, collection: User.enum_selectors(:role), label: "#{I18n.t("activerecord.attributes.user.role")} 필터"
+  filter :mentor_type, as: :select, collection: User.enum_selectors(:mentor_type), label: "#{I18n.t("activerecord.attributes.user.mentor_type")} 필터"
+  filter :gender, as: :select, collection: User.enum_selectors(:gender), label: "#{I18n.t("activerecord.attributes.user.gender")} 필터"
   
   index do
     selectable_column
@@ -80,6 +80,8 @@ ActiveAdmin.register User do
       f.input :name
       f.input :thumbnail
       f.input :email
+      f.input :password
+      f.input :password_confirmation
       f.input :role, as: :select, collection: User.enum_selectors(:role)
       f.input :mentor_type, as: :select, collection: User.enum_selectors(:mentor_type)
     end

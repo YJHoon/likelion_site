@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   CERTIFICATION_STATES = %i[mentee mentor].freeze
 
-  enum gender: [:not_choose, :man, :woman]
+  enum gender: [:no_choose, :man, :woman]
   enum role: CERTIFICATION_STATES
   enum mentor_type: [:president, :vice_president, :education, :promotion, :HI_SW, :affairs]
 
