@@ -32,7 +32,7 @@ ActiveAdmin.register Assignment do
       f.input :start_at
       f.input :end_at
     end
-    f.actions
+    actions
   end
  
 end
