@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#mypage'
   get '/my_homeworks' => "home#my_homework"
 
-  resources :assignments, only: %i[index show new create] do 
+  resources :assignments, only: %i[index show] do 
     resources :submissions, only: %i[index new create show edit update] do 
       member do
         get :wish_toggle
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
   resources :comments
   resources :wishes
-  resources :lectures, only: %i[index show create]
+  resources :lectures, only: %i[index show]
 end
 
 

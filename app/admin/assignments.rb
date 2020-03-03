@@ -34,6 +34,7 @@ ActiveAdmin.register Assignment do
 
   form do |f|
     f.inputs do
+      f.input :user
       f.input :title
       f.input :content
       f.input :start_at, as: :datetime_picker, input_html: { autocomplete: :off }

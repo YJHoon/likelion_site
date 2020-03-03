@@ -48,6 +48,7 @@ ActiveAdmin.register Apply do
 
   form do |f|
     f.inputs do
+      f.input :recruit
       f.input :name
       f.input :email
       f.input :phone

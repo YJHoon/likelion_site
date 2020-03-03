@@ -12,8 +12,10 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
   storage :fog
+  # storage :file
+
   def extension_whitelist
-    %w(jpg jpeg gif png pptx ppt pdf docs hwp)
+    %w(jpg jpeg gif png pptx ppt pdf docs hwp txt)
   end
 
   version :thumb do
@@ -27,5 +29,7 @@ class FileUploader < CarrierWave::Uploader::Base
   version :ratio do
     process resize_to_fit: [1600,1600]
   end
+
+
 end
 

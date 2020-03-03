@@ -7,7 +7,9 @@
         <div class="wrap-sign-in">
           <div class="form-sign-in">
             <%= form_for(apply, url: url, method: method) do |f| %>
-              <%#= render "devise/shared/error_messages", resource: apply %>
+              
+              <%= render "shared/errors", object: apply %>
+
               <div class="form-group">
                 <%= f.label :name, '이름*' %>
                 <%= f.text_field :name, required: true %>

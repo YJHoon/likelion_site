@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu parent: '사용자 관리', label: "회원"
-  actions :all
+  actions :all, except: [:destroy]
 
   scope :all
   scope -> { '멤버(8기)' }, :mentee

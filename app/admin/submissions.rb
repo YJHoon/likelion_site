@@ -1,6 +1,7 @@
 ActiveAdmin.register Submission do
   menu parent: '과제 관리', label: "#{I18n.t("activerecord.models.submission")} 관리"
-  actions :all
+  actions :all, except: [:destroy]
+  
   scope -> { '전체' }, :all
 
   batch_action "#{I18n.t("activerecord.attributes.submission.grade")} 변경", form: {
@@ -51,6 +52,8 @@ ActiveAdmin.register Submission do
 
   form do |f|
     f.inputs do
+      f.input :assignment
+      f.input :user
       f.input :title
       f.input :description
       f.input :url

@@ -11,14 +11,14 @@ ActiveAdmin.register Lecture do
     selectable_column
     id_column
     column :title
-    column :image
+    column :image do |lecture| image_tag(lecture.image_url ,style: 'width: 70px;') end
     actions
   end
 
   show do
     attributes_table do
       row :title
-      row :content
+      row :content do |lecture| sanitize(lecture.content) end
       row :image
       row :file
       row :updated_at
@@ -29,6 +29,8 @@ ActiveAdmin.register Lecture do
 
   form do |f|
     f.inputs do
+      f.input :user
+      f.input :image
       f.input :title
       f.input :content, as: :quill_editor, input_html: {data: {options: {modules: {toolbar: [[ 'header': [1, 2, 3, false] ],
         ['color': []], ['background': []],
@@ -37,7 +39,7 @@ ActiveAdmin.register Lecture do
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'indent': '-1'}, { 'indent': '+1' }],
         ['clean']]}, placeholder: '내용을 입력해주세요...', theme: 'snow'}}}
-      f.input :file, as: :file
+      f.input :file
     end
     f.actions
   end

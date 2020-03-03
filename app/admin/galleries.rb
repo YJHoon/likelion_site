@@ -26,6 +26,7 @@ ActiveAdmin.register Gallery do
 
   form do |f|
     f.inputs do
+      f.input :user
       f.input :image
       f.input :tag_list
     end
