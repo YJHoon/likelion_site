@@ -29,6 +29,7 @@ ActiveAdmin.register Lecture do
 
   form do |f|
     f.inputs do
+      f.input :user
       f.input :title
       f.input :content, as: :quill_editor, input_html: {data: {options: {modules: {toolbar: [[ 'header': [1, 2, 3, false] ],
         ['color': []], ['background': []],
