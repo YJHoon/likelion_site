@@ -27,6 +27,11 @@ gem 'sqlite3', '~> 1.4'
 gem 'summernote-rails' 
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
