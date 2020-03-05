@@ -45,9 +45,9 @@
             <div class="direction">
               <% if @user.mentor? || @user == @submission.user %>
                 <div class="tags">
-                  <a href="<%= edit_assignment_submission_path(@assignment, @submission) %>" title="">수정</a>
+                  <%= link_to "수정", edit_assignment_submission_path(@assignment, @submission) %>
                   <% if @user.mentor? %>
-                    <a href="<%= assignment_submission_path(@assignment, @submission) %>" data-confirm="정말 삭제하시겠습니까?">삭제</a>
+                    <%= link_to "삭제", assignment_submission_path(@assignment, @submission), method: :delete, data: {confirm: "정말 삭제하시겠습니까?"} %>
                   <% end %>
                 </div>
               <% end %>

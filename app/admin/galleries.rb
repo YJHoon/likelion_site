@@ -10,6 +10,11 @@ ActiveAdmin.register Gallery do
     selectable_column
     id_column
     column :image do |gallery| image_tag(gallery.image_url ,style: 'width: 70px;') end
+    column "태그" do |gallery|
+      gallery.tags do |tag|
+        tag.name
+      end
+    end
     actions
   end
 
@@ -26,6 +31,7 @@ ActiveAdmin.register Gallery do
 
   form do |f|
     f.inputs do
+      f.input :user
       f.input :image
       f.input :tag_list
     end

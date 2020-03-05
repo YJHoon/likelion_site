@@ -57,6 +57,8 @@ ko:
         title: 제목
         content: 내용
         user: 작성자
+        file: 파일
+        image: 썸네일
       assignment:
         title: 제목
         content: 내용
@@ -210,6 +212,7 @@ ko:
   errors:
     format: "%{message}"
     messages:
+      mini_magick_processing_error: "업로드 실패"
       accepted: "%{attribute}을(를) 반드시 확인해야 합니다"
       blank: "%{attribute}에 내용을 입력해 주세요"
       confirmation: "%{attribute}은(는) 서로 일치해야 합니다"

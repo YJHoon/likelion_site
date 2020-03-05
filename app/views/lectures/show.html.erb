@@ -11,7 +11,7 @@
                 <p><%= simple_format @lecture.content %></p>
               </div>
               <% if @lecture.file? %>
-                <%= link_to "Download file", @lecture.file_url, download: "Lecture_#{@lecture.id}_file" %>
+                <%= link_to "#{@lecture.title} 파일", @lecture.file.url, download: "#{@lecture.title}_file" %>
               <% end %>
             </div>
 

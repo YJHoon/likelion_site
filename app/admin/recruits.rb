@@ -1,6 +1,6 @@
 ActiveAdmin.register Recruit do
-  menu parent: "모집 관리", label: "#{I18n.t("activerecord.models.recruit")} 관리"
-  actions :all
+  menu label: "#{I18n.t("activerecord.models.recruit")} 관리"
+  actions :all, except: [:destroy]
   scope -> { '전체' }, :all
   scope -> { '멤버(8기)' }, :eight
 
@@ -12,7 +12,9 @@ ActiveAdmin.register Recruit do
     tag_column :member_num do |recruit| recruit.enum_ko(:member_num) end 
     column :start_at
     column :end_at
-    actions
+    actions do |a|
+      link_to '지원서 리스트', admin_recruit_applies_path(a)
+    end
   end
 
   show do

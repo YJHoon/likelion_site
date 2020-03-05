@@ -365,6 +365,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.7)
   jquery-rails
+  mime-types
   mini_magick
   pg
   pry-rails
