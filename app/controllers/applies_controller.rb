@@ -15,6 +15,7 @@ class AppliesController < ApplicationController
     @apply = @recruit.applies.new(apply_params)
     if @apply.save
       @result = true
+      flash[:notice] = "지원서 작성을 완료했습니다."
     end
   end
 
