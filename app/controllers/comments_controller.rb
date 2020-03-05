@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to root_path, notice: "잘못 된 요청입니다." }
+        format.html { redirect_to root_path, alert: "잘못 된 요청입니다." }
       end
     end
   end
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to root_path, notice: "잘못 된 요청입니다." }
+        format.html { redirect_to root_path, alert: "잘못 된 요청입니다." }
       end
     end
   end

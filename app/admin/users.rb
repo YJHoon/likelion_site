@@ -44,6 +44,9 @@ ActiveAdmin.register User do
     column :thumbnail do |user| image_tag(user.image_url, class: 'admin-indexImage imageviewer') end
     column :email
     tag_column :role do |user| user.enum_ko(:role) end 
+    column "제출한 과제 수" do |user|
+      user.submissions.count
+    end
     actions
   end
 
@@ -53,21 +56,23 @@ ActiveAdmin.register User do
       row :email
       row :thumbnail do |user| image_tag(user.image_url, class: 'admin-showImage imageviewer') end
       row :role
-      tag_row "운영진 역할" do |user|
-        if user.mentor_type == "president"
-          "회장"
-        elsif user.mentor_type == "vice_president"
-          "부회장"
-        elsif user.mentor_type == "education"
-          "교육팀"
-        elsif user.mentor_type == "promotion"
-          "홍보팀"
-        elsif user.mentor_type == "HI_SW"
-          "하소봉 회장"
-        elsif user.mentor_type == "affairs"
-          "총무"
-        else
-          "없음"
+      if User.find(params[:id]).mentor?
+        tag_row "운영진 역할" do |user|
+          if user.mentor_type == "president"
+            "회장"
+          elsif user.mentor_type == "vice_president"
+            "부회장"
+          elsif user.mentor_type == "education"
+            "교육팀"
+          elsif user.mentor_type == "promotion"
+            "홍보팀"
+          elsif user.mentor_type == "HI_SW"
+            "하소봉 회장"
+          elsif user.mentor_type == "affairs"
+            "총무"
+          else
+            "없음"
+          end
         end
       end
       row :updated_at
