@@ -10,14 +10,15 @@
               <div class="col">
                 <p><%= simple_format @lecture.content %></p>
               </div>
-              <% if @lecture.file? %>
-                <%= link_to "#{@lecture.title} 파일", @lecture.file.url, download: "#{@lecture.title}_file" %>
-              <% end %>
             </div>
-
           </div>
 
-          <div class="divider100"></div>
+          <div class="divider70"></div>
+          
+          <% if @lecture.file? %>
+            <%= link_to "#{@lecture.file.file.original_filename}", @lecture.file.url, download: "#{@lecture.file.file.original_filename}" %>
+          <% end %>
+          <div class="divider30"></div>
           <hr>
 
           <div class="main-single">

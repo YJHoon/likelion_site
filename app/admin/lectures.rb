@@ -11,7 +11,7 @@ ActiveAdmin.register Lecture do
     selectable_column
     id_column
     column :title
-    column :image do |lecture| image_tag(lecture.image_url ,style: 'width: 70px;') end
+    column :image do |lecture| image_tag(lecture.image_url, class: 'admin-indexImage imageviewer') end
     actions
   end
 
@@ -19,7 +19,7 @@ ActiveAdmin.register Lecture do
     attributes_table do
       row :title
       row :content do |lecture| sanitize(lecture.content) end
-      row :image
+      row :image do |lecture| image_tag(lecture.image_url, class: 'admin-showImage imageviewer') end
       row :file
       row :updated_at
       row :created_at
