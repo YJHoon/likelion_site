@@ -1,5 +1,6 @@
 ActiveAdmin.register Apply do
-  menu parent: "모집 관리", label: "#{I18n.t("activerecord.models.apply")} 관리"
+  belongs_to :recruit
+
 
   actions :all
   
@@ -11,8 +12,6 @@ ActiveAdmin.register Apply do
   filter :major_cont, label: "#{I18n.t("activerecord.attributes.apply.major")} 필터"
   filter :student_id_cont, label: "#{I18n.t("activerecord.attributes.apply.student_id")} 필터"
   filter :grade_cont, label: "#{I18n.t("activerecord.attributes.apply.grade")} 필터"
-
-
 
   index do
     selectable_column

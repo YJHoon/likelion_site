@@ -4,10 +4,7 @@ class Apply < ApplicationRecord
   belongs_to :recruit
 
   validates_format_of :student_id, presence: true, :numericality => true, :with => /20[0-9]{8}/, :message => "알맞은 학번 양식을 사용하세요"
-  # validates :student_id,   :presence => {:message => '알맞은 학번 양식을 사용하세요.'},
-  #                          :numericality => true,
-  #                          :length => { :maximum => 10 }
-  validates :phone, presence: true, numericality: true
+  validates_format_of :phone, presence: true, :numericality => true, :with => /010[0-9]{8}/, :message => "알맞은 전화번호 양식을 사용하세요"
   validates :name, presence: true
   validates :email, presence: true
   validates :major, presence: true

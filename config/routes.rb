@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/my_homeworks' => "home#my_homework"
 
   resources :assignments, only: %i[index show] do 
-    resources :submissions, only: %i[index new create show edit update] do 
+    resources :submissions do 
       member do
         get :wish_toggle
       end

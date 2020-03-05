@@ -11,6 +11,11 @@ class Assignment < ApplicationRecord
   validates :start_at, presence: true
   validates :end_at, presence: true
 
+  def not_submitted_users
+    submitted_ids = User.includes(:submissions).where(submissions: {assignment: self}).ids
+    User.mentee.where.not(id: submitted_ids)
+  end
+
   def image_url
     image.url.present? ? image.url(:thumb) : "/images/dgu-logo.jpg"
   end

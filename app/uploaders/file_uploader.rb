@@ -1,6 +1,7 @@
 class FileUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::MiniMagick
+  
+
   def filename
     "#{secure_token}#{original_filename}.#{file.extension}" if original_filename.present?
   end
@@ -11,12 +12,13 @@ class FileUploader < CarrierWave::Uploader::Base
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
 
-  storage :fog
-  # storage :file
+  # storage :fog
+  storage :file
 
   def extension_whitelist
-    %w(jpg jpeg gif png pptx ppt pdf docs hwp txt)
+    %w(jpg jpeg gif png pptx ppt pdf doc docs hwp txt)
   end
+  
 
   version :thumb do
     process resize_to_fill: [200,200]
@@ -30,6 +32,9 @@ class FileUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [1600,1600]
   end
 
-
+  protected    
+    def image?(new_file)
+      new_file.content_type.start_with? 'image'
+    end
 end
 

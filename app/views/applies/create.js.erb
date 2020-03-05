@@ -1,7 +1,5 @@
 <% if @result %> 
   location.href = '/recruits'
 <% else %>
-$('#apply_submit_button').on("click", function(){
   $('.error-msg').html("<%= j(render 'shared/errors', resource: @apply) %>");
-});
 <% end %>

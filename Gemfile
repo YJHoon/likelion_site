@@ -16,6 +16,7 @@ gem 'fog-aws'
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
+gem "mime-types"
 gem 'mini_magick'
 gem 'pg'
 gem 'puma', '~> 4.1'

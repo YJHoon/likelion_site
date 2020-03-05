@@ -1,7 +1,10 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_assignment, except: %i[wish_toggle]
-  before_action :load_submission, only: %i[show edit update wish_toggle]
+  before_action :load_submission, only: %i[show edit update destroy wish_toggle]
+  before_action :check_ownership!, only: %i[edit update destroy]
+  before_action :check_finished, only: %i[new create edit update]
+
 
   def index
     if !current_user.mentor? && (@assignment.end_at > Time.zone.now)
@@ -43,6 +46,19 @@ class SubmissionsController < ApplicationController
   end
 
   def update
+    if @assignment.update(set_params)
+      redirect_to assignment_submission_path(@assignment, @submission), notice: "과제가 성공적으로 수정되었습니다."
+    else
+      redirect_to root_path, notice: "잘못 된 요청입니다."
+    end
+  end
+
+  def destroy
+    if @submission.destroy
+      redirect_to assignment_subissions_path(@assignment), notice: "해당 과제가 성공적으로 삭제 되었습니다."
+    else
+      redirect_to root_path, notice: "잘못 된 요청입니다."
+    end
   end
 
   def wish_toggle
@@ -65,5 +81,18 @@ class SubmissionsController < ApplicationController
 
   def submission_params
     params.require(:submission).permit(:title, :description, :url, :image)
+  end
+
+  def check_ownership!
+    if !current_user.mentor?
+      redirect_to root_path, notice: "잘못 된 요청입니다." if current_user != @submission.user
+    end
+  end
+
+  def check_finished
+    if !current_user.mentor?
+      current_time = Time.zone.now
+      redirect_to root_path, notice: "과제 제출기한이 지났습니다. 운영진에게 문의하세요." if @assignment.end_at < current_time
+    end
   end
 end
