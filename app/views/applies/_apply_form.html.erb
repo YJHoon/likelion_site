@@ -6,10 +6,8 @@
         <div class="divider40"></div>
         <div class="wrap-sign-in">
           <div class="form-sign-in">
-            <%= form_for(apply, url: url, method: method) do |f| %>
-              
-              <%= render "shared/errors", object: apply %>
-
+          
+            <%= form_for(apply, url: url, method: method, remote: true) do |f| %>    
               <div class="form-group">
                 <%= f.label :name, '이름*' %>
                 <%= f.text_field :name, required: true %>
@@ -27,7 +25,7 @@
 
               <div class="form-group">
                 <%= f.label :phone, '전화번호*' %>
-                <%= f.text_field :phone, required: true %>
+                <%= f.text_field :phone, required: true, placeholder: "'-'를 제외하고 입력해주세요" %>
               </div><br>
 
               <div class="form-group">
@@ -76,9 +74,14 @@
                 </div><br>
               <% end %>
 
+              <div class="error-msg">
+                <%= render "shared/errors", resource: apply %>
+              </div>
+
               <div class="btn-contact-form center">
                 <button type="submit" class="flat-button-form" id="apply_submit_button">제출하기</button>
               </div>
+
             <% end %>
           </div><!-- /.form-sign-in -->
         </div><!-- /.wrap-sign-in -->

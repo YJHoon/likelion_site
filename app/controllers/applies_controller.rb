@@ -11,8 +11,15 @@ class AppliesController < ApplicationController
   end
 
   def create
-    apply = @recruit.applies.create(apply_params)
-    redirect_to recruits_path
+    @result = false
+    @apply = @recruit.applies.new(apply_params)
+    
+    if @apply.save
+      @result = true
+      # respond_to do |format|
+      #         format.html {flash[:notice] = 'apply was successfully created.' and redirect_to recruits_path }   
+      # end
+    end
   end
 
   def edit
