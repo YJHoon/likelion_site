@@ -39,8 +39,9 @@ ActiveAdmin.register User do
   index do
     selectable_column
     id_column
+
     column :name
-    column :thumbnail do |user| image_tag(user.image_url ,style: 'width: 70px;') end
+    column :thumbnail do |user| image_tag(user.image_url, class: 'admin-indexImage imageviewer') end
     column :email
     tag_column :role do |user| user.enum_ko(:role) end 
     actions
@@ -50,7 +51,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
-      row :thumbnail do |user| image_tag(user.image_url ,style: 'width: 150px;') end
+      row :thumbnail do |user| image_tag(user.image_url, class: 'admin-showImage imageviewer') end
       row :role
       tag_row "운영진 역할" do |user|
         if user.mentor_type == "president"

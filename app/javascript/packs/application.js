@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("packs/imageviewer")
 // require("summernote/summernote-bs4.min")
 // require("summernote/lang/summernote-ko-KR")
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -16,6 +17,22 @@ require("jquery")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+
+$(function () {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  var viewer = ImageViewer();
+  $('.imageviewer').click(function () {
+      var imgSrc = this.src
+      viewer.show(imgSrc);
+  });
+});
+
 
 $(document).on('turbolinks:load', function(){
   $('[data-provider="summernote"]').each(function(){

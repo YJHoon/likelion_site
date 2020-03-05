@@ -38,6 +38,7 @@ GEM
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_material (1.4.2)
+    active_skin (0.0.13)
     activeadmin (2.6.1)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (~> 3.1)
@@ -372,6 +373,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  active_skin
   activeadmin
   activeadmin_addons
   activeadmin_quill_editor

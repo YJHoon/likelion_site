@@ -3,7 +3,7 @@ class FileUploader < CarrierWave::Uploader::Base
   
 
   def filename
-    "#{secure_token}#{original_filename}.#{file.extension}" if original_filename.present?
+    "#{original_filename}" if original_filename.present?
   end
 
   protected
@@ -19,18 +19,6 @@ class FileUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png pptx ppt pdf doc docs hwp txt)
   end
   
-
-  version :thumb do
-    process resize_to_fill: [200,200]
-  end
-
-  version :square do
-    process resize_to_fill: [640,640]
-  end
-
-  version :ratio do
-    process resize_to_fit: [1600,1600]
-  end
 
   protected    
     def image?(new_file)
