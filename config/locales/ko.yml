@@ -108,7 +108,11 @@ ko:
       models:
         apply:
           attributes:
-            student: "양식에 맞게 작성해주세요."
+            student_id: "양식에 맞게 작성해주세요."
+        gallery:
+          attribute:
+            image:
+              blank: "사진을 첨부해주세요."
               
   date:
     abbr_day_names:

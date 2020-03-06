@@ -7,7 +7,7 @@
           <h2>갤러리 사진 추가</h2>
           <hr>
           <div class="assignment-form">
-            <%= form_for(@gallery, url: galleries_path, method: :post) do |f| %>
+            <%= form_for(@gallery, url: galleries_path, method: :post, remote: true) do |f| %>
               <ul>
                 <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
                   <div class="field">
@@ -15,7 +15,7 @@
                       <%= image_tag("/images/photo.png", for:"image-update", class: "icon-upload represent_image", id: "represent_image_display", alt: "" ) %>
                     </label>
 
-                    <%= f.file_field :image, id: 'image-update', style:"display:none", required: true %><br>
+                    <%= f.file_field :image, id: 'image-update',class:"flat-button-form", style:"display:none" %><br>
 
 
                     <%= f.label :tag_list %>
@@ -25,9 +25,13 @@
                 </li>
               </ul>
               <div class="divider20"></div>
-              
+
+              <div class="error-msg">
+                <%= render "shared/errors", resource: @gallery %>
+              </div>
+
               <div class="btn-submit">
-                <button type="submit" name="commit" class="bg-black">사진 올리기</button>
+                <button type="submit" class="bg-black">사진 올리기</button>
               </div>
             <% end %>
 

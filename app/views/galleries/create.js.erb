@@ -1,0 +1,5 @@
+<% if @result %> 
+  location.href = '/galleries'
+<% else %>
+  $('.error-msg').html("<%= j(render 'shared/errors', resource: @gallery) %>");
+<% end %>

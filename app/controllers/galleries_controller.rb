@@ -1,7 +1,7 @@
 class GalleriesController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :load_room, only: %i[show]
+  before_action :load_gallery, only: %i[show]
 
   def index
     @galleries = Gallery.all
@@ -22,8 +22,12 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    current_user.galleries.create!(gallery_params)
-    redirect_to galleries_path
+    @result = false
+    @gallery = current_user.galleries.new(gallery_params)
+    if @gallery.save
+      @result = true
+      flash[:notice] = "사진 업로드가 완료되었습니다."
+    end    
   end
 
   private

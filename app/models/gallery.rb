@@ -7,5 +7,6 @@ class Gallery < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :nullify
 
-  validates :image, presence: true
+  validates_presence_of :image, message: '사진을 첨부해주세요.' 
+  
 end
