@@ -7,6 +7,7 @@ gem 'activeadmin'
 gem 'activeadmin_addons'
 gem 'activeadmin_quill_editor'
 gem 'active_skin'
+
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave'
@@ -26,7 +27,8 @@ gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'simple_form'
 gem 'sqlite3', '~> 1.4'
-gem 'summernote-rails' 
+
+
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 

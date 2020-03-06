@@ -23,7 +23,6 @@ ActiveAdmin.register Lecture do
       row :file
       row :updated_at
       row :created_at
-      row :encrypted_password
     end
   end
 

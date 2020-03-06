@@ -60,7 +60,6 @@ ActiveAdmin.register Submission do
       end
       row :updated_at
       row :created_at
-      row :encrypted_password
     end
   end
 

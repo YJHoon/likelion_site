@@ -49,7 +49,6 @@ ActiveAdmin.register Assignment do
       row :end_at
       row :updated_at
       row :created_at
-      row :encrypted_password
     end
   end
 

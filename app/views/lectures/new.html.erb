@@ -40,32 +40,6 @@
   </div>
 </section>
 
-<%= content_for :css do %>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
-<% end %>
-
-<%= content_for :js do %>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('#summernote').summernote({
-      placeholder: '내용 작성',
-      tabsize: 2,
-      height: 500,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
-      ]
-    });
-  });
-</script>
-<% end %>
-
 <style>
   .modal-content {
     margin-top: 100px;
@@ -78,9 +52,3 @@
   }
 </style>
   
-<script type="text/javascript">
-  if 
-  $('.note-dropdown-menu').on("click", function() {
-    $('.nav').addClass('affix');  
-  });
-</script>

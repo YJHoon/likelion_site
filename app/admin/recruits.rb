@@ -29,7 +29,6 @@ ActiveAdmin.register Recruit do
       row :ask5_q
       row :updated_at
       row :created_at
-      row :encrypted_password
     end
   end
 

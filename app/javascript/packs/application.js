@@ -9,8 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("packs/imageviewer")
-// require("summernote/summernote-bs4.min")
-// require("summernote/lang/summernote-ko-KR")
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -34,13 +32,6 @@ $(function () {
 });
 
 
-$(document).on('turbolinks:load', function(){
-  $('[data-provider="summernote"]').each(function(){
-    $(this).summernote
-      lang: 'ko-KR'
-      height: 300
-  });
-});
 
 $(function() {
   pageName = $('div.boxed').data('name');

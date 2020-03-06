@@ -41,7 +41,6 @@ ActiveAdmin.register Apply do
       row :ask5_file
       row :updated_at
       row :created_at
-      row :encrypted_password
     end
   end
 
