@@ -31,8 +31,6 @@ $(function () {
   });
 });
 
-
-
 $(function() {
   pageName = $('div.boxed').data('name');
 
