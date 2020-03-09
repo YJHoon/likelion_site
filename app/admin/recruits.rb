@@ -13,7 +13,7 @@ ActiveAdmin.register Recruit do
     column :start_at
     column :end_at
     actions do |a|
-      link_to '지원서 리스트', admin_recruit_applies_path(a, recruit_id: id)
+      link_to '지원서 리스트', admin_recruit_applies_path(a)
     end
   end
 
