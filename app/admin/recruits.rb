@@ -13,7 +13,7 @@ ActiveAdmin.register Recruit do
     column :start_at
     column :end_at
     actions do |a|
-      link_to '지원서 리스트', admin_recruit_applies_path(a)
+      link_to '지원서 리스트', admin_recruit_applies_path(a, recruit_id: id)
     end
   end
 
@@ -35,8 +35,8 @@ ActiveAdmin.register Recruit do
   form do |f|
     f.inputs do
       f.input :member_num, as: :select, collection: Recruit.enum_selectors(:member_num)
-      f.input :start_at
-      f.input :end_at
+      f.input :start_at, as: :datetime_picker, input_html: { autocomplete: :off }
+      f.input :end_at, as: :datetime_picker, input_html: { autocomplete: :off }
       f.input :ask1_q
       f.input :ask2_q
       f.input :ask3_q

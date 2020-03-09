@@ -3,8 +3,6 @@ class SubmissionsController < ApplicationController
   before_action :load_assignment, except: %i[wish_toggle]
   before_action :load_submission, only: %i[show edit update destroy wish_toggle]
   before_action :check_ownership!, only: %i[edit update destroy]
-  before_action :check_finished, only: %i[new create edit update]
-
 
   def index
     if !current_user.mentor? && (@assignment.end_at > Time.zone.now)
@@ -35,21 +33,29 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    submission = @assignment.submissions.new(submission_params)
-    submission.user = current_user
-    submission.save!
+    if @assignment.end_at > Time.zone.now
+      submission = @assignment.submissions.new(submission_params)
+      submission.user = current_user
+      submission.save!
 
-    redirect_to assignment_path(@assignment)
+      redirect_to assignment_path(@assignment)
+    else
+      redirect_to root_path, alert: "과제 제출기한이 아닙니다. 운영진에게 문의하세요."
+    end
   end
 
   def edit
   end
 
   def update
-    if @assignment.update(set_params)
-      redirect_to assignment_submission_path(@assignment, @submission), notice: "과제가 성공적으로 수정되었습니다."
+    if @assignment.end_at > Time.zone.now
+      if @assignment.update(set_params)
+        redirect_to assignment_submission_path(@assignment, @submission), notice: "과제가 성공적으로 수정되었습니다."
+      else
+        redirect_to root_path, alert: "잘못 된 요청입니다."
+      end
     else
-      redirect_to root_path, alert: "잘못 된 요청입니다."
+      redirect_to root_path, alert: "과제 제출기한이 아닙니다. 운영진에게 문의하세요."
     end
   end
 
@@ -89,10 +95,5 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  def check_finished
-    if !current_user.mentor?
-      current_time = Time.zone.now
-      redirect_to root_path, alert: "과제 제출기한이 지났습니다. 운영진에게 문의하세요." if @assignment.end_at < current_time
-    end
-  end
+
 end

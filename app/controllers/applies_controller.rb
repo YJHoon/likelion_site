@@ -1,21 +1,30 @@
 class AppliesController < ApplicationController
   before_action :load_recruit
   before_action :load_apply, only: %i[edit update]
+  # before_action :check_finished, only: %i[new create edit update]
 
   def index
     @applies = Apply.all.ransack(name_eq: params[:name], email_eq: params[:email], student_id_eq: params[:student_id], phone_eq: params[:phone]).result(distinct: true) if params[:name].present? && params[:email].present?
   end
 
   def new
-    @apply = Apply.new
+    if @recruit.end_at > Time.zone.now
+      @apply = Apply.new
+    else
+      redirect_to recruit_path(@recruit), alert: "지원서 제출기한이 지났습니다. 운영진에게 문의하세요."
+    end
   end
 
   def create
-    @result = false
-    @apply = @recruit.applies.new(apply_params)
-    if @apply.save
-      @result = true
-      flash[:notice] = "지원서 작성을 완료했습니다."
+    if @recruit.end_at > Time.zone.now
+      @result = false
+      @apply = @recruit.applies.new(apply_params)
+      if @apply.save
+        @result = true
+        flash[:notice] = "지원서 작성을 완료했습니다."
+      end
+    else
+      redirect_to root_path, alert: "지원서 제출기한이 지났습니다. 운영진에게 문의하세요."
     end
   end
 
@@ -38,5 +47,12 @@ class AppliesController < ApplicationController
 
   def load_apply
     @apply = Apply.find(params[:id])
+  end
+
+  def check_finished
+    if !current_user.mentor?
+      current_time = Time.zone.now
+      redirect_to root_path, alert: "과제 제출기한이 지났습니다. 운영진에게 문의하세요." if @recruit.end_at > current_time
+    end
   end
 end

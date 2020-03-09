@@ -1,7 +1,6 @@
 ActiveAdmin.register Apply do
   belongs_to :recruit
 
-
   actions :all
   
   scope -> { '전체' }, :all
@@ -26,6 +25,7 @@ ActiveAdmin.register Apply do
   end
 
   show do
+    apply = Apply.find(params[:id])
     attributes_table do
       row :name
       row :email
@@ -38,7 +38,9 @@ ActiveAdmin.register Apply do
       row :ask3_a
       row :ask4_a
       row :ask5_a
-      row :ask5_file
+      row :ask5_file do
+        link_to "#{apply.ask5_file.file.original_filename}", apply.ask5_file.url, download: "#{apply.ask5_file.file.original_filename}"
+      end
       row :updated_at
       row :created_at
     end
