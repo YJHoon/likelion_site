@@ -1,7 +1,6 @@
 class AppliesController < ApplicationController
   before_action :load_recruit
   before_action :load_apply, only: %i[edit update check_apply]
-  # before_action :check_finished, only: %i[new create edit update]
 
   def index
     @applies = Apply.all.ransack(name_eq: params[:name], email_eq: params[:email], student_id_eq: params[:student_id], phone_eq: params[:phone]).result(distinct: true) if params[:name].present? && params[:email].present?
@@ -61,10 +60,4 @@ class AppliesController < ApplicationController
     @apply = Apply.find(params[:id])
   end
 
-  def check_finished
-    if !current_user.mentor?
-      current_time = Time.zone.now
-      redirect_to root_path, alert: "과제 제출기한이 지났습니다. 운영진에게 문의하세요." if @recruit.end_at > current_time
-    end
-  end
 end
