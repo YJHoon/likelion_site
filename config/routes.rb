@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -31,6 +30,9 @@ Rails.application.routes.draw do
   end
   resources :recruits, only: %i[index show] do 
     resources :applies do
+      member do
+        get :check_apply
+      end
     end
   end
   resources :comments

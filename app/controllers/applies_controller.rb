@@ -1,6 +1,6 @@
 class AppliesController < ApplicationController
   before_action :load_recruit
-  before_action :load_apply, only: %i[edit update]
+  before_action :load_apply, only: %i[edit update check_apply]
   # before_action :check_finished, only: %i[new create edit update]
 
   def index
@@ -11,7 +11,7 @@ class AppliesController < ApplicationController
     if @recruit.end_at > Time.zone.now && @recruit.start_at < Time.zone.now
       @apply = Apply.new
     else
-      redirect_to recruit_path(@recruit), alert: "지원서 제출기한이 지났습니다. 운영진에게 문의하세요."
+      redirect_to root_path, alert: "지원서 제출기한이 지났습니다. 운영진에게 문의하세요."
     end
   end
 
@@ -37,6 +37,14 @@ class AppliesController < ApplicationController
       redirect_to recruit_applies_path(@recruit), notice: "지원서 수정을 완료했습니다."
     else
       redirect_to root_path, alert: "지원서 제출기한이 지났습니다. 운영진에게 문의하세요."
+    end
+  end
+
+  def check_apply
+    @result = false
+    
+    if params[:apply][:student_id] == @apply.student_id
+      @result = true
     end
   end
 

@@ -15,10 +15,6 @@
             <%= text_field_tag :email, params[:email], required: true, class:"form-control mr-1" %><br>
           </div>
           <div class="form-group">
-            <%= label_tag :student_id, "학번:"%><br>
-            <%= text_field_tag :student_id, params[:student_id], required: true, class:"form-control mr-1" %><br>
-          </div>
-          <div class="form-group">
             <%= label_tag :phone, "전화번호:"%><br>
             <%= text_field_tag :phone, params[:phone], required: true, class:"form-control mr-1" %><br>
           </div>
@@ -34,7 +30,15 @@
               <div class="card-studentid"><%= apply.email %></div>
             </div>
             <div class="card-footer password-btn">
-              <%= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm after-btn" %>
+              <%#= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm after-btn" %>
+              <div class="password-form">
+                <%= form_for(Apply.new, url: check_apply_recruit_apply_path(@recruit, apply), method: :get, remote: true) do |f| %>
+                  <div class="form-group">
+                    <%= f.text_field :student_id, placeholder: "학번 입력", maxlength: 10, id: "apply-password-tag" %>
+                  </div>
+                  <%= f.submit "수정", class: "btn btn-primary", id: "password-submit-btn", style: "color: white;"%>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -54,5 +58,10 @@
   color: #f76707 !important;
   border-color: #f76707 !important;
   background-color: #fff !important;
+}
+
+#apply-password-tag{
+  border-radius:0px;
+  border-width: 0px;
 }
 </style>

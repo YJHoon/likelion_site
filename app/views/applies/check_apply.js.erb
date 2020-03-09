@@ -1,0 +1,5 @@
+<% if @result %> 
+  location.href = '<%= edit_recruit_apply_path(recruit_id: @recruit.id, id: @apply.id) %>'
+<% else %>
+  alert('일치하는 학번이 아닙니다.');
+<% end %>
