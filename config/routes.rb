@@ -7,8 +7,12 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
-  }
+    # registrations: 'users/registrations'
+  }, :skip => 'registration'
+    devise_scope :user do
+      get "/users/registration/edit", :to => "devise/registrations#edit",   :as => 'edit_user_registration'
+      put "/users/registration",        :to => "devise/registrations#update", :as => 'user_registration'
+    end
   
   get 'mypage' => 'users#mypage'
   get '/my_homeworks' => "home#my_homework"

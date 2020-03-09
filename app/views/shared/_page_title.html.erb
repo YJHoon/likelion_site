@@ -1,6 +1,8 @@
 <% title ||= "" %>
 <% subtitle ||= "" %>
-<section class="page-title parallax parallax6">
+
+<br><br><br>
+<section class="page-title parallax">
   <div class="title-heading">
     <div class="container">
       <div class="row">
@@ -8,10 +10,26 @@
           <div class="box-title color-black">
             <h1><%= title %></h1>
             <h2><%= subtitle %></h2>
+            <br><br><br>
           </div><!-- /.box-title -->
         </div><!-- /.col-md-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
   </div><!-- /.title-heading -->
-<div class="overlay-black"></div>
 </section><!-- /.page-title parallax -->
+
+
+<style>
+.page-title .container{
+  text-align: center;
+}
+  
+.page-title .box-title{
+  width: 80%;
+  margin: 0 auto;
+  border-bottom-color: #6c757d29 !important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+    
+}
+</style>

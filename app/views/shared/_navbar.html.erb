@@ -3,6 +3,10 @@
     <div class="logo">
       <%= link_to "DGULion", root_path %>
     </div>
+    <div class="get-quote float-right">
+        <% cls = (controller.controller_name == "home" && controller.action_name == "index") ? "white" : ""%>
+        <a href="https://www.facebook.com/DGUlion/" target="_blank" title="" class="<%= cls %>">문의하기</a>
+    </div>
     <div id="mainListDiv" class="main_list">
       <ul class="navlinks">
         <% if user_signed_in? %>
@@ -27,9 +31,6 @@
         <% else %>
           <li>
             <%= link_to "로그인", new_user_session_path %>
-          </li>
-          <li>
-            <%= link_to "회원가입", new_user_registration_path %>
           </li>
         <% end %>
       </ul>
@@ -87,6 +88,11 @@ body {
     line-height: 65px;
     text-align: center;
     z-index: 50;
+}
+.nav .container {
+    border-bottom-color: #6c757d29 !important;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 .nav div.logo {
