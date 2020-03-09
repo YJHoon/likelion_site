@@ -14,7 +14,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
 gem 'figaro'
-gem 'fog-aws'
+
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
@@ -25,8 +25,7 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
-gem 'simple_form'
-gem 'sqlite3', '~> 1.4'
+
 
 
 gem 'turbolinks', '~> 5'
