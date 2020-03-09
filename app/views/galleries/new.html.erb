@@ -30,11 +30,15 @@
                 <%= render "shared/errors", resource: @gallery %>
               </div>
 
-              <div class="btn-submit">
+              <div class="btn-submit" id="submit-button">
                 <button type="submit" class="bg-black">사진 올리기</button>
               </div>
+              <div id="spinner-button" class="btn-submit">
+                <button class="btn btn-primary" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+              </div>
             <% end %>
-
           </div>
         </div>
       </div>
@@ -44,6 +48,8 @@
 
 
 <script type="text/javascript">
+  $('#spinner-button').hide();
+
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -56,4 +62,11 @@
   $('input').on('change', function(){
     readURL(this);
   });
+
+
+  $('#submit-button').on("click",function() {
+    $('#submit-button').hide();
+    $('#spinner-button').show();
+  })
+  
 </script>

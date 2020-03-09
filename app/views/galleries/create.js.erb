@@ -2,4 +2,6 @@
   location.href = '/galleries'
 <% else %>
   $('.error-msg').html("<%= j(render 'shared/errors', resource: @gallery) %>");
+  $('#submit-button').show();
+  $('#spinner-button').hide();
 <% end %>

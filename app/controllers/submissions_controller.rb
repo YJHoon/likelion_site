@@ -29,16 +29,20 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    @submission = Submission.new
+    if @assignment.end_at > Time.zone.now && @assignment.start_at < Time.zone.now
+      @submission = Submission.new
+    else
+      redirect_to assignments_path, alert: "과제 제출기한이 아닙니다. 운영진에게 문의하세요."
+    end
   end
 
   def create
-    if @assignment.end_at > Time.zone.now
+    if @assignment.end_at > Time.zone.now && @assignment.start_at < Time.zone.now
       submission = @assignment.submissions.new(submission_params)
       submission.user = current_user
       submission.save!
 
-      redirect_to assignment_path(@assignment)
+      redirect_to assignments_path(@assignment)
     else
       redirect_to root_path, alert: "과제 제출기한이 아닙니다. 운영진에게 문의하세요."
     end
