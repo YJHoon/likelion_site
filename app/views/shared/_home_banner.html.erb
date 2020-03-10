@@ -15,7 +15,7 @@
                       <!-- LAYERS -->
                       <!-- LAYER NR. 12 -->
                       
-                      <% if @recruit.end_at > Time.zone.now %>
+                      <% if @recruit.present? && @recruit.end_at > Time.zone.now %>
                         <div class="tp-caption sub-title ff-2 white"
                             id="slide-3049-layer-1"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
