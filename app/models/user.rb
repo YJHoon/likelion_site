@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
 
   def image_url
-    thumbnail.url.present? ? thumbnail.url : "/images/dgu-logo.jpg"
+    thumbnail.url.present? ? thumbnail.url : "/images/dgulion.png"
   end
   
   def is_wish?(submission)

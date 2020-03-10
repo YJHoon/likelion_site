@@ -10,6 +10,6 @@ class Lecture < ApplicationRecord
   validates :content, presence: true
 
   def image_url
-    image.url.present? ? image.url : "/images/dgu-logo.jpg"
+    image.url.present? ? image.url : "/images/dgulion.png"
   end
 end

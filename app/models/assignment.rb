@@ -17,6 +17,6 @@ class Assignment < ApplicationRecord
   end
 
   def image_url
-    image.url.present? ? image.url(:thumb) : "/images/dgu-logo.jpg"
+    image.url.present? ? image.url(:thumb) : "/images/dgulion.png"
   end
 end

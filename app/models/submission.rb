@@ -16,6 +16,6 @@ class Submission < ApplicationRecord
   enum grade: [:normal, :idea, :great]
 
   def image_url
-    image.url.present? ? image.url : "/images/dgu-logo.jpg"
+    image.url.present? ? image.url : "/images/dgulion.png"
   end
 end
