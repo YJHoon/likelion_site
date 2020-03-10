@@ -14,5 +14,4 @@ class Apply < ApplicationRecord
   validates :ask3_a, presence: true
   validates :ask4_a, presence: true
   validates :ask5_a, presence: true
-
 end
