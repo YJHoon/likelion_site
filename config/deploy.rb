@@ -5,7 +5,6 @@ set :application, "likelion_site"
 set :repo_url, "git@github.com:YJHoon/likelion_site.git"
 set :deploy_to, "/home/ubuntu/likelion_site"
 
-append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default branch is :master
