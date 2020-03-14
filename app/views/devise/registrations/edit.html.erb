@@ -3,43 +3,44 @@
     <div class="row">
       <div class="col-md-12">
         <div class="wrap-sign-in center">
-        <h3>회원 정보 수정</h3>
-        <hr>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-
-          <div class="form-group">
-            <%= image_tag current_user.image_url, class: "represent_image", id: "represent_image_display", alt: "", style:"align: center;"%>
-            <%= f.file_field :image, id: 'image-update', style: "display: none;" %>
-            <label for="image-update" class="icon-upload">대표이미지 수정</label> <br>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, readonly: true, autocomplete: "off" %><br>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :password %> <i>(변경하고자 할 때만 작성하세요.)</i>
-            <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %><br />
-          </div>
-
-          <div class="form-group">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br />
-          </div>
-
-          <div class="form-group">
-            <%= f.label :current_password %> <i>(필수)</i>
-            <%= f.password_field :current_password, autocomplete: "current-password" %><br />
-          </div>
-
+          <h3>회원 정보 수정</h3>
           <hr>
-          
-          <div class="btn-submit">
-            <button type="submit" name="commit" class="bg-black" style="border-radius: 30px;">수정하기</button>
-          </div>
-        <% end %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="form-group">
+              <%= image_tag current_user.image_url, class: "represent_image", id: "represent_image_display", alt: "", style:"align: center;"%>
+              <%= f.file_field :image, id: 'image-update', style: "display: none;" %>
+              <label for="image-update" class="icon-upload">대표이미지 수정</label> <br>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, readonly: true, autocomplete: "off" %><br>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password %> <i>(변경하고자 할 때만 작성하세요.)</i>
+              <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %><br />
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br />
+            </div>
+
+            <div class="form-group">
+              <%= f.label :current_password %> <i>(필수)</i>
+              <%= f.password_field :current_password, autocomplete: "current-password" %><br />
+            </div>
+
+            <hr>
+            
+            <div class="btn-submit">
+              <button type="submit" name="commit" class="bg-black" style="border-radius: 30px;">수정하기</button>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -59,3 +60,9 @@
     readURL(this);
   });
 </script>
+
+<style>
+.wrap-sign-in{
+  padding-top:80px;
+}
+</style>

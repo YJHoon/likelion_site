@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="wrap-sign-in center">
           <h2>회원가입</h2>
-          <div class="divider50"></div>
+          <hr>
           <div class="form-sign-in">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
@@ -56,3 +56,9 @@
     </div>
   </div>
 </section>
+
+<style>
+.wrap-sign-in{
+  padding-top:80px;
+}
+</style>

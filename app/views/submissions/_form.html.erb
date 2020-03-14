@@ -3,7 +3,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="divider40"></div>
           <div class="wrap-sign-in center">
           <h3><%= ((action_name == 'new') ? assignment.title : submission.title) %></h3>
           <div class="form-sign-in">
@@ -38,9 +37,10 @@
 </section><!-- /.flat-singin -->
 
 <style>
-	
+.wrap-sign-in{
+  padding-top: 80px;
+}
 </style>
-
 <script type="text/javascript">
   function readURL(input) {
     if (input.files && input.files[0]) {

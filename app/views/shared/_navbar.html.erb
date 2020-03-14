@@ -4,8 +4,9 @@
       <%= link_to "DGULion", root_path %>
     </div>
     <div class="get-quote float-right">
-        <% cls = (controller.controller_name == "home" && controller.action_name == "index") ? "white" : ""%>
-        <a href="https://www.facebook.com/DGUlion/" target="_blank" title="" class="<%= cls %>">문의하기</a>
+        <% if (controller.controller_name == "home" && controller.action_name == "index") %>
+            <a href="https://www.facebook.com/DGUlion/" target="_blank" title="">문의하기</a>
+        <% end %>
     </div>
     <div id="mainListDiv" class="main_list">
       <ul class="navlinks">
@@ -19,14 +20,16 @@
           <li>
             <%= link_to "갤러리", galleries_path %>
           </li>
-          <li>
-            <a href="<%= my_homeworks_path %>" title="">내 과제</a>
-          </li>
-          <li>
-            <%= link_to "정보수정", edit_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            마이 페이지
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "내 과제", my_homeworks_path, class:"dropdown-item" %>
+                <%= link_to "정보수정", edit_user_registration_path, class:"dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            </div>
           </li>
         <% else %>
           <li>
