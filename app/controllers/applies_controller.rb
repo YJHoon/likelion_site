@@ -28,6 +28,10 @@ class AppliesController < ApplicationController
   end
 
   def edit
+    @student_id = params[:student_id]
+    if @apply.student_id != @student_id
+      redirect_to recruit_applies_path(@recruit)
+    end
   end
 
   def update
@@ -41,13 +45,14 @@ class AppliesController < ApplicationController
 
   def check_apply
     @result = false
-    
-    if params[:apply][:student_id] == @apply.student_id
+    @student_id = params[:apply][:student_id]
+    if @student_id == @apply.student_id
       @result = true
     end
   end
 
   private
+
   def apply_params
     params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :ask5_file)
   end

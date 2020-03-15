@@ -32,7 +32,7 @@
             <div class="card-footer password-btn">
               <%#= link_to "수정", edit_recruit_apply_path(@recruit, apply), class:"btn btn-secondary btn-sm after-btn" %>
               <div class="password-form">
-                <%= form_for(Apply.new, url: check_apply_recruit_apply_path(@recruit, apply), method: :get, remote: true) do |f| %>
+                <%= form_for(Apply.new, url: check_apply_recruit_apply_path(@recruit, apply, student_id: apply.student_id), method: :get, remote: true) do |f| %>
                   <div class="form-group">
                     <%= f.text_field :student_id, placeholder: "학번 입력", maxlength: 10, id: "apply-password-tag" %>
                   </div>
