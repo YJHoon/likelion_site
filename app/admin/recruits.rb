@@ -27,9 +27,8 @@ ActiveAdmin.register Recruit do
       row :ask3_q
       row :ask4_q
       row :ask5_q
-      row :ask6_q
-      row :ask7_q
-      row :ask8_q
+      row :additional_q1
+      row :additional_q2
       row :updated_at
       row :created_at
     end
@@ -45,9 +44,8 @@ ActiveAdmin.register Recruit do
       f.input :ask3_q
       f.input :ask4_q
       f.input :ask5_q
-      f.input :ask6_q
-      f.input :ask7_q
-      f.input :ask8_q
+      f.input :additional_q1
+      f.input :additional_q2
     end
     f.actions
   end

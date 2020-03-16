@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_130146) do
     t.string "ask6_a"
     t.string "ask7_a"
     t.string "ask8_a"
+    t.integer "additional_a1"
+    t.integer "additional_a2"
+    t.integer "additional_a3"
     t.index ["recruit_id"], name: "index_applies_on_recruit_id"
   end
 
@@ -128,6 +131,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_130146) do
     t.string "ask6_q"
     t.string "ask7_q"
     t.string "ask8_q"
+    t.string "additional_q1"
+    t.string "additional_q2"
+    t.string "additional_q3"
   end
 
   create_table "submissions", force: :cascade do |t|

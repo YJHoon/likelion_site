@@ -74,44 +74,24 @@
                 </div><br>
               <% end %>
 
-              <% if @recruit.ask6_q && @recruit.ask6_q != "" %>
+              <% if @recruit.additional_q1 && @recruit.additional_q1 != "" %>
                 <div class="form-group">
-                  <label>질문6. <%= @recruit.ask6_q %></label><br><br>
-                  <div class="participation">
-                    <%= f.radio_button :ask6_a, "참여" %>
-                    <%= f.label :ask6_a, "참여", value: "참여" %>
-                  </div>
-                  
-                  <div class="not-participation">
-                    <%= f.radio_button :ask6_a, "불참" %>
-                    <%= f.label :ask6_a, "불참", value: "불참" %>
-                  </div>
+                  <label>질문6. <%= @recruit.additional_q1 %></label><br>
+                  <% Apply.additional_a1s.keys.each do |key| %>
+                    <%= f.radio_button :additional_a1, key %>
+                    <%= f.label key.to_sym %><br>
+                  <% end %>
 
-                  <div class="late-participation">
-                    <%= f.radio_button :ask6_a, "늦참" %>
-                    <%= f.label :ask6_a, "늦참", value: "늦참" %>
-                  </div>
                 </div><br>
               <% end %>
 
-              <% if @recruit.ask7_q && @recruit.ask7_q != "" %>
+              <% if @recruit.additional_q2 && @recruit.additional_q2 != "" %>
                 <div class="form-group">
-                  <label>질문7. <%= @recruit.ask7_q %></label>
-                  <%= f.select :ask7_a, options_for_select(["참여", "불참", "늦참"], apply.ask7_a), include_blank: true %>
-                  <div class="participation">
-                    <%= f.radio_button :ask7_a, "참여"%>
-                    <%= f.label :ask7_a, "참여", value: "참여" %>
-                  </div>
-                  
-                  <div class="not-participation">
-                    <%= f.radio_button :ask7_a, "불참" %>
-                    <%= f.label :ask7_a, "불참", value: "불참" %>
-                  </div>
-
-                  <div class="late-participation">
-                    <%= f.radio_button :ask7_a, "늦참" %>
-                    <%= f.label :ask7_a, "늦참", value: "늦참" %>
-                  </div>
+                  <label>질문7. <%= @recruit.additional_q2 %></label><br>
+                  <% Apply.additional_a2s.keys.each do |key| %>
+                    <%= f.radio_button :additional_a2, key %>
+                    <%= f.label key.to_sym %><br>
+                  <% end %>
                 </div><br>
               <% end %>
 

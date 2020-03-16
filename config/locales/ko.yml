@@ -27,7 +27,9 @@ ko:
     description: 설명
     url: "URL"
     grade: 추천 수
-
+    not: 불참
+    participation: 참여
+    late: 늦참
 
 
 
@@ -81,6 +83,8 @@ ko:
         ask6_q: 질문 6
         ask7_q: 질문 7
         ask8_q: 질문 8
+        additional_q1: 추가 질문 1
+        additional_q2: 추가 질문 2
       apply:
         name: 이름
         email: 이메일
@@ -97,6 +101,8 @@ ko:
         ask7_a: 답변 7
         ask8_a: 답변 8
         ask5_file: 파일 5
+        additional_a1: 추가 답변 1
+        additional_a2: 추가 답변 2
     models:
       admin_user: 어드민
       assignment: 과제
@@ -341,3 +347,12 @@ ko:
         normal: 노말
         idea: 아이디어
         great: 우수
+    apply:
+      additional_a1:
+        participation: 참여
+        not: 불참
+        late: 늦참
+      additional_a2:
+        participation: 참여
+        not: 불참
+        late: 늦참

@@ -41,9 +41,24 @@ ActiveAdmin.register Apply do
       row :ask5_file do
         link_to "#{apply.ask5_file.file.original_filename}", apply.ask5_file.url, download: "#{apply.ask5_file.file.original_filename}"
       end if apply.ask5_file.present?
-      row :ask6_a
-      row :ask7_a
-      row :ask8_a
+      tag_row "#{I18n.t("activerecord.attributes.apply.additional_a1")}" do |apply|
+        if apply.additional_a1 == "participation"
+          "참여"
+        elsif apply.additional_a1 == "not"
+          "불참"
+        else
+          "늦참"
+        end
+      end
+      tag_row "#{I18n.t("activerecord.attributes.apply.additional_a2")}" do |apply|
+        if apply.additional_a2 == "participation"
+          "참여"
+        elsif apply.additional_a2 == "not"
+          "불참"
+        else
+          "늦참"
+        end
+      end
 
       row :updated_at
       row :created_at
@@ -65,9 +80,8 @@ ActiveAdmin.register Apply do
       f.input :ask4_a
       f.input :ask5_a
       f.input :ask5_file
-      f.input :ask6_a
-      f.input :ask7_a
-      f.input :ask8_a
+      f.input :additional_a1, as: :select, collection: Apply.enum_selectors(:additional_a1)
+      f.input :additional_a2, as: :select, collection: Apply.enum_selectors(:additional_a2)
     end
     f.actions
     
