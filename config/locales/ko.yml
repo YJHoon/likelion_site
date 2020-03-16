@@ -105,7 +105,7 @@ ko:
         additional2_a: 추가 답변 2
     models:
       admin_user: 어드민
-      assignment:2과제
+      assignment: 과제
       submission: 과제 제출
       lecture: 강의노트
       gallery: 갤러리
@@ -352,7 +352,7 @@ ko:
         participation: 참여
         not: 불참
         late: 늦참
-      additional2_a:
+      additional1_a:
         participation: 참여
         not: 불참
         late: 늦참
