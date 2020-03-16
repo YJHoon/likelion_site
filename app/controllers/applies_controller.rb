@@ -57,7 +57,7 @@ class AppliesController < ApplicationController
   private
 
   def apply_params
-    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :additional_a1, :additional_a2, :ask5_file)
+    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :additional1_a, :additional2_a, :ask5_file)
   end
 
   def load_recruit

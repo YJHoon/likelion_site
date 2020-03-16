@@ -83,8 +83,8 @@ ko:
         ask6_q: 질문 6
         ask7_q: 질문 7
         ask8_q: 질문 8
-        additional_q1: 추가 질문 1
-        additional_q2: 추가 질문 2
+        additional1_q: 추가 질문 1
+        additional2_q: 추가 질문 2
       apply:
         name: 이름
         email: 이메일
@@ -101,11 +101,11 @@ ko:
         ask7_a: 답변 7
         ask8_a: 답변 8
         ask5_file: 파일 5
-        additional_a1: 추가 답변 1
-        additional_a2: 추가 답변 2
+        additional1_a: 추가 답변 1
+        additional2_a: 추가 답변 2
     models:
       admin_user: 어드민
-      assignment: 과제
+      assignment:2과제
       submission: 과제 제출
       lecture: 강의노트
       gallery: 갤러리
@@ -348,11 +348,11 @@ ko:
         idea: 아이디어
         great: 우수
     apply:
-      additional_a1:
+      additional1_a:
         participation: 참여
         not: 불참
         late: 늦참
-      additional_a2:
+      additional2_a:
         participation: 참여
         not: 불참
         late: 늦참

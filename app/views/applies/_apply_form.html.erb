@@ -74,22 +74,22 @@
                 </div><br>
               <% end %>
 
-              <% if @recruit.additional_q1 && @recruit.additional_q1 != "" %>
+              <% if @recruit.additional1_q && @recruit.additional1_q != "" %>
                 <div class="form-group">
-                  <label>질문6. <%= @recruit.additional_q1 %></label><br>
-                  <% Apply.additional_a1s.keys.each do |key| %>
-                    <%= f.radio_button :additional_a1, key %>
+                  <label>질문6. <%= @recruit.additional1_q %></label><br>
+                  <% Apply.additional1_as.keys.each do |key| %>
+                    <%= f.radio_button :additional1_a, key %>
                     <%= f.label key.to_sym %><br>
                   <% end %>
                   
                 </div><br>
               <% end %>
 
-              <% if @recruit.additional_q2 && @recruit.additional_q2 != "" %>
+              <% if @recruit.additional2_q && @recruit.additional2_q != "" %>
                 <div class="form-group">
-                  <label>질문7. <%= @recruit.additional_q2 %></label><br>
-                  <% Apply.additional_a2s.keys.each do |key| %>
-                    <%= f.radio_button :additional_a2, key %>
+                  <label>질문7. <%= @recruit.additional2_q %></label><br>
+                  <% Apply.additional2_as.keys.each do |key| %>
+                    <%= f.radio_button :additional2_a, key %>
                     <%= f.label key.to_sym %><br>
                   <% end %>
                 </div><br>

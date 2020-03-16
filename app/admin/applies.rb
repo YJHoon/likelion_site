@@ -41,19 +41,19 @@ ActiveAdmin.register Apply do
       row :ask5_file do
         link_to "#{apply.ask5_file.file.original_filename}", apply.ask5_file.url, download: "#{apply.ask5_file.file.original_filename}"
       end if apply.ask5_file.present?
-      tag_row "#{I18n.t("activerecord.attributes.apply.additional_a1")}" do |apply|
-        if apply.additional_a1 == "participation"
+      tag_row "#{I18n.t("activerecord.attributes.apply.additional1_a")}" do |apply|
+        if apply.additional2_a == "participation"
           "참여"
-        elsif apply.additional_a1 == "not"
+        elsif apply.additional2_a == "not"
           "불참"
         else
           "늦참"
         end
       end
-      tag_row "#{I18n.t("activerecord.attributes.apply.additional_a2")}" do |apply|
-        if apply.additional_a2 == "participation"
+      tag_row "#{I18n.t("activerecord.attributes.apply.additional2_a")}" do |apply|
+        if apply.additional2_a == "participation"
           "참여"
-        elsif apply.additional_a2 == "not"
+        elsif apply.additional2_a == "not"
           "불참"
         else
           "늦참"
@@ -80,8 +80,8 @@ ActiveAdmin.register Apply do
       f.input :ask4_a
       f.input :ask5_a
       f.input :ask5_file
-      f.input :additional_a1, as: :select, collection: Apply.enum_selectors(:additional_a1)
-      f.input :additional_a2, as: :select, collection: Apply.enum_selectors(:additional_a2)
+      f.input :additional1_a, as: :select, collection: Apply.enum_selectors(:additional1_a)
+      f.input :additional2_a, as: :select, collection: Apply.enum_selectors(:additional2_a)
     end
     f.actions
     
