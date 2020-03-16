@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_060047) do
+ActiveRecord::Schema.define(version: 2020_03_16_130146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,9 @@ ActiveRecord::Schema.define(version: 2020_03_02_060047) do
     t.string "ask5_file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ask6_a"
+    t.string "ask7_a"
+    t.string "ask8_a"
     t.index ["recruit_id"], name: "index_applies_on_recruit_id"
   end
 
@@ -122,6 +125,9 @@ ActiveRecord::Schema.define(version: 2020_03_02_060047) do
     t.string "ask5_q"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ask6_q"
+    t.string "ask7_q"
+    t.string "ask8_q"
   end
 
   create_table "submissions", force: :cascade do |t|

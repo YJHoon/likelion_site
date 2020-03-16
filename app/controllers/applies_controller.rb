@@ -35,9 +35,12 @@ class AppliesController < ApplicationController
   end
 
   def update
+    @result = false
     if @recruit.end_at > Time.zone.now && @recruit.start_at < Time.zone.now
-      @apply.update(apply_params)
-      redirect_to recruit_applies_path(@recruit), notice: "지원서 수정을 완료했습니다."
+      if @apply.update(apply_params)
+        @result = true
+        flash[:notice] = "지원서 수정을 완료했습니다."
+      end
     else
       redirect_to root_path, alert: "지원서 제출기한이 지났습니다. 운영진에게 문의하세요."
     end
@@ -54,7 +57,7 @@ class AppliesController < ApplicationController
   private
 
   def apply_params
-    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :ask5_file)
+    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :ask6_a, :ask7_a, :ask5_file)
   end
 
   def load_recruit

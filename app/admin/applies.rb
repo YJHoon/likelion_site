@@ -40,7 +40,11 @@ ActiveAdmin.register Apply do
       row :ask5_a
       row :ask5_file do
         link_to "#{apply.ask5_file.file.original_filename}", apply.ask5_file.url, download: "#{apply.ask5_file.file.original_filename}"
-      end
+      end if apply.ask5_file.present?
+      row :ask6_a
+      row :ask7_a
+      row :ask8_a
+
       row :updated_at
       row :created_at
     end
@@ -61,6 +65,9 @@ ActiveAdmin.register Apply do
       f.input :ask4_a
       f.input :ask5_a
       f.input :ask5_file
+      f.input :ask6_a
+      f.input :ask7_a
+      f.input :ask8_a
     end
     f.actions
     
