@@ -8,23 +8,12 @@
 			</div>
 		</div>
 		<div class="row">
-      <% @users.each do |user| %>
-        <div class="col-md-3 col-sm-6 col-xs-6 col-lg-3">
-          <div class="team-member style4">
-            <div class="avatar">
-              <%= image_tag("#{ user.image_url }")%>
-            </div>
-            <div class="info">
-              <div class="name">
-                <%= user.name %>
-              </div>
-              <div class="option">
-                <%= user.enum_ko(:mentor_type) %>
-              </div>
-            </div>
-          </div><!-- /.team-member style4 -->
-        </div><!-- /.col-md-3 col-sm-6 -->
-			<% end %>
+      <%= render "shared/mentor_type", users: @president %>
+      <%= render "shared/mentor_type", users: @vice_president %>
+      <%= render "shared/mentor_type", users: @education %>
+      <%= render "shared/mentor_type", users: @promotion %>
+      <%= render "shared/mentor_type", users: @HI_SW %>
+      <%= render "shared/mentor_type", users: @affairs %>
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </section><!-- /.flat-team -->
