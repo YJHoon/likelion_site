@@ -69,7 +69,7 @@
               <% if @recruit.ask5_q && @recruit.ask5_q != "" %>
                 <div class="form-group">
                   <label>질문5. <%= @recruit.ask5_q %></label>
-                  <%= f.text_area :ask5_a, required: true %>
+                  <%= f.text_area :ask5_a %>
                   <%= f.file_field :ask5_file %>
                 </div><br>
               <% end %>
