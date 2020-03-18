@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       get "/users/registration/edit", :to => "devise/registrations#edit",   :as => 'edit_user_registration'
       put "/users/registration",        :to => "devise/registrations#update", :as => 'user_registration'
     end
-  
+
+  get "test_exception_notifier" => "application#test_exception_notifier"
   get 'mypage' => 'users#mypage'
   get '/my_homeworks' => "home#my_homework"
 

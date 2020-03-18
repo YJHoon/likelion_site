@@ -10,6 +10,23 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    email_prefix: '[DGULION ERROR] ',
+    sender_address: %{"notifier" <notifier@example.com>},
+    exception_recipients: %w{yjhoon0816@gmail.com}
+  }
+
+  config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i -t'
+  # }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
