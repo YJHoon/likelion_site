@@ -41,7 +41,7 @@
               <% if @recruit.ask1_q && @recruit.ask1_q != "" %>
                 <div class="form-group">
                   <label>질문1. <%= @recruit.ask1_q %></label>
-                  <%= f.text_area :ask1_a, class: "question-text", required: true %>
+                  <%= f.text_area :ask1_a, required: true %>
                 </div><br>
               <% end %>
 
@@ -69,7 +69,7 @@
               <% if @recruit.ask5_q && @recruit.ask5_q != "" %>
                 <div class="form-group">
                   <label>질문5. <%= @recruit.ask5_q %></label>
-                  <%= f.text_area :ask5_a, class: "question-text" %>
+                  <%= f.text_area :ask5_a %>
                   <%= f.file_field :ask5_file %>
                 </div><br>
               <% end %>
