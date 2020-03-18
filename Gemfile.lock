@@ -141,6 +141,9 @@ GEM
     devise-i18n (1.9.0)
       devise (>= 4.7.1)
     erubi (1.9.0)
+    exception_notification (4.4.0)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
     excon (0.72.0)
     execjs (2.7.0)
     ffi (1.12.2)
@@ -376,6 +379,7 @@ DEPENDENCIES
   carrierwave
   devise
   devise-i18n
+  exception_notification
   figaro
   font-awesome-rails
   jbuilder (~> 2.7)
