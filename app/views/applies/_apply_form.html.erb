@@ -41,35 +41,35 @@
               <% if @recruit.ask1_q && @recruit.ask1_q != "" %>
                 <div class="form-group">
                   <label>질문1. <%= @recruit.ask1_q %></label>
-                  <%= f.text_area :ask1_a, required: true %>
+                  <%= f.text_area :ask1_a, class: "question-text", required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask2_q && @recruit.ask2_q != "" %>
                 <div class="form-group">
                   <label>질문2. <%= @recruit.ask2_q %> (700자 이내)</label>
-                  <%= f.text_area :ask2_a, required: true %>
+                  <%= f.text_area :ask2_a, class: "question-text", required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask3_q && @recruit.ask3_q != "" %>
                 <div class="form-group">
                   <label>질문3. <%= @recruit.ask3_q %></label>
-                  <%= f.text_area :ask3_a, required: true %>
+                  <%= f.text_area :ask3_a, class: "question-text", required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask4_q && @recruit.ask4_q != "" %>
                 <div class="form-group">
                   <label>질문4. <%= @recruit.ask4_q %></label>
-                  <%= f.text_area :ask4_a, required: true %>
+                  <%= f.text_area :ask4_a, class: "question-text", required: true %>
                 </div><br>
               <% end %>
 
               <% if @recruit.ask5_q && @recruit.ask5_q != "" %>
                 <div class="form-group">
                   <label>질문5. <%= @recruit.ask5_q %></label>
-                  <%= f.text_area :ask5_a %>
+                  <%= f.text_area :ask5_a, class: "question-text" %>
                   <%= f.file_field :ask5_file %>
                 </div><br>
               <% end %>
@@ -114,5 +114,9 @@
 <style>
 .wrap-sign-in{
   padding-top:80px;
+}
+
+.form-group .question-text{
+  height: 500px;
 }
 </style>
