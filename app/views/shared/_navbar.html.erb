@@ -20,11 +20,11 @@
           <li>
             <%= link_to "갤러리", galleries_path %>
           </li>
-          <li class="dropdown">
+          <li class="dropdown" id="cleary">
             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             마이 페이지
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
                 <%= link_to "내 과제", my_homeworks_path, class:"dropdown-item" %>
                 <%= link_to "정보수정", edit_user_registration_path, class:"dropdown-item" %>
                 <div class="dropdown-divider"></div>
@@ -53,22 +53,42 @@
 
 <!-- Function used to shrink nav bar removing paddings and adding black background -->
 <script>
-  $(window).scroll(function() {
-    if ($(document).scrollTop() > 50) {
-      $('.nav').addClass('affix');
-      $('.nav').removeClass('bffix');
-      
-    } else {
-      $('.nav').addClass('bffix');
-      $('.nav').removeClass('affix');
-    }
-  });
-    $(function() {
-    $(".alert").fadeTo(2000, 500).slideUp(500);
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 50) {
+            $('.nav').addClass('affix');
+            $('.nav').removeClass('bffix'); 
+        } else {
+            $('.nav').addClass('bffix');
+            $('.nav').removeClass('affix');
+        }
     });
+    $(function() {
+        $(".alert").fadeTo(2000, 500).slideUp(500);
+        });
+    $('#cleary').on("click", function() {
+        if ($("#cleary").hasClass('show')) {
+            $('#cleary').removeClass('show');
+            $('#dropdownMenu').removeClass('show');
+            $("#navbarDropdown").attr("aria-expanded","false");
+        } else {
+            $('#cleary').addClass('show');
+            $('#dropdownMenu').addClass('show');
+            $("#navbarDropdown").attr("aria-expanded","true");
+        }
+    });
+
+  
 </script>
 
 <style>
+
+/* The container <div> - needed to position the dropdown content */
+
+
+
+
+
+
    @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
 html,
 body {
@@ -82,6 +102,9 @@ body {
 /* --> https://codepen.io/abdosteif/pen/bRoyMb?editors=1100*/
 
 /* Navbar section */
+.dropdown .show a{
+    padding: 0 auto;
+}
 
 .nav {
     width: 100%;
@@ -116,7 +139,7 @@ body {
 }
 
 .bffix div.logo a:hover {
-    color: #f76705;
+    color: #fff;
 }
 
 
@@ -144,7 +167,7 @@ body {
 .nav div.main_list ul li a {
     text-decoration: none;
     color: #111;
-    line-height: 65px;
+    line-height: 40px;
     font-size: 1.3rem;
 }
 
@@ -206,12 +229,13 @@ body {
     
     .nav div.main_list ul {
         flex-direction: column;
-        width: 100%;
+        width: 30%;
         height: 100vh;
+        float: right;
         right: 0;
         left: 0;
         bottom: 0;
-        background-color: #f76707;
+        background-color: #f76705;
         /*same background color of navbar*/
         background-position: center top;
     }
@@ -223,7 +247,7 @@ body {
         text-align: center;
         width: 100%;
         font-size: 1rem;
-        padding: 20px;
+        padding: 0 20px;
     }
 
     .affix div.main_list ul li a {
@@ -233,7 +257,7 @@ body {
         color: #fff;
     }
     .bffix div.main_list ul li a:hover{
-        color: #fff;
+        color: #f76705;
     }
 
     .nav div.media_button {

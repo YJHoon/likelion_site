@@ -26,6 +26,9 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
+
+gem 'sendgrid-actionmailer'
+gem 'sendgrid-ruby'
 gem 'exception_notification'
 
 
