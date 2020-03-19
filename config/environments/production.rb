@@ -22,6 +22,7 @@ Rails.application.configure do
     exception_recipients: %w{yjhoon0816@gmail.com}
   }
 
+  config.action_mailer.default_url_options = { :host => "dgulion.com" }
   config.action_mailer.delivery_method = :sendgrid_actionmailer
   config.action_mailer.sendgrid_actionmailer_settings = {
     api_key: ENV["SENDGRID_API_KEY"]
