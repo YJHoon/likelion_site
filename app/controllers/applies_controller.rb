@@ -18,7 +18,7 @@ class AppliesController < ApplicationController
     if @recruit.end_at > Time.zone.now && @recruit.start_at < Time.zone.now
       @result = false
       @apply = @recruit.applies.new(apply_params)
-      
+
       if @apply.recruit.ask1_type == "multi_choice"
         params[:apply][:ask1_a].delete('0')
         @apply.ask1_a = params[:apply][:ask1_a].join(',')
@@ -99,7 +99,7 @@ class AppliesController < ApplicationController
   private
 
   def apply_params
-    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :additional1_a, :additional2_a, :ask5_file, ask6_a: [], ask7_a: [])
+    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :ask6_a, :ask7_a, :ask8_a, :ask9_a, :ask10_a, :additional1_a, :additional2_a, :ask5_file)
   end
 
   def load_recruit
