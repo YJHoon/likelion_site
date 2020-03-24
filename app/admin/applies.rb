@@ -71,31 +71,31 @@ ActiveAdmin.register Apply do
     end
   end
 
-  # form do |f|
-  #   f.inputs do
-  #     f.input :recruit
-  #     f.input :name
-  #     f.input :email
-  #     f.input :phone
-  #     f.input :major
-  #     f.input :student_id
-  #     f.input :grade
-  #     f.input :ask1_a
-  #     f.input :ask2_a
-  #     f.input :ask3_a
-  #     f.input :ask4_a
-  #     f.input :ask5_a
-  #     f.input :ask6_a
-  #     f.input :ask7_a
-  #     f.input :ask8_a
-  #     f.input :ask9_a
-  #     f.input :ask10_file
-  #     f.input :additional1_a, as: :select, collection: Apply.enum_selectors(:additional1_a)
-  #     f.input :additional2_a, as: :select, collection: Apply.enum_selectors(:additional2_a)
-  #     f.input :additional2_a, as: :select, collection: Apply.enum_selectors(:additional3_a)
-  #   end
-  #   f.actions
-  # end
+  form do |f|
+    f.inputs do
+      f.input :recruit
+      f.input :name
+      f.input :email
+      f.input :phone
+      f.input :major
+      f.input :student_id
+      f.input :grade
+      f.input :ask1_a
+      f.input :ask2_a
+      f.input :ask3_a
+      f.input :ask4_a
+      f.input :ask5_a
+      f.input :ask6_a
+      f.input :ask7_a
+      f.input :ask8_a
+      f.input :ask9_a
+      f.input :ask10_file
+      f.input :additional1_a, as: :select, collection: Apply.enum_selectors(:additional1_a)
+      f.input :additional2_a, as: :select, collection: Apply.enum_selectors(:additional2_a)
+      f.input :additional2_a, as: :select, collection: Apply.enum_selectors(:additional3_a)
+    end
+    f.actions
+  end
   
   
 end
