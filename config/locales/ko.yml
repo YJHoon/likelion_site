@@ -83,6 +83,28 @@ ko:
         ask6_q: 질문 6
         ask7_q: 질문 7
         ask8_q: 질문 8
+        ask9_q: 질문 9
+        ask10_q: 질문 10
+        ask1_type: 질문타입 1
+        ask2_type: 질문타입 2
+        ask3_type: 질문타입 3
+        ask4_type: 질문타입 4
+        ask5_type: 질문타입 5
+        ask6_type: 질문타입 6
+        ask7_type: 질문타입 7
+        ask8_type: 질문타입 8
+        ask9_type: 질문타입 9
+        ask10_type: 질질문타입10
+        ask1_choices: 선택지 1
+        ask2_choices: 선택지 2
+        ask3_choices: 선택지 3
+        ask4_choices: 선택지 4
+        ask5_choices: 선택지 5
+        ask6_choices: 선택지 6
+        ask7_choices: 선택지 7
+        ask8_choices: 선택지 8
+        ask9_choices: 선택지 9
+        ask10_choices: 선택지 10
         additional1_q: 추가 질문 1
         additional2_q: 추가 질문 2
       apply:
@@ -100,7 +122,18 @@ ko:
         ask6_a: 답변 6
         ask7_a: 답변 7
         ask8_a: 답변 8
+        ask9_a: 답변 9
+        ask10_a: 답변 10
+        ask1_file: 파일 1
+        ask2_file: 파일 2
+        ask3_file: 파일 3
+        ask4_file: 파일 4
         ask5_file: 파일 5
+        ask6_file: 파일 6
+        ask7_file: 파일 7
+        ask8_file: 파일 8
+        ask9_file: 파일 9
+        ask10_file: 파일 10
         additional1_a: 추가 답변 1
         additional2_a: 추가 답변 2
     models:

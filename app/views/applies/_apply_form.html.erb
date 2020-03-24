@@ -38,41 +38,16 @@
                 <%= f.text_field :grade, required: true %>
               </div><br><br>
 
-              <% if @recruit.ask1_q && @recruit.ask1_q != "" %>
-                <div class="form-group">
-                  <label>질문1. <%= @recruit.ask1_q %></label>
-                  <%= f.text_area :ask1_a, required: true %>
-                </div><br>
-              <% end %>
-
-              <% if @recruit.ask2_q && @recruit.ask2_q != "" %>
-                <div class="form-group">
-                  <label>질문2. <%= @recruit.ask2_q %> (700자 이내)</label>
-                  <%= f.text_area :ask2_a, class: "question-text", required: true %>
-                </div><br>
-              <% end %>
-
-              <% if @recruit.ask3_q && @recruit.ask3_q != "" %>
-                <div class="form-group">
-                  <label>질문3. <%= @recruit.ask3_q %></label>
-                  <%= f.text_area :ask3_a, class: "question-text", required: true %>
-                </div><br>
-              <% end %>
-
-              <% if @recruit.ask4_q && @recruit.ask4_q != "" %>
-                <div class="form-group">
-                  <label>질문4. <%= @recruit.ask4_q %></label>
-                  <%= f.text_area :ask4_a, class: "question-text", required: true %>
-                </div><br>
-              <% end %>
-
-              <% if @recruit.ask5_q && @recruit.ask5_q != "" %>
-                <div class="form-group">
-                  <label>질문5. <%= @recruit.ask5_q %></label>
-                  <%= f.text_area :ask5_a %>
-                  <%= f.file_field :ask5_file %>
-                </div><br>
-              <% end %>
+              <%= render 'form', ask_q: @recruit.ask1_q, f: f, title: "질문 1.", ask_a: :ask1_a, ask_type: @recruit.ask1_type, ask_choices: @recruit.ask1_choices, ask_file: :ask1_file, required: true %>
+              <%= render 'form', ask_q: @recruit.ask2_q, f: f, title: "질문 2.", ask_a: :ask2_a, ask_type: @recruit.ask2_type, ask_choices: @recruit.ask2_choices, ask_file: :ask2_file, required: true, _class: "question-text" %>
+              <%= render 'form', ask_q: @recruit.ask3_q, f: f, title: "질문 3.", ask_a: :ask3_a, ask_type: @recruit.ask3_type, ask_choices: @recruit.ask3_choices, ask_file: :ask3_file, required: true, _class: "question-text" %>
+              <%= render 'form', ask_q: @recruit.ask4_q, f: f, title: "질문 4.", ask_a: :ask4_a, ask_type: @recruit.ask4_type, ask_choices: @recruit.ask4_choices, ask_file: :ask4_file, required: true, _class: "question-text" %>
+              <%= render 'form', ask_q: @recruit.ask5_q, f: f, title: "질문 5.", ask_a: :ask5_a, ask_type: @recruit.ask5_type, ask_choices: @recruit.ask5_choices, ask_file: :ask5_file %>
+              <%= render 'form', ask_q: @recruit.ask6_q, f: f, title: "질문 6.", ask_a: :ask6_a, ask_type: @recruit.ask6_type, ask_choices: @recruit.ask6_choices, ask_file: :ask6_file %>
+              <%= render 'form', ask_q: @recruit.ask7_q, f: f, title: "질문 7.", ask_a: :ask7_a, ask_type: @recruit.ask7_type, ask_choices: @recruit.ask7_choices, ask_file: :ask7_file %>
+              <%= render 'form', ask_q: @recruit.ask8_q, f: f, title: "질문 8.", ask_a: :ask8_a, ask_type: @recruit.ask8_type, ask_choices: @recruit.ask8_choices, ask_file: :ask8_file %>
+              <%= render 'form', ask_q: @recruit.ask9_q, f: f, title: "질문 9.", ask_a: :ask9_a, ask_type: @recruit.ask9_type, ask_choices: @recruit.ask9_choices, ask_file: :ask9_file %>
+              <%= render 'form', ask_q: @recruit.ask10_q, f: f, title: "질문 10.", ask_a: :ask10_a, ask_type: @recruit.ask10_type, ask_choices: @recruit.ask10_choices, ask_file: :ask10_file %>
 
               <% if @recruit.additional1_q && @recruit.additional1_q != "" %>
                 <div class="form-group">
@@ -99,7 +74,7 @@
                 <%= render "shared/errors", resource: apply %>
               </div>
 
-              <div class="btn-contact-form center">
+              <div class="btn-form-group center">
                 <button type="submit" class="flat-button-form" id="apply_submit_button" data-confirm= "제출하시겠습니까?">제출하기</button>
               </div>
 
@@ -119,4 +94,5 @@
 .form-group .question-text{
   height: 500px;
 }
+
 </style>

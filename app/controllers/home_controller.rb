@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @promotion = User.where(mentor_type: "promotion")
     @HI_SW = User.where(mentor_type: "HI_SW")
     @affairs = User.where(mentor_type: "affairs")
+    
     recruit = Recruit.last if Recruit.last.present?
     if recruit.present? && recruit.start_at < Time.zone.now && recruit.end_at > Time.zone.now
       @recruit = recruit

@@ -18,6 +18,48 @@ class AppliesController < ApplicationController
     if @recruit.end_at > Time.zone.now && @recruit.start_at < Time.zone.now
       @result = false
       @apply = @recruit.applies.new(apply_params)
+      
+      if @apply.recruit.ask1_type == "multi_choice"
+        params[:apply][:ask1_a].delete('0')
+        @apply.ask1_a = params[:apply][:ask1_a].join(',')
+      end
+      if @apply.recruit.ask2_type == "multi_choice"
+        params[:apply][:ask2_a].delete('0')
+        @apply.ask2_a = params[:apply][:ask2_a].join(',')
+      end
+      if @apply.recruit.ask3_type == "multi_choice"
+        params[:apply][:ask3_a].delete('0')
+        @apply.ask3_a = params[:apply][:ask3_a].join(',')
+      end
+      if @apply.recruit.ask4_type == "multi_choice"
+        params[:apply][:ask4_a].delete('0')
+        @apply.ask4_a = params[:apply][:ask4_a].join(',')
+      end
+      if @apply.recruit.ask5_type == "multi_choice"
+        params[:apply][:ask5_a].delete('0')
+        @apply.ask5_a = params[:apply][:ask5_a].join(',')
+      end
+      if @apply.recruit.ask6_type == "multi_choice"
+        params[:apply][:ask6_a].delete('0')
+        @apply.ask6_a = params[:apply][:ask6_a].join(',')
+      end
+      if @apply.recruit.ask7_type == "multi_choice"
+        params[:apply][:ask7_a].delete('0')
+        @apply.ask7_a = params[:apply][:ask7_a].join(',')
+      end
+      if @apply.recruit.ask8_type == "multi_choice"
+        params[:apply][:ask8_a].delete('0')
+        @apply.ask8_a = params[:apply][:ask8_a].join(',')
+      end
+      if @apply.recruit.ask9_type == "multi_choice"
+        params[:apply][:ask9_a].delete('0')
+        @apply.ask9_a = params[:apply][:ask9_a].join(',')
+      end
+      if @apply.recruit.ask10_type == "multi_choice"
+        params[:apply][:ask10_a].delete('0')
+        @apply.ask10_a = params[:apply][:ask10_a].join(',')
+      end
+
       if @apply.save
         @result = true
         flash[:notice] = "지원서 작성을 완료했습니다."
@@ -57,7 +99,7 @@ class AppliesController < ApplicationController
   private
 
   def apply_params
-    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :additional1_a, :additional2_a, :ask5_file)
+    params.require(:apply).permit(:name, :email, :phone, :major, :student_id, :grade, :ask1_a, :ask2_a, :ask3_a, :ask4_a, :ask5_a, :additional1_a, :additional2_a, :ask5_file, ask6_a: [], ask7_a: [])
   end
 
   def load_recruit

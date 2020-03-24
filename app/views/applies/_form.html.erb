@@ -1,0 +1,28 @@
+<% required ||= false %>
+<% placeholder ||= '' %>
+<% title ||= '' %>
+<% _class ||= '' %>
+
+<% if ask_q && ask_q != "" %>
+  <div class="form-group">
+    <% if ask_type == "text" %>
+      <label><%= title %> <%= ask_q %></label>
+      <%= f.text_area ask_a, required: required, placeholder: placeholder, class: _class  %>
+    <% elsif ask_type == "choice" %>
+      <label><%= title %> <%= ask_q %> (하나의 항목 선택)</label><br><br>
+      <% ask_choices.split('/').each do |c| %>
+        <%= f.radio_button ask_a, c %>
+        <label><%= c %></label><br>
+      <% end %>
+    <% elsif ask_type == "multi_choice" %>
+      <label><%= title %> <%= ask_q %> (여러 항목 선택)</label><br><br>
+      <% ask_choices.split('/').each do |c| %>
+        <%= f.check_box(ask_a, { :multiple => true }, "#{c}") %>
+        <label><%= c %></label><br>
+      <% end %>
+    <% elsif ask_type == "file" %>
+      <label><%= title %> <%= ask_q %> (30M 이하)</label><br>
+      <%= f.file_field ask_file %>
+    <% end %>
+  </div><br>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_130146) do
+ActiveRecord::Schema.define(version: 2020_03_24_071624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 2020_03_16_130146) do
     t.integer "additional1_a"
     t.integer "additional2_a"
     t.integer "additional3_a"
+    t.string "ask9_a"
+    t.string "ask10_a"
+    t.string "ask6_file"
+    t.string "ask7_file"
+    t.string "ask8_file"
+    t.string "ask9_file"
+    t.string "ask10_file"
     t.index ["recruit_id"], name: "index_applies_on_recruit_id"
   end
 
@@ -134,6 +141,28 @@ ActiveRecord::Schema.define(version: 2020_03_16_130146) do
     t.string "additional1_q"
     t.string "additional2_q"
     t.string "additional3_q"
+    t.string "ask9_q"
+    t.string "ask10_q"
+    t.integer "ask1_type"
+    t.integer "ask2_type"
+    t.integer "ask3_type"
+    t.integer "ask4_type"
+    t.integer "ask5_type"
+    t.integer "ask6_type"
+    t.integer "ask7_type"
+    t.integer "ask8_type"
+    t.integer "ask9_type"
+    t.integer "ask10_type"
+    t.text "ask1_choices"
+    t.text "ask2_choices"
+    t.text "ask3_choices"
+    t.text "ask4_choices"
+    t.text "ask5_choices"
+    t.text "ask6_choices"
+    t.text "ask7_choices"
+    t.text "ask8_choices"
+    t.text "ask9_choices"
+    t.text "ask10_choices"
   end
 
   create_table "submissions", force: :cascade do |t|
