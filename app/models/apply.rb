@@ -18,6 +18,6 @@ class Apply < ApplicationRecord
   # validates :ask2_a, presence: true
   # validates :ask3_a, presence: true
   # validates :ask4_a, presence: true
-  # validates :additional1_a, presence: true
+  validates :additional1_a, presence: true
   # validates :additional2_a, presence: true
 end

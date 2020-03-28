@@ -33,16 +33,16 @@ ActiveAdmin.register Apply do
       row :major
       row :student_id
       row :grade
-      row :ask1_a
-      row :ask2_a
-      row :ask3_a
-      row :ask4_a
-      row :ask5_a
-      row :ask6_a
-      row :ask7_a
-      row :ask8_a
-      row :ask9_a
-      row :ask10_a
+      row :ask1_a if apply.ask1_a.present?
+      row :ask2_a if apply.ask2_a.present?
+      row :ask3_a if apply.ask3_a.present?
+      row :ask4_a if apply.ask4_a.present?
+      row :ask5_a if apply.ask5_a.present?
+      row :ask6_a if apply.ask6_a.present?
+      row :ask7_a if apply.ask7_a.present?
+      row :ask8_a if apply.ask8_a.present?
+      row :ask9_a if apply.ask9_a.present?
+      row :ask10_a if apply.ask10_a.present?
 
       row :ask5_file do
         link_to "#{apply.ask5_file.file.original_filename}", apply.ask5_file.url, download: "#{apply.ask5_file.file.original_filename}"
