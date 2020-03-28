@@ -59,19 +59,22 @@
               <%= render 'form', ask_q: @recruit.ask10_q, f: f, title: "질문 10.", ask_a: :ask10_a, ask_type: @recruit.ask10_type, ask_choices: @recruit.ask10_choices, ask_file: :ask10_file %>
 
 
-              <div class="form-group">
-                <p>* OT 일정 변경안내 : 4월 22일 수요일 오후 18시 30분부터 진행됩니다.</p>
-                <p> 원격강의기간이 연장될 시 웹엑스로 OT가 진행될 예정입니다. 참석/늦참/불참</p>
-              </div>
+              
               <% if @recruit.additional1_q && @recruit.additional1_q != "" %>
                 <div class="form-group">
-                  <label><%= @recruit.additional1_q %></label><br>
+                  <h5><label><%= @recruit.additional1_q %></label></h5><br>
                   <% Apply.additional1_as.keys.each do |key| %>
                     <%= f.radio_button :additional1_a, key %>
                     <%= f.label key.to_sym %><br>
                   <% end %>
                 </div><br>
               <% end %>
+              <br>
+
+              <div class="form-group">
+                <p>* OT 일정 변경안내 : 4월 22일 수요일 오후 18시 30분부터 진행됩니다.</p>
+                <p> 원격강의기간이 연장될 시 웹엑스로 OT가 진행될 예정입니다. 참석/늦참/불참</p>
+              </div>
 
               <div class="form-group">
                 <p>* MT 일정은 코로나19로 무기한 연기되었음을 알려드립니다.</p>
