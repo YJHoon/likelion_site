@@ -15,7 +15,7 @@
         <label><%= c %></label><br>
       <% end %>
     <% elsif ask_type == "multi_choice" %>
-      <label><%= title %> <%= ask_q %> (여러 항목 선택)</label><br><br>
+      <label><%= title %> <%= ask_q %></label><br><br>
       <% ask_choices.split('/').each do |c| %>
         <%= f.check_box(ask_a, { :multiple => true }, "#{c}") %>
         <label><%= c %></label><br>
