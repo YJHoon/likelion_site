@@ -134,8 +134,8 @@ ko:
         ask8_file: 파일 8
         ask9_file: 파일 9
         ask10_file: 파일 10
-        additional1_a: 추가 답변 1
-        additional2_a: 추가 답변 2
+        additional1_a: OT 질문
+        additional2_a: MT 질문
     models:
       admin_user: 어드민
       assignment: 과제
