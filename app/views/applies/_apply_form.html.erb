@@ -59,7 +59,7 @@
               <%= render 'form', ask_q: @recruit.ask10_q, f: f, title: "질문 10.", ask_a: :ask10_a, ask_type: @recruit.ask10_type, ask_choices: @recruit.ask10_choices, ask_file: :ask10_file %>
 
 
-              
+              <br><br><br>
               <% if @recruit.additional1_q && @recruit.additional1_q != "" %>
                 <div class="form-group">
                   <h5><label><%= @recruit.additional1_q %></label></h5><br>
@@ -69,7 +69,7 @@
                   <% end %>
                 </div><br>
               <% end %>
-              <br>
+              <br><br>
 
               <div class="form-group">
                 <p>* OT 일정 변경안내 : 4월 22일 수요일 오후 18시 30분부터 진행됩니다.</p>
