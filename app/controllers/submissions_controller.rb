@@ -90,7 +90,7 @@ class SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:title, :description, :url)
+    params.require(:submission).permit(:title, :description, :url, :image, {file: []})
   end
 
   def check_ownership!

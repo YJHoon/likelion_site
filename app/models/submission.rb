@@ -2,6 +2,7 @@ class Submission < ApplicationRecord
   mount_uploader :image, ImageUploader
   mount_uploaders :file, FileUploader
 
+  has_many_attached :file
   has_rich_text :description
 
   belongs_to :user
@@ -12,6 +13,8 @@ class Submission < ApplicationRecord
   has_many :wishes_user, through: :wishes, source: :user
 
   validates :title, presence: true
+  validates :description, presence: true
+  validates :url, presence: true
 
   enum grade: [:normal, :idea, :great]
 
