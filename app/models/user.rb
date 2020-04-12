@@ -35,6 +35,10 @@ class User < ApplicationRecord
   def image_url
     thumbnail.url.present? ? thumbnail.url : "/images/dgulion.png"
   end
+
+  def sub_image_url
+    thumbnail.url.present? ? thumbnail.url(:square) : "/images/dgulion.png"
+  end
   
   def is_wish?(submission)
     Wish.find_by(user_id: self.id, submission_id: submission.id).present?

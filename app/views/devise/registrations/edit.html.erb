@@ -10,7 +10,7 @@
 
             <div class="form-group">
               <%= image_tag current_user.image_url, class: "represent_image", id: "represent_image_display", alt: "", style:"align: center;"%>
-              <%= f.file_field :image, id: 'image-update', style: "display: none;" %>
+              <%= f.file_field :thumbnail, id: 'image-update', style: "display: none;" %>
               <label for="image-update" class="icon-upload">대표이미지 수정</label> <br>
             </div>
 
