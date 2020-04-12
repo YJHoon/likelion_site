@@ -24,11 +24,6 @@
             <%# <div class="wish-icon" id="wish-toggle"> %>
               <%#= render 'shared/wish', submission: @submission %>
             <%# </div> %>
-            
-            <div class="featured-post">
-              <%= image_tag(@submission.image_url, class:"submission-image") %>
-            </div><!-- /.featured-post -->
-
             <div class="content-post">
               <% if @submission.url.present? %>
                 <b>URL : </b> <%= target_blank_link(@submission.url) %>
