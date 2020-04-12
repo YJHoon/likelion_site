@@ -1,6 +1,9 @@
+require 'action_text'
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :prepare_exception_notifier
+  
+  helper ActionText::Engine.helpers
   
   def check_mentor_of object
     if !current_user.mentor?
