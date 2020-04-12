@@ -22,10 +22,10 @@ class SubmissionsController < ApplicationController
       redirect_to submissions_path, alert: "다른사람의 과제는 제출기간이 끝나고 확인하실 수 있습니다." if (@user != @submission.user) || @assignment.end_at > Time.zone.now
     end
 
-    # if @submission.user != @user
-    #   @submission.view_count += 1
-    #   @submission.save
-    # end
+    if @submission.user != @user
+      @submission.view_count += 1
+      @submission.save
+    end
   end
 
   def new
@@ -90,7 +90,7 @@ class SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:title, :description, :url, :image, {file: []})
+    params.require(:submission).permit(:title, :description, :url, :image)
   end
 
   def check_ownership!

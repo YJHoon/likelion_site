@@ -1,9 +1,7 @@
 class Submission < ApplicationRecord
   mount_uploader :image, ImageUploader
-  mount_uploaders :file, FileUploader
-
-  has_many_attached :file
-  has_rich_text :description
+  mount_uploader :file, FileUploader
+  has_rich_text :content
 
   belongs_to :user
   belongs_to :assignment

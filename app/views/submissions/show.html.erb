@@ -25,7 +25,7 @@
               <%#= render 'shared/wish', submission: @submission %>
             <%# </div> %>
             
-            <div class="featured-post" style="text-align: center;">
+            <div class="featured-post">
               <%= image_tag(@submission.image_url, class:"submission-image") %>
             </div><!-- /.featured-post -->
 
@@ -35,10 +35,6 @@
                 <br><br>
               <% end %>
               <p class="pre-line"><%= @submission&.description %></p>
-              <% @submission.file.each do |file| %>
-                <%= image_tag(file.url) %>
-              <% end %>
-              
               <div class="main-single">
                 <div class="form-submit right">
                   <a href="<%= assignment_submissions_path(@assignment) %>" class="btn btn-lg btn-outline-primary">목록</a>
