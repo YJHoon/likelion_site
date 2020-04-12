@@ -1,11 +1,11 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.13.0"
+lock "~> 3.12.0"
 
 set :application, "likelion_site"
 set :repo_url, "git@github.com:YJHoon/likelion_site.git"
 set :deploy_to, "/home/ubuntu/likelion_site"
 
-set :keep_releases, 2
+set :keep_releases, 1
 
 append :linked_files, "config/master.key"
 append :linked_files, 'config/application.yml'
