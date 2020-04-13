@@ -46,7 +46,7 @@ ActiveAdmin.register Submission do
   show do
     attributes_table do
       row :title
-      row :description do |submission|
+      row :description, class: 'admin-testImage' do |submission|
         submission.description.html_safe
       end
       row :url
