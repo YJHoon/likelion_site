@@ -53,7 +53,7 @@ class SubmissionsController < ApplicationController
 
   def update
     if @assignment.end_at > Time.zone.now
-      if @assignment.update(set_params)
+      if @submission.update(submission_params)
         redirect_to assignment_submission_path(@assignment, @submission), notice: "과제가 성공적으로 수정되었습니다."
       else
         redirect_to root_path, alert: "잘못 된 요청입니다."

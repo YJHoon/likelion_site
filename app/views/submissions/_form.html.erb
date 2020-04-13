@@ -6,7 +6,7 @@
           <div class="wrap-sign-in center">
           <h3><%= ((action_name == 'new') ? assignment.title : submission.title) %></h3><hr>
           <div class="form-sign-in">
-            <%= form_for(submission, url: assignment_submissions_path(assignment), method: :post) do |f| %>
+            <%= form_for(submission, url: path) do |f| %>
               <div class="form-group">
                 <%= f.label :title %>
                 <%= f.text_field :title, autofocus: true, autocomplete: "off", required: true %>
