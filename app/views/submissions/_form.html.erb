@@ -19,7 +19,7 @@
               <div class="divider-50"></div>
               <div class="form-group">
                 <%= f.label :description %>
-                <%= f.rich_text_area :description, style: "height: 500px; text-align: left;" %>
+                <%= f.rich_text_area :description, class: "text-editor", style: "text-align: left;" %>
               </div>
               <div class="divider-50"></div>
               <div class="btn-submit">
@@ -37,6 +37,9 @@
 <style>
 .wrap-sign-in{
   padding-top: 80px;
+}
+.text-editor{
+  min-height: 30em;
 }
 .trix-button {
   color: white !important;
