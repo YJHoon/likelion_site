@@ -3,6 +3,7 @@ class Submission < ApplicationRecord
   mount_uploader :file, FileUploader
   
   has_rich_text :description
+  has_one_attached :description
 
   belongs_to :user
   belongs_to :assignment
