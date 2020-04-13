@@ -25,6 +25,7 @@ ActiveAdmin.register Submission do
   index do
     selectable_column
     id_column
+    column :user
     column :title
     tag_column :grade do |submission| submission.enum_ko(:grade) end 
     column "URL" do |s|
