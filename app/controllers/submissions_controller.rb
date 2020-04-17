@@ -12,11 +12,9 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    attach = ActiveStorage::Attachment.all
-    
-    blob = ActiveStorage::Blob.all
+    @attach = ActiveStorage::Attachment.where(record_id: @submission.id)
+    @blob = ActiveStorage::Blob.all
 
-    @file = attach.where(record_id: @submission.id)
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
