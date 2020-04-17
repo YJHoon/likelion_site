@@ -12,11 +12,9 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    attach = ActiveStorage::Attachment.all
-    
-    blob = ActiveStorage::Blob.all
+    @attach = ActiveStorage::Attachment.where(record_id: @submission.id)
+    @blob = ActiveStorage::Blob.all
 
-    @file = attach.where(record_id: @submission.id)
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
@@ -80,9 +78,9 @@ class SubmissionsController < ApplicationController
 
   def wish_toggle
     wish = @submission.wishes.find_by(user: current_user)
-    if wish.nil?
+    if !current_user.wishes.present? && wish.nil?
       @submission.wishes.create!(user: current_user)
-    else
+    elsif current_user.wishes.present? && !wish.nil?
       wish.destroy!
     end
   end
