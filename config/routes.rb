@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#mypage'
   get '/my_homeworks' => "home#my_homework"
 
+  match 'blobs/:signed_id/*filename', to: 'blobs#show', via: [:get, :post]
+
   resources :assignments, only: %i[index show] do 
     resources :submissions do 
       member do

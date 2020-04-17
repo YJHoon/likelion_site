@@ -18,8 +18,8 @@ class SubmissionsController < ApplicationController
                         .per(7)
     
     @user = current_user
-    if !@user.mentor?
-      redirect_to submissions_path, alert: "다른사람의 과제는 제출기간이 끝나고 확인하실 수 있습니다." if (@user != @submission.user) || @assignment.end_at > Time.zone.now
+    if !@user.mentor? && @user != @submission.user
+      redirect_to submissions_path, alert: "다른사람의 과제는 제출기간이 끝나고 확인하실 수 있습니다." if @assignment.end_at > Time.zone.now
     end
 
     if @submission.user != @user
@@ -52,6 +52,7 @@ class SubmissionsController < ApplicationController
   end
 
   def update
+    byebug
     if @assignment.end_at > Time.zone.now
       if @submission.update(submission_params)
         redirect_to assignment_submission_path(@assignment, @submission), notice: "과제가 성공적으로 수정되었습니다."
