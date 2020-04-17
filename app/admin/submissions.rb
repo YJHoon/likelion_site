@@ -44,9 +44,38 @@ ActiveAdmin.register Submission do
   end
 
   show do
+    sub = Submission.find(params[:id])
+    attach = ActiveStorage::Attachment.where(record_id: sub.id)
+    attach.each do |a|
+      blob = ActiveStorage::Blob.find(a.blob_id)
+      if blob.content_type != "image/jpeg" || blob.content_type != "image/png" || blob.content_type != "image/jpg" || blob.content_type != "image/gif"
+        blob
+      end
+    end
     attributes_table do
       row :title
       row :url
+      attach.each do |a|
+        blob = ActiveStorage::Blob.find(a.blob_id)
+        if blob.content_type != "image/jpeg" && blob.content_type != "image/png" && blob.content_type != "image/jpg" && blob.content_type != "image/gif"
+          row "파일" do
+            link_to "#{blob.filename}", rails_blob_path(blob, disposition: 'attachment')
+          end
+        end
+        ActiveStorage::Blob.find(24).filename
+        attach.each do |a|
+          blob = ActiveStorage::Blob.find(a.blob_id)
+          if blob.content_type != "image/jpeg" || blob.content_type != "image/png" || blob.content_type != "image/jpg" || blob.content_type != "image/gif"
+            blob
+          end
+        end
+        # link_to "#{ActiveStorage::Blob.find(f.blob_id).filename}", "#" #blob.download(blob.key), target: '_blank'
+        
+      end
+
+      row :description do |submission|
+        submission.description.body
+      end
       tag_row "과제 등급" do |submission|
         if submission.grade == "normal"
           "노말"
