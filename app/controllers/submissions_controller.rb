@@ -12,6 +12,11 @@ class SubmissionsController < ApplicationController
   end
 
   def show
+    attach = ActiveStorage::Attachment.all
+    
+    blob = ActiveStorage::Blob.all
+
+    @file = attach.where(record_id: @submission.id)
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
@@ -19,8 +24,9 @@ class SubmissionsController < ApplicationController
     
     @user = current_user
     if !@user.mentor? && @user != @submission.user
-      redirect_to submissions_path, alert: "다른사람의 과제는 제출기간이 끝나고 확인하실 수 있습니다." if @assignment.end_at > Time.zone.now
+      redirect_to assignments_path, alert: "다른사람의 과제는 제출기간이 끝나고 확인하실 수 있습니다." if @assignment.end_at > Time.zone.now
     end
+
 
     if @submission.user != @user
       @submission.view_count += 1
