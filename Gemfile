@@ -31,6 +31,8 @@ gem 'sendgrid-actionmailer'
 gem 'sendgrid-ruby'
 gem 'exception_notification'
 
+gem "aws-sdk-s3", require: false
+
 gem 'sprockets-rails', '2.3.3'
 gem 'pry-rails'
 gem 'image_processing', '~> 1.2'
