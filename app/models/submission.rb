@@ -4,6 +4,7 @@ class Submission < ApplicationRecord
   
   has_rich_text :description
   has_one_attached :description
+  
   enum grade: [:normal, :idea, :great]
 
   belongs_to :user

@@ -20,7 +20,9 @@ ActiveAdmin.register Lecture do
       row :title
       row :content do |lecture| sanitize(lecture.content) end
       row :image do |lecture| image_tag(lecture.image_url, class: 'admin-showImage imageviewer') end
-      row :file
+      row :file do |lecture|
+        link_to "#{lecture.file.file.filename}", lecture.file.url, download: "#{lecture.file.url}"
+      end
       row :updated_at
       row :created_at
     end

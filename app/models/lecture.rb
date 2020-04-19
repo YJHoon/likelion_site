@@ -12,4 +12,5 @@ class Lecture < ApplicationRecord
   def image_url
     image.url.present? ? image.url : "/images/dgulion.png"
   end
+
 end

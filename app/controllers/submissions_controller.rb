@@ -56,7 +56,6 @@ class SubmissionsController < ApplicationController
   end
 
   def update
-    byebug
     if @assignment.end_at > Time.zone.now
       if @submission.update(submission_params)
         redirect_to assignment_submission_path(@assignment, @submission), notice: "과제가 성공적으로 수정되었습니다."

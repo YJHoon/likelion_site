@@ -16,7 +16,7 @@
           <div class="divider70"></div>
           
           <% if @lecture.file? %>
-            <%= link_to "#{@lecture.file.file.original_filename}", @lecture.file.url, download: "#{@lecture.file.file.original_filename}" %>
+            <%= link_to "#{@lecture.file.file.filename}", @lecture.file.url, download: "#{@lecture.file.url}" %>
           <% end %>
           <div class="divider30"></div>
           <hr>

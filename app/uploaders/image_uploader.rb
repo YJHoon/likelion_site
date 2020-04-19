@@ -15,7 +15,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
 
-  storage :file
+  storage :fog
   
   def extension_whitelist
     %w(jpg jpeg gif png)
