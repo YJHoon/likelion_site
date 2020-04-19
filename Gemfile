@@ -32,7 +32,6 @@ gem 'sendgrid-ruby'
 gem 'exception_notification'
 
 gem "aws-sdk-s3", require: false
-gem 'fog', '~> 1.41.0'
 
 gem 'sprockets-rails', '2.3.3'
 gem 'pry-rails'
