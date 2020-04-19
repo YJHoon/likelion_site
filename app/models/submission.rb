@@ -4,6 +4,7 @@ class Submission < ApplicationRecord
   
   has_rich_text :description
   has_one_attached :description
+  
   belongs_to :user
   belongs_to :assignment
 
