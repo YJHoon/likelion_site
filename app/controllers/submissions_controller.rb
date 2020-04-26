@@ -12,10 +12,6 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    text = ActionText::RichText.where(record_id: @submission.id)
-    @attach = ActiveStorage::Attachment.where(record_id: text.ids)
-    @blob = ActiveStorage::Blob.all
-
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
