@@ -24,10 +24,6 @@
             <%# <div class="wish-icon" id="wish-toggle"> %>
               <%#= render 'shared/wish', submission: @submission %>
             <%# </div> %>
-            
-            <div class="featured-post" style="text-align: center;">
-              <%= image_tag(@submission.image_url, class:"submission-image") %>
-            </div><!-- /.featured-post -->
 
             <div class="content-post">
               <% if @submission.url.present? %>
@@ -35,8 +31,8 @@
                 <br><br>
               <% end %>
               <p class="pre-line"><%= @submission&.description %></p>
-              <% @submission.file.each do |file| %>
-                <%= image_tag(file.url) %>
+              <% if @submission.file? %>
+                <%= link_to "#{@submission.file.file.original_filename}", @submission.file.url, download: "#{@submission.file.file.original_filename}" %>
               <% end %>
               
               <div class="main-single">
