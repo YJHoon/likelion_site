@@ -48,7 +48,7 @@ ActiveAdmin.register Submission do
       row :title
       row :url
       row :description do |submission|
-        submission.description.html_safe
+        submission.description
       end
       tag_row "과제 등급" do |submission|
         if submission.grade == "normal"
