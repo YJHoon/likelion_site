@@ -21,26 +21,18 @@
               </div>
             </div><!-- /.entry-post-title -->
 
-            <div class="wish-icon" id="wish-toggle">
+            <!-- <div class="wish-icon" id="wish-toggle">
               <%= render 'shared/wish', submission: @submission %>
-            </div>
+            </div> -->
             
             <div class="content-post">
               <% if @submission.url.present? %>
                 <b>URL : </b> <%= target_blank_link(@submission.url) %>
                 <br><br>
               <% end %>
-
-              <b>FILE : </b>
-              <% @attach.each do |a| %>
-                <% blob = @blob.find(a.blob_id) %>
-                <% if blob.content_type != "image/jpeg" && blob.content_type != "image/png" && blob.content_type != "image/jpg" && blob.content_type != "image/gif" %>
-                  <%= link_to "#{blob.filename}", rails_blob_path(blob, disposition: 'attachment') %>
-                <% end %>
-              <% end %>
               
 
-              <p class="pre-line mt-5"><%= @submission&.description %></p>
+              <p class="pre-line mt-5"><%= @submission&.description.html_safe %></p>
 
               
 

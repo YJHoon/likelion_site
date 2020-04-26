@@ -44,8 +44,6 @@ ActiveAdmin.register Submission do
   end
 
   show do
-    sub = Submission.find(params[:id])
-    attach = ActiveStorage::Attachment.where(record_id: sub.id)
     attributes_table do
       row :title
       row :url

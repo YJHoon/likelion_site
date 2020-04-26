@@ -18,8 +18,13 @@
               </div>
               <div class="divider-50"></div>
               <div class="form-group">
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+              </div>
+              <div class="divider-50"></div>
+              <div class="form-group">
                 <%= f.label :description %>
-                <%= f.text_area :description, style: "text-align: left;" %>
+                <%= f.text_area :description, rows: 10, style: "text-align: left;" %>
               </div>
               <div class="divider-50"></div>
               <div class="btn-submit">
