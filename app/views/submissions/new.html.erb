@@ -1,1 +1,25 @@
 <%= render 'form', submission: @submission, assignment: @assignment %>
+
+
+<section class="flat-signin">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap-sign-in center">
+          <div class="form-sign-in">
+            <%= form_for(@submission, url: assignment_submissions_path(@assignment), method: :post) do |f| %>
+              <div class="form-group">
+                <%= f.label :description %>
+                <%= f.rich_text_area :content %>
+              </div>
+              <div class="btn-submit">
+                <button type="submit" name="commit" class="bg-black"><%= ((action_name == 'new') ? '생성하기' : '수정하기') %></button>
+              </div>
+
+            <% end %>
+          </div><!-- /.form-sign-in -->
+        </div><!-- /.wrap-sign-in -->
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /.flat-singin -->
