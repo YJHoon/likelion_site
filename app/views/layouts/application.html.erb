@@ -69,7 +69,7 @@
     <% end %>
     <div class="boxed" data-name="<%= "#{controller_name}-#{action_name}" %>">
         <%= render 'shared/navbar' %>
-        <%= javascript_pack_tag 'application' %>
+        
       <%= yield %>
       <div class="container">
         <%= render 'shared/footer'%>
