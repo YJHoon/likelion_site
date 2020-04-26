@@ -43,9 +43,7 @@ ActiveAdmin.register Assignment do
   show do
     attributes_table do
       row :title
-      row :content do |assignment|
-        assignment.content.html_safe
-      end
+      row :content
       row :start_at
       row :end_at
       row :updated_at
