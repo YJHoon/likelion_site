@@ -29,10 +29,10 @@
                 <b>URL : </b> <%= target_blank_link(@submission.url) %>
                 <br><br>
               <% end %>
-
+              <% attach = ActiveStorage::Attachment.where(record_id: @submission.id) %>
               <b>FILE : </b>
               <% attach.each do |a| %>
-                <% blob = @blob.find(a.blob_id) %>
+                <% blob = ActiveStorage::Blob.find(a.blob_id) %>
                 <% if blob.content_type != "image/jpeg" && blob.content_type != "image/png" && blob.content_type != "image/jpg" && blob.content_type != "image/gif" %>
                   <%= link_to "#{blob.filename}", rails_blob_path(blob, disposition: 'attachment') %>
                 <% end %>
