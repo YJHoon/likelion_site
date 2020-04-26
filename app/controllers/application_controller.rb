@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  helper ActionText::Engine.helpers
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :prepare_exception_notifier
   
