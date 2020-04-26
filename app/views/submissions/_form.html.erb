@@ -18,8 +18,13 @@
               </div>
               <div class="divider-50"></div>
               <div class="form-group">
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+              </div>
+              <div class="divider-50"></div>
+              <div class="form-group">
                 <%= f.label :description %>
-                <%= f.rich_text_area :description, class: "text-editor", style: "text-align: left;" %>
+                <%= f.text_area :description, rows: 10, style: "text-align: left;" %>
               </div>
               <div class="divider-50"></div>
               <div class="btn-submit">
@@ -37,12 +42,6 @@
 <style>
 .wrap-sign-in{
   padding-top: 80px;
-}
-.text-editor{
-  min-height: 30em;
-}
-.trix-button {
-  color: white !important;
 }
 </style>
 

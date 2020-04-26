@@ -12,10 +12,6 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    text = ActionText::RichText.where(record_id: @submission.id)
-    @attach = ActiveStorage::Attachment.where(record_id: text.ids)
-    @blob = ActiveStorage::Blob.all
-
     @comment = Comment.new
     @comments = @submission.comments
                         .page(params[:page])
@@ -95,7 +91,7 @@ class SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:title, :description, :url, :image)
+    params.require(:submission).permit(:title, :description, :url, :file, :image)
   end
 
   def check_ownership!
