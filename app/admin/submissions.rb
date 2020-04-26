@@ -46,6 +46,9 @@ ActiveAdmin.register Submission do
   show do
     attributes_table do
       row :title
+      row :description, class: 'admin-testImage' do |submission|
+        submission.description
+      end
       row :url
       tag_row "과제 등급" do |submission|
         if submission.grade == "normal"
