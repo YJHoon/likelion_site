@@ -30,9 +30,13 @@
                 <b>URL : </b> <%= target_blank_link(@submission.url) %>
                 <br><br>
               <% end %>
-              
+              <% if @submission.file.present? %>
+                <b>FILE : </b> <%= link_to "#{@submission.file.file.original_filename}", @submission.file.url, download: "#{@submission.file.file.original_filename}" %>
+                <%= %>
+                <br><br>
+              <% end %>
 
-              <p class="pre-line mt-5"><%= @submission&.description.html_safe %></p>
+              <p class="pre-line mt-5" style="white-space: pre-line;"><%= @submission&.description.html_safe %></p>
 
               
 

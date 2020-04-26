@@ -47,7 +47,9 @@ ActiveAdmin.register Submission do
     attributes_table do
       row :title
       row :url
-      row :description
+      row :description do |submission|
+        submission.description.html_safe
+      end
       tag_row "과제 등급" do |submission|
         if submission.grade == "normal"
           "노말"
@@ -67,6 +69,8 @@ ActiveAdmin.register Submission do
       f.input :assignment
       f.input :user
       f.input :title
+      f.input :description, rows: 10
+      f.input :file
       f.input :url
       f.input :grade, as: :select, collection: Submission.enum_selectors(:grade)
     end
