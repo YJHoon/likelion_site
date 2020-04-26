@@ -78,9 +78,9 @@ class SubmissionsController < ApplicationController
 
   def wish_toggle
     wish = @submission.wishes.find_by(user: current_user)
-    if !current_user.wishes.present? && wish.nil?
+    if wish.nil?
       @submission.wishes.create!(user: current_user)
-    elsif current_user.wishes.present? && !wish.nil?
+    else
       wish.destroy!
     end
   end

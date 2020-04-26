@@ -1,11 +1,12 @@
 <%= link_to wish_toggle_assignment_submission_path(submission), remote: true, class: "external" do %>
   <% if current_user.is_wish?(submission) %>
-    <i class="far fa-check-square" style="font-size: 50px"></i>
+    <i class="fas fa-thumbs-up" style="font-size: 50px"></i>
+    
   <% else %>
-    <i class="far fa-square" style="font-size: 50px"></i>
+    <i class="far fa-thumbs-up" style="font-size: 50px"></i>
   <% end %>
 <% end %>
-선택 인원 : <%= submission.wishes.count %>
+좋아요 : <%= submission.wishes.count %>
 
 <style>
   .fa-thumbs-up{
