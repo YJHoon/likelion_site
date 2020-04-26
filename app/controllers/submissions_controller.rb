@@ -12,15 +12,9 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
-    text = ActionText::RichText.where(record_id: @submission.id)
-    @attach = ActiveStorage::Attachment.where(record_id: text.ids)
-    @blob = ActiveStorage::Blob.all
-=======
     attach = ActiveStorage::Attachment.all
     
     blob = ActiveStorage::Blob.all
->>>>>>> parent of 4919c11... 정리
 
     @file = attach.where(record_id: @submission.id)
     @comment = Comment.new
