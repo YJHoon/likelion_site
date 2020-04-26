@@ -70,7 +70,7 @@ class SubmissionsController < ApplicationController
 
   def destroy
     if @submission.destroy
-      redirect_to assignment_submissions_path(@assignment), notice: "해당 과제가 성공적으로 삭제 되었습니다."
+      redirect_to assignment_subissions_path(@assignment), notice: "해당 과제가 성공적으로 삭제 되었습니다."
     else
       redirect_to root_path, alert: "잘못 된 요청입니다."
     end
