@@ -50,6 +50,9 @@ ActiveAdmin.register Submission do
       row :description do |submission|
         submission.description
       end
+      row :file do |submission|
+        link_to "#{submission.file.file.original_filename}", submission.file.url, download: "#{submission.file.file.original_filename}"
+      end
       tag_row "과제 등급" do |submission|
         if submission.grade == "normal"
           "노말"
