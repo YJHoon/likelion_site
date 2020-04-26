@@ -69,6 +69,7 @@ ActiveAdmin.register Submission do
       f.input :assignment
       f.input :user
       f.input :title
+      f.input :description
       f.input :url
       f.input :grade, as: :select, collection: Submission.enum_selectors(:grade)
     end
