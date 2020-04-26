@@ -22,13 +22,14 @@ ActiveAdmin.register Assignment do
     selectable_column
     id_column
     column :title
+    column :content
     column :start_at
     column :end_at
     column "제출 수" do |a|
       a.submissions.count
     end
-    column "미제출자 (종료 1시간전)" do |a|
-      if ((a.end_at - Time.zone.now)/1.hour).to_i <= 1
+    column "미제출자 (종료 15시간전)" do |a|
+      if ((a.end_at - Time.zone.now)/1.hour).to_i <= 15
         users = a.not_submitted_users
         if users.present?
           (users.map {|user| user.name}).join(', ')
