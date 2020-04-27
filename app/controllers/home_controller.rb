@@ -7,10 +7,10 @@ class HomeController < ApplicationController
     @HI_SW = User.where(mentor_type: "HI_SW")
     @affairs = User.where(mentor_type: "affairs")
     
-    recruit = Recruit.last if Recruit.last.present?
-    if recruit.present? && recruit.start_at < Time.zone.now && recruit.end_at > Time.zone.now
-      @recruit = recruit
-    end
+    # recruit = Recruit.last if Recruit.last.present?
+    # if recruit.present? && recruit.start_at < Time.zone.now && recruit.end_at > Time.zone.now
+    #   @recruit = recruit
+    # end
   end
 
   def my_homework
