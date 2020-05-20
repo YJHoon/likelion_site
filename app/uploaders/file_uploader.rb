@@ -14,10 +14,6 @@ class FileUploader < CarrierWave::Uploader::Base
 
   # storage :fog
   storage :file
-
-  def extension_whitelist
-    %w(jpg jpeg gif png pptx ppt pdf doc docs hwp txt)
-  end
   
 
   protected    

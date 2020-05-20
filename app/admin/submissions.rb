@@ -7,17 +7,6 @@ ActiveAdmin.register Submission do
   scope -> { '우수' }, :great
   scope -> { '아이디어' }, :idea
 
-  batch_action "#{I18n.t("activerecord.attributes.submission.grade")} 변경", form: {
-    '사용자 유형' => Submission.enum_selectors(:grade).to_a
-  }, confirm: '정말 해당 작업을 진행하시겠습니까?' do |ids, inputs|
-    submissions = Submission.find(ids)
-    submissions.each do |submission|
-      submission.update(grade: inputs['사용자 유형'])
-    end
-    flash[:notice] = '해당 리스트들의 변경을 성공적으로 완료했습니다.'
-    redirect_back(fallback_location: collection_path)
-  end
-
   filter :title_cont, label: "#{I18n.t("activerecord.attributes.submission.title")} 필터"
   filter :description_cont, label: "#{I18n.t("activerecord.attributes.submission.description")} 필터"
   filter :grade, as: :select, collection: Submission.enum_selectors(:grade), label: "#{I18n.t("activerecord.attributes.submission.grade")} 필터"
@@ -27,7 +16,8 @@ ActiveAdmin.register Submission do
     id_column
     column :user
     column :title
-    tag_column :grade do |submission| submission.enum_ko(:grade) end 
+    tag_column :grade, interactive: true 
+
     column "URL" do |s|
       if s.url.present?
         if s.url.include?('http')
@@ -47,20 +37,12 @@ ActiveAdmin.register Submission do
     attributes_table do
       row :title
       row :url
-      row :description do |submission|
-        submission.description
-      end
+      row :description
       row :file do |submission|
         link_to "#{submission.file.file.original_filename}", submission.file.url, download: "#{submission.file.file.original_filename}" if submission.file.present?
       end
       tag_row "과제 등급" do |submission|
-        if submission.grade == "normal"
-          "노말"
-        elsif submission.grade == "idea"
-          "아이디어"
-        else
-          "우수"
-        end
+        submission.enum_ko(:grade)
       end
       row :updated_at
       row :created_at
