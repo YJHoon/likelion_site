@@ -8,7 +8,7 @@ class SubmissionsController < ApplicationController
     if !current_user.mentor? && (@assignment.end_at > Time.zone.now)
       redirect_back(fallback_location: root_path, alert: "과제 제출 리스트는 제출기간이 끝나고 확인하실 수 있습니다.")
     end
-    @submissions = @assignment.submissions
+    @submissions = @assignment.submissions.order(created_at: :desc)
   end
 
   def show
