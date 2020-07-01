@@ -7,7 +7,7 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    @submissions = @assignment.submissions
+    @submissions = @assignment.submissions.order(created_at: :asc)
   end
 
   def new
