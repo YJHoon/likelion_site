@@ -3,11 +3,11 @@ class AssignmentsController < ApplicationController
   before_action :load_assignment, only: %i[show edit update destroy]
 
   def index
-    @assignments = Assignment.all
+    @assignments = Assignment.order(created_at: :asc)
   end
 
   def show
-    @submissions = @assignment.submissions.order(created_at: :asc)
+    @submissions = @assignment.submissions
   end
 
   def new
