@@ -4,7 +4,7 @@ class LecturesController < ApplicationController
   before_action :check_mentor, only: [:new]
 
   def index
-    @lectures = Lecture.all
+    @lectures = Lecture.order(created_at: :asc)
   end
 
   def show
