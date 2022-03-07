@@ -1,4 +1,4 @@
-server '15.165.112.41', user: 'ubuntu', roles: %w{app db web}
+server '13.125.35.82', user: 'ubuntu', roles: %w{app db web}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
