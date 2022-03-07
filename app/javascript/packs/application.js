@@ -3,10 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
+// require("@rails/ujs").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
-require("channels")
+// require("channels")
 require("jquery")
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -21,34 +21,34 @@ $(function () {
     }
   });
 
-  var viewer = ImageViewer();
-  $('.imageviewer').click(function () {
-      var imgSrc = this.src
-      viewer.show(imgSrc);
-  });
+  // var viewer = ImageViewer();
+  // $('.imageviewer').click(function () {
+  //     var imgSrc = this.src
+  //     viewer.show(imgSrc);
+  // });
 });
 
-$(function() {
-  pageName = $('div.boxed').data('name');
+// $(function() {
+//   pageName = $('div.boxed').data('name');
 
-  if (pageName == "submissions-new" || pageName == "submissions-edit" || pageName == "galleries-new") {
-    $('#image_upload_button').on('click', function(){
+//   if (pageName == "submissions-new" || pageName == "submissions-edit" || pageName == "galleries-new") {
+//     $('#image_upload_button').on('click', function(){
       
-      $('#submission_file').trigger('click');
-    });
+//       $('#submission_file').trigger('click');
+//     });
 
-    $('#submission_file').on('change', function(){
-      readURL(this);
-    });
+//     $('#submission_file').on('change', function(){
+//       readURL(this);
+//     });
 
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#represent_image_display').attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-      };
-    };
-  };
-});
+//     function readURL(input) {
+//       if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             $('#represent_image_display').attr('src', e.target.result);
+//         };
+//         reader.readAsDataURL(input.files[0]);
+//       };
+//     };
+//   };
+// });
