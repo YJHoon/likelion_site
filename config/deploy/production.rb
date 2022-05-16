@@ -1,4 +1,5 @@
-server '13.125.35.82', user: 'ubuntu', roles: %w{app db web}
+set :deploy_to, "/home/ubuntu/likelion_site"
+server "52.78.116.24", user: "ubuntu", roles: %w{app db web}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
