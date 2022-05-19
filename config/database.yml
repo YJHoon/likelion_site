@@ -16,12 +16,20 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+
+rds: &rds
+  adapter: postgresql
+  host: ENV["rds_host"]
+  encoding: unicode
+  username: ENV["rds_user"]
+  password: ENV["rds_pw"]
+
 test:
   <<: *default
   database: likelion_site_test
 
 production:
-  <<: *default
+  <<: *rds
   database: likelion_site_production
 
 

@@ -42,7 +42,7 @@ gem 'webpacker', '~> 4.0'
 
 gem 'capistrano'
 gem 'capistrano-rails'
-gem 'capistrano-passenger'
+gem 'capistrano-passenger', '~> 0.2.1'
 gem 'capistrano-rbenv'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
