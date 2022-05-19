@@ -19,10 +19,10 @@ development:
 
 rds: &rds
   adapter: postgresql
-  host: ENV["rds_host"]
+  host: Rails.application.credentials.config.dig(:rds_host)
   encoding: unicode
-  username: ENV["rds_user"]
-  password: ENV["rds_pw"]
+  username: Rails.application.credentials.config.dig(:rds_user)
+  password: Rails.application.credentials.config.dig(:rds_pw)
 
 test:
   <<: *default
