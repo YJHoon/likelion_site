@@ -29,7 +29,7 @@ test:
   database: likelion_site_test
 
 production:
-  <<: *rds
+  <<: *default
   database: likelion_site_production
 
 
