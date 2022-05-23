@@ -5,7 +5,7 @@
   <div class="row">
     <% galleries.each do |gallery| %>
       <div class="card col-md-3 mb-4">
-        <%= image_tag((gallery.image.url(:thumb) if gallery.image?), class:'card-img-top imageviewer') %>
+        <img src="<%= "#{gallery.image.url(:thumb)}" if gallery.image? %>" alt="" class='card-img-top imageviewer'>
         <% gallery.tag_list.each do |tag| %>
           <%= link_to galleries_path(tags: tag), remote: true do %>
             <p class="tag_name <%= tag %>" id= "<%= tag %>">#<%= tag %></p>

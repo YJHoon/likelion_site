@@ -15,6 +15,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'figaro'
 gem 'uglifier', '>= 1.3.0'
+gem "fog-aws"
 
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.7'

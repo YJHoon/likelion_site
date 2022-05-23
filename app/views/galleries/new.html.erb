@@ -7,6 +7,7 @@
           <hr>
           <div class="assignment-form">
             <%= form_for(@gallery, url: galleries_path, method: :post, remote: true) do |f| %>
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <ul>
                 <li class="assignment-content assignment-input" style="margin-bottom: 10px;">
                   <div class="field">

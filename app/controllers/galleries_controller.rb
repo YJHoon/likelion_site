@@ -27,7 +27,8 @@ class GalleriesController < ApplicationController
     if @gallery.save
       @result = true
       flash[:notice] = "사진 업로드가 완료되었습니다."
-    end    
+    end
+    redirect_to galleries_path
   end
 
   private
