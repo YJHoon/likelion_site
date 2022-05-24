@@ -16,6 +16,7 @@ require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require 'capistrano/passenger'
+require "capistrano/local_precompile"
 require 'capistrano/rbenv'
 
 set :rbenv_type, :user

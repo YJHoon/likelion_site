@@ -45,6 +45,7 @@ gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-passenger', '~> 0.2.1'
 gem 'capistrano-rbenv'
+gem "capistrano-local-precompile", "~> 1.2.0", require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
