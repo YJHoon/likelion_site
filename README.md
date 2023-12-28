@@ -1,24 +1,17 @@
-# README
+# 동국대 8기 운영 사이트
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![dgu-lionlogo](https://github.com/YJHoon/likelion_site/assets/44935127/c1b06bee-c50b-4783-8730-a98ad947a0ca)
 
-Things you may want to cover:
+## 프로젝트 개요
 
-* Ruby version
+원활한 사이트 운영을 위해 제작한 동국대 멋쟁이사저처럼 사이트입니다.
 
-* System dependencies
+## 개발환경
 
-* Configuration
+Ruby 2.6.5
+Ruby on Rails 6.0.2
 
-* Database creation
+## 배포환경
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ubuntu Server 18.04 LTS (HVM)
+Nginx 1.14.0
