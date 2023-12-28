@@ -8,10 +8,10 @@
 
 ## 개발환경
 
-Ruby 2.6.5
+Ruby 2.6.5  
 Ruby on Rails 6.0.2
 
 ## 배포환경
 
-Ubuntu Server 18.04 LTS (HVM)
+Ubuntu Server 18.04 LTS (HVM)  
 Nginx 1.14.0
